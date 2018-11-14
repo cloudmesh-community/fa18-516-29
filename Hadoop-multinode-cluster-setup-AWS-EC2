@@ -1,2 +1,3 @@
+The following section describes how to set up a multi node Hadoop cluster in Amazon EC2 instance.It also describes how to install and set up Spark
+and Hive as part of this cluster set up.
 
-T
