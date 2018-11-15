@@ -11,7 +11,7 @@ The only downside is that it will be expensive to own 4 such large instances.
 
 Master and Slaves:There will be 1 master instance.This will have the namemode,resourcemanager and jobhistoryserver deamons running.
 There will be 3 slave nodes where datanode and nodemanager deamons will run.To configure masters and slaves create 2 files with names
-masters and slaves.Add the following to them:
+masters and slaves inside $HADOOP_CONF_DIR in each instance.Add the following to them:
 
 masters file                               slaves file
 namenode                                    datanode1
@@ -46,7 +46,7 @@ Hadoop installation:(Everything is done when logged in as ubuntu user)
   vii. Change the hadoop-env.sh in $HADOOP_HOME/etc/hadoop in all the instances to add the below line for JAVA_HOME.
      export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
      
-  2. Hadoop configurations(The config files will be changed on all the instances):
+  2. Hadoop configurations in $HADOOP_CONF_DIR:(Add the below values in the config files in all the instances):
   
     i. core-site.xml
     
@@ -83,6 +83,40 @@ Hadoop installation:(Everything is done when logged in as ubuntu user)
            yarn.scheduler.maximum-allocation-mb 3072
            yarn.scheduler.minimum-allocation-mb 1536
            yarn.nodemanager.local-dirs ${hadoop.tmp.dir}/nm-local-dir
+           
+    3. Hadoop namenode format: After configuring the config files,format the namenode:
+    
+           hdfs namenode -format
+           
+    4. Hadoop deamons:
+    
+        Start the following deamons:
+        
+        On Namenode:
+         $HADOOP_HOME/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs start namenode
+         $HADOOP_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start resourcemanager
+         $HADOOP_HOME/sbin/mr-jobhistory-daemon.sh --config $HADOOP_CONF_DIR start historyserver
+         
+        On DataNode1:
+         $HADOOP_HOME/sbin/hadoop-daemons.sh --config $HADOOP_CONF_DIR --script hdfs start datanode
+         The datanode process just needs to be started in 1 node.This will start the process in another nodes on its own through
+         ssh connection.
+         
+        On DataNode1,DataNode2,DataNode3:
+         The nodemanager process needs to be started in all the slave machines.
+         $HADOOP_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start nodemanager
+         
+      5. Creating directories in file system:
+        
+         hadoop fs -mkdir /user/externaltables/testdata
+         hadoop fs -copyFromLocal /home/ubuntu/datafiles/testfile /user/externaltables/testdata/testfile
+         
+      6. Run the map reduce job to test that the containers are getting launched properly in all the nodes:
+         
+         yarn jar hadoop-mapreduce-examples-2.9.1.jar wordcount /user/externaltables/testdata/testfile /user/logs
+          
+           
+         
            
           
 
