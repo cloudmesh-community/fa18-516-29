@@ -36,4 +36,8 @@ The only downside is that it will be expensive to own 4 such large instances.
      
   vii. Change the hadoop-env.sh in $HADOOP_HOME/etc/hadoop in all the instances to add the below line for JAVA_HOME.
      export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+     
+  2. Hadoop configurations(The config files will be changed on all the instances):
+  
+    i. 
 .
