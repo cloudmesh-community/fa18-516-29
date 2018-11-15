@@ -9,21 +9,21 @@ the initial cluster set up and running some map reduce jobs for test purpose,but
 substantial amount of data transfer,one should go for T2.Xlarge instances which have 16GB of memory and initially 32 GB of physical storage.
 The only downside is that it will be expensive to own 4 such large instances.
 
-Hadoop installation:(Everything is done when logged in as ubuntu user)
+1.Hadoop installation:(Everything is done when logged in as ubuntu user)
 
-1. Before starting the installation,upgrade all the servers as a good practice by the below command.
+ i. Before starting the installation,upgrade all the servers as a good practice by the below command.
       sudo apt-get update
    
- 2. Install java version8 in all the servers:
+ ii. Install java version8 in all the servers:
       sudo apt install openjdk-8-jdk
     
- 3. Download and install hadoop 2.9 is all the servers.
+ iii. Download and install hadoop 2.9 is all the servers.
       wget http://apache.mirrors.tds.net/hadoop/common/hadoop-2.9.1/hadoop-2.9.1.tar.gz -P ~/hadoop_installation
     
- 4. Uncompress the tar file in any directory called hadoop home
+ iv. Uncompress the tar file in any directory called hadoop home
       tar zxvf ~/hadoop_installation/hadoop-* -C ~/hadoop_home
  
- 5. set up the env variables in all the .profile and .bashrc of all the servers
+ v. set up the env variables in all the .profile and .bashrc of all the servers
  
     export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
     export PATH=$PATH:$JAVA_HOME/bin
@@ -31,9 +31,9 @@ Hadoop installation:(Everything is done when logged in as ubuntu user)
     export PATH=$PATH:$HADOOP_HOME/bin
     export HADOOP_CONF_DIR=/home/ubuntu/hadoop_home/hadoop-2.9.1/etc/hadoop
    
-  6. Load profile in all the servers
+  vi. Load profile in all the servers
      ~/.profile
      
-  7. Change the hadoop-env.sh in $HADOOP_HOME/etc/hadoop in all the instances to add the below line for JAVA_HOME.
+  vii. Change the hadoop-env.sh in $HADOOP_HOME/etc/hadoop in all the instances to add the below line for JAVA_HOME.
      export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 .
