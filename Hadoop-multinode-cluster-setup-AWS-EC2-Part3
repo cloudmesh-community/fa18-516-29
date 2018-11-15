@@ -12,7 +12,7 @@ Motivation:
  an advantage over map reduce that they do the computation of data in memory by creating immutable datasets and do not write
  the intermediate query outputs to the hdfs like mapreduce.This saves lot of Physical I/O and makes the processing much faster.
  
- Installation:
+  1. Installation:
   
   i. Download and Install Hive 2.3 which is compatible with Hadoop 2.9 only in the master machine.
       wget https://www-us.apache.org/dist/hive/hive-2.3.3/apache-hive-2.3.3-bin.tar.gz -P ~/hive_installation
