@@ -43,6 +43,14 @@ Motivation:
          
          cd $HIVE_HOME
          schematool -dbType derby -initSchema
+         
+     2. Hive configuration:
+     
+          Replace the values of ${system:java.io.tmpdir}/${system:user.name} in hive-site.xml with the actual values:
+          hive.exec.local.scratchdir /tmp/ubuntu
+          hive.querylog.location /tmp/ubuntu
+          
+          
         
    
    
