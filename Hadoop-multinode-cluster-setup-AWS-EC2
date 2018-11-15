@@ -23,6 +23,10 @@ and Hive as part of this cluster set up.
    job runs and this space also gets used up quickly.In our experiment,we found that atleast 11GB of physical storage was needed,but if we switch 
    to T2.large instances then it would be more expensive.So,we chose to add more volume to T2.medium instance in the physical storage.This
    is feasible as EC2 instances have EBS storage and volume can be added on the fly.
+   
+   Configuring Elastic Ips for the instances:After allocating 4 instances,1 Namenode and 3 DataNodes of type T2.medium,go to the Network and
+   Security section of the EC2 Mangaement console and allocate 4 new elastic IPs from the IPv4 address pool.After this IP is allocated,map this
+   IP to any instance.Repeat this step for the remaining 3 instances.
 
 
 
