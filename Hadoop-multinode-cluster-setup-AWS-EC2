@@ -69,7 +69,7 @@ and Hive as part of this cluster set up.
            
         vi. Copy the authorised_keys to all the instances in .ssh folder.
         
-        vii. From the datanode1,do ssh to all the other datanodes.It will ask to enter the host names to known_hosts.Confirm yes.
+        vii. From the datanode1 and namenode,do ssh to all the other datanodes.It will ask to enter the host names to known_hosts.Confirm yes.
         
         viii. In the /etc/hosts file of all the instances add the following:
         
