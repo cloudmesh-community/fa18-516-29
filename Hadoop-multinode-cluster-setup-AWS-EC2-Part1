@@ -3,7 +3,7 @@ Hadoop,Hive and Spark cluster set up on Amazon EC2 instances(Part-1)
 
 The following section describes what are the minimum configurations required for the EC2 instances in AWS for a multi node Hadoop cluster 
 set-up and how to establish a passwordless ssh connection between the instances.This is applicable for any unix/linux instances which can 
-have a static IP and the samde below steps need to be followed for establishing a passwordlessh ssh connection.The recommended minimum
+have a static IP and the same below steps need to be followed for establishing a passwordlessh ssh connection.The recommended minimum
 memory for an instance is 8GB and atleast 20GB of physical disk space.
 
 1. Configuring EC2 instances in AWS and Setting up passwordless ssh communication bewteen these instances and configuring the Elastic IPs 
