@@ -115,7 +115,18 @@ Hadoop installation:(Everything is done when logged in as ubuntu user)
          
          yarn jar hadoop-mapreduce-examples-2.9.1.jar wordcount /user/externaltables/testdata/testfile /user/logs
           
-           
+    Issues and resolution: One very common issue can come when the containers are launced on the nodes is that of 
+    lack of space in the temp stoarge for the intermediate data which is generated.The error looks like:
+     
+     [INFO] Diagnostics: No space available in any of the local directories.
+     
+     To resolve this issue,find the filesystem to which hadoop.temp.dir is mapped to:
+       
+       df /tmp/hadoop
+       
+       df -h will show the space available in the above file system.If it is nearly full,then take more volume for the EC2
+       instances:
+       
          
            
           
