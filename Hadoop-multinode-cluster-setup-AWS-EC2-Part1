@@ -1,7 +1,7 @@
 
 Hadoop,Hive and Spark cluster set up on Amazon EC2 instances. 
 
-The following section describes how to set up a multi node Hadoop cluster in Amazon EC2 instance.It also describes how to install and set up Spark
+The following section describes how to set up passwora multi node Hadoop cluster in Amazon EC2 instance.It also describes how to install and set up Spark
 and Hive as part of this cluster set up.
 
 1. Configuring EC2 instances in AWS and Setting up passwordless ssh communication bewteen these instances and configuring the Elastic IPs 
@@ -83,7 +83,9 @@ and Hive as part of this cluster set up.
          
               sudo hostname ec2-52-24-204-101.us-west-2.compute.amazonaws.com.
               This is very important because the instances know each other by their public DNS names.
-              Repeat this on all the instances.The above steps complete the passwordless ssh connection between all the instances.
+              Repeat this on all the instances.
+              
+              The above steps complete the passwordless ssh connection between all the instances.
 
 
               
