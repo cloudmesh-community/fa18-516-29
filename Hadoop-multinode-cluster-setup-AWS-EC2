@@ -65,7 +65,22 @@ and Hive as part of this cluster set up.
         
         v. Copy the contents of sshkey_rsa.pub to authorised_keys by the below command.
            cat ~/.ssh/sshkey_rsa.pub >> ~/.ssh/authorized_keys
-           This will create a 
+           This will create an entry for the user ubuntu in the authorised keys.
+           
+        vi. Copy the authorised_keys to all the instances in .ssh folder.
+        
+        vii. From the datanode1,do ssh to all the other datanodes.It will ask to enter the host names to known_hosts.Confirm yes.
+        
+        viii. In the /etc/hosts file of all the instances add the following:
+        
+         172.31.21.154 ec2-52-24-204-101.us-west-2.compute.amazonaws.com
+         172.31.16.132 ec2-52-38-172-19.us-west-2.compute.amazonaws.com
+         172.31.19.37 ec2-52-42-185-237.us-west-2.compute.amazonaws.com
+         172.31.30.216 ec2-52-89-22-141.us-west-2.compute.amazonaws.com
+         where the first IP is the Private IP and second is the Public DNS (IPv4) in EC2 management console.
+
+
+              
 
 
 
