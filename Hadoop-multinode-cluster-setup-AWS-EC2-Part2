@@ -18,7 +18,7 @@ namenode                                    datanode1
                                             datanode2
                                             datanode3
 
-Hadoop installation:(Everything is done when logged in as ubuntu user)
+1. Hadoop installation:(Everything is done when logged in as ubuntu user)
 
  i. Before starting the installation,upgrade all the servers as a good practice by the below command.
       sudo apt-get update
@@ -115,17 +115,35 @@ Hadoop installation:(Everything is done when logged in as ubuntu user)
          
          yarn jar hadoop-mapreduce-examples-2.9.1.jar wordcount /user/externaltables/testdata/testfile /user/logs
           
-    Issues and resolution: One very common issue can come when the containers are launced on the nodes is that of 
+    5. Issues and resolution: One very common issue which can come when the containers are launced on the nodes is that of 
     lack of space in the temp stoarge for the intermediate data which is generated.The error looks like:
      
      [INFO] Diagnostics: No space available in any of the local directories.
      
      To resolve this issue,find the filesystem to which hadoop.temp.dir is mapped to:
        
-       df /tmp/hadoop
+       df /home/ubuntu/hadoop_home/hadoop-2.9.1/hadoop_tmp will show the below ext4 filesystem:
+       
+       /dev/xvda1
        
        df -h will show the space available in the above file system.If it is nearly full,then take more volume for the EC2
-       instances:
+       instances by following the below steps:
+       
+       i. On the left side in Elastic Block Store,go to Volumes.Add the number of volumne required(another 8GB) to all the instances.
+          All this will be mapped to the drive /dev/xvda.
+          
+       ii. Login to putty of the machines and run lsblk.This will show something like below:
+           xvda    202:0    0   16G  0 disk
+            └─xvda1 202:1    0   8G  0 part /
+            
+       iii. Increase the partition size of xvda1
+            growpart /dev/xvda 1
+           
+       iv. Resize the filesystem:
+           resize2fs /dev/xvda1
+           
+        v. Do df -h and confirm that the space allocated to the filesystem /dev/xvda1 is increased by 8GB.
+
        
          
            
