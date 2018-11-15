@@ -39,5 +39,22 @@ The only downside is that it will be expensive to own 4 such large instances.
      
   2. Hadoop configurations(The config files will be changed on all the instances):
   
-    i. 
-.
+    i. core-site.xml
+    
+      fs.defaultFS     hdfs://ec2-52-24-204-101.us-west-2.compute.amazonaws.com:9001(This is the master instance hostname,
+                       9001 is the RPC port)
+                       
+      hadoop.tmp.dir  file:///home/ubuntu/hadoop_home/hadoop-2.9.1/hadoop_tmp(The filesystem should be the one where we are adding more
+                       volume as there is lot of intermediate data which gets written here.
+                       
+.   ii. hdfs-site.xml
+
+        dfs.namenode.name.dir  file:///home/ubuntu/hadoop_home/hadoop-2.9.1/hadoop_data/hdfs/namenode
+                             (This is the namenode directory in the master instance which will have the fs image and edit logs)
+                             
+        dfs.datanode.data.dir  file:///home/ubuntu/hadoop_home/hadoop-2.9.1/hadoop_data/hdfs/datanode
+                             (This is the directory in the slave nodes with the actual data blocks of distributed file system)
+                             
+        dfs.replication       2 (Initially only 2 considering the small size of physical storage)
+
+        
