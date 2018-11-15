@@ -53,11 +53,19 @@ and Hive as part of this cluster set up.
          User ubuntu
          IdentityFile ~/.ssh/client-keypair.pem
          
-      ii. Copy the keyfile received from aws in the ~/.ssh folder of all the instances
+      ii. Copy the keyfile received from aws in the ~/.ssh folder of all the instances.
             ~/.ssh/client-keypair.pem
             
       iii.Change the permissions of all the file in ~/.ssh folder to 600 of all the servers.This is a requirement for 
-           ssh to work correctly
+           ssh to work correctly.
+       
+       iv.Go to the ~/.ssh folder of namenode and run the following command.
+           ssh-keygen -f ~/.ssh/id_rsa -t rsa -P ""
+        This will create 2 files sshkey_rsa.pub and sshkey_rsa in ~/.ssh folder. 
+        
+        v. Copy the contents of sshkey_rsa.pub to authorised_keys by the below command.
+           cat ~/.ssh/sshkey_rsa.pub >> ~/.ssh/authorized_keys
+           This will create a 
 
 
 
