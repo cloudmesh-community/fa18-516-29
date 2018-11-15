@@ -41,20 +41,40 @@ The only downside is that it will be expensive to own 4 such large instances.
   
     i. core-site.xml
     
-      fs.defaultFS     hdfs://ec2-52-24-204-101.us-west-2.compute.amazonaws.com:9001(This is the master instance hostname,
+        fs.defaultFS     hdfs://ec2-52-24-204-101.us-west-2.compute.amazonaws.com:9001(This is the master instance hostname,
                        9001 is the RPC port)
                        
-      hadoop.tmp.dir  file:///home/ubuntu/hadoop_home/hadoop-2.9.1/hadoop_tmp(The filesystem should be the one where we are adding more
+        hadoop.tmp.dir  file:///home/ubuntu/hadoop_home/hadoop-2.9.1/hadoop_tmp(The filesystem should be the one where we are adding more
                        volume as there is lot of intermediate data which gets written here.
                        
 .   ii. hdfs-site.xml
 
-        dfs.namenode.name.dir  file:///home/ubuntu/hadoop_home/hadoop-2.9.1/hadoop_data/hdfs/namenode
+          dfs.namenode.name.dir  file:///home/ubuntu/hadoop_home/hadoop-2.9.1/hadoop_data/hdfs/namenode
                              (This is the namenode directory in the master instance which will have the fs image and edit logs)
                              
-        dfs.datanode.data.dir  file:///home/ubuntu/hadoop_home/hadoop-2.9.1/hadoop_data/hdfs/datanode
+          dfs.datanode.data.dir  file:///home/ubuntu/hadoop_home/hadoop-2.9.1/hadoop_data/hdfs/datanode
                              (This is the directory in the slave nodes with the actual data blocks of distributed file system)
                              
-        dfs.replication       2 (Initially only 2 considering the small size of physical storage)
+          dfs.replication       2 (Initially only 2 considering the small size of physical storage)
+        
+     iii. mapred-site.xml
+     
+            mapreduce.framework.name   yarn
+            yarn.app.mapreduce.am.resource.mb 3072
+            mapreduce.map.memory.mb  512
+            mapreduce.reduce.memory.mb 512
+          
+     iv. yarn-site.xml
+       
+           yarn.acl.enable  false
+           yarn.resourcemanager.hostname ec2-52-24-204-101.us-west-2.compute.amazonaws.com
+           yarn.nodemanager.aux-services mapreduce_shuffle
+           yarn.nodemanager.vmem-check-enabled false
+           yarn.nodemanager.resource.memory-mb 3072
+           yarn.scheduler.maximum-allocation-mb 3072
+           yarn.scheduler.minimum-allocation-mb 1536
+           yarn.nodemanager.local-dirs ${hadoop.tmp.dir}/nm-local-dir
+           
+          
 
         
