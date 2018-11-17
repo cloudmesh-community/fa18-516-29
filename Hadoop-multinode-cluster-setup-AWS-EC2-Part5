@@ -1,11 +1,10 @@
 Hadoop,Hive and Spark cluster set up on Amazon EC2 instances(Part-5):
 
-
-Motivation: We have completed the process of building up a 3 node cluster in Hadoop,Hive and Spark.Now,we can run wirdcount mapreduce program
-on files of different sizes and can check the completion time of the job when submitted in spark and mapreduce seperately.
-
-1. The following section describes the performance comparison of a wordcount program between a mapreduce and a spark engine on 
+The following section describes the performance comparison of a wordcount program between a mapreduce and a spark engine on 
 the 3 node cluster which we have installed:
+
+Motivation: We have completed the process of building up a 3 node cluster in Hadoop,Hive and Spark.Now,we can run wordcount mapreduce program
+on files of different sizes and can check the completion time of the job when submitted in spark and mapreduce seperately.
 
 Run the below jobs:
 
@@ -19,12 +18,10 @@ spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCoun
 spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCount $SPARK_HOME/examples/jars/spark-examples_2.11-2.3.2.jar /user/externaltables/testdata2/testfile2
 spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCount $SPARK_HOME/examples/jars/spark-examples_2.11-2.3.2.jar /user/externaltables/testdata3/testfile3
 
-
+Below is the benchmark data:
 
 Filename          FileSize                        mapreduce completion time                               spark completion time
 
 testfile1          724 MB                           20 seconds                                               3 seconds
 testfile2         1.58 GB                           18 seconds                                               4 seconds
 testfile3         6.48 GB                           20 seconds                                               4 seconds
-
-
