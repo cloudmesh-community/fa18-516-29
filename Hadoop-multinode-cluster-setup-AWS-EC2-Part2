@@ -143,6 +143,9 @@ namenode                                    datanode1
            resize2fs /dev/xvda1
            
         v. Do df -h and confirm that the space allocated to the filesystem /dev/xvda1 is increased by 8GB.
+        
+        
+        6. The following section also describes the hadoop configuration for a 8GB node(Memory) cluster:
 
        
          
