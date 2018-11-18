@@ -9,7 +9,7 @@ project:
       keyword: Hadoop, Hive,Spark,AWS EC2
       url: https://github.com/cloudmesh-community/fa18-516-29/blob/master/project-paper/report.md 
       code: https://github.com/cloudmesh-community/fa18-516-29/blob/master/project-code/report.md 
-paper:
+section:
     - title: Setting up of a Multi Node Hadoop Cluster 
       url: https://github.com/cloudmesh-community/book/blob/master/chapters/mapreduce/HadoopMultiNodeclustersetup.md
     - title: Setting up of Hive in a Hadoop cluster
