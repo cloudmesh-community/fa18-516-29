@@ -43,7 +43,7 @@ by importing them in Spark Dataframes which is an abstraction over RDD.
    spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCount $SPARK_HOME/examples/jars/spark-examples_2.11-2.3.2.jar /user/externaltables/testdata/testfile
    
        
- 4. For a 8GB memory node,when the yarn.scheduler.maximum-allocation-mb is configured as 6GB,we can do the following configuration 
+ 4. For a T2.large instance which is 8GB memory node and the yarn.scheduler.maximum-allocation-mb is configured as 6GB,we can do the following configuration 
      for spark.
     
        spark.executor.memory            4g
