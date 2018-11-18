@@ -158,3 +158,16 @@ slaves file       datanode1 datanode2 datanode3
             └─xvda1 202:1    0   16G  0 part /
            
        vi. Do df -h and confirm that the space allocated to the filesystem /dev/xvda1 is increased by 8GB.
+       
+   ## Hadoop configuration for a 8GB(Memory) node cluster:
+      This is feasible if we are taking T2.large instances.
+        
+         filename          config key                          value in mb
+         
+         mapred-site.xml   yarn.app.mapreduce.am.resource.mb    2048
+         mapred-site.xml   mapreduce.map.memory.mb              1024
+         mapred-site.xml   mapreduce.reduce.memory.mb           1024
+         yarn-site.xml     yarn.nodemanager.resource.memory-mb  6144
+         yarn-site.xml     yarn.scheduler.maximum-allocation-mb 6144
+         yarn-site.xml     yarn.scheduler.minimum-allocation-mb 1024
+          
