@@ -145,7 +145,8 @@ namenode                                    datanode1
         v. Do df -h and confirm that the space allocated to the filesystem /dev/xvda1 is increased by 8GB.
         
         
-        6. The following section also describes the hadoop configuration for a 8GB node(Memory) cluster:
+        6. The following section also describes the hadoop configuration for a 8GB node(Memory) cluster,if we are
+        taking T2.large instances.
         
          filename          config key                          value in mb
          
