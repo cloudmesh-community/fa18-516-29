@@ -1,12 +1,11 @@
-# Manage Files Across Cloud Providers :hand: fa18-516-18
+# Hadoop,Hive and Spark multi node Cluster set up on Amazon EC2 instances
 
 
-
-| github: [:cloud:](https://github.com/cloudmesh-community/fa18-516-18/blob/master/project-paper/report.md)
+| github: [:cloud:](https://github.com/cloudmesh-community/fa18-516-29/blob/master/project-paper/report.md)
 
 ## ABSTRACT
 
-The goal of this project is to manage files across different cloud providers. There are many cloud providers where we can store data like AWS, Azure, google, etc. Here we are going to build an OpenAPI to manage these files, operations like copy, upload or download from one location/provider to another. 
+The goal of this project is to demonstrate the steps needed to set up a 4 node Hadoop Cluster with Spark and Hive on Amazon EC2 instances from the scratch.It details the hadoop and spark configurations required for a 4GB and 8GB(memory) node Hadoop cluster for developmental and testing purpose.The objective is to do all the installations and configurations from the scratch.This process will be the same as doing the installation and set up on any 4 unix machines which have a static IP.
 
 ## Keywords
 
