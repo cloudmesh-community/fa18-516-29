@@ -146,6 +146,18 @@ namenode                                    datanode1
         
         
         6. The following section also describes the hadoop configuration for a 8GB node(Memory) cluster:
+        
+         filename          config key                          value in mb
+         
+         mapred-site.xml   yarn.app.mapreduce.am.resource.mb    2048
+         mapred-site.xml   mapreduce.map.memory.mb              1024
+         mapred-site.xml   mapreduce.reduce.memory.mb           1024
+         yarn-site.xml     yarn.nodemanager.resource.memory-mb  6144
+         yarn-site.xml     yarn.scheduler.maximum-allocation-mb 6144
+         yarn-site.xml     yarn.scheduler.minimum-allocation-mb 1024
+          
+          
+          
 
        
          
