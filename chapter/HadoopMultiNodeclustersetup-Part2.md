@@ -28,19 +28,19 @@ namenode                                    datanode1
  ## Installation steps:
    (Everything is done when logged in as user ubuntu)
    
-   i. Before starting the installation,update all the servers as a good practice by the below command:
+   i. Before starting the installation,update all the servers as a good practice by the command:
         sudo apt-get update
    
    ii. Install java version8 in all the servers:
         sudo apt install openjdk-8-jdk
     
-   iii. Download and install hadoop 2.9 on all the servers.
+   iii. Download and install hadoop 2.9 on all the servers:
         wget http://apache.mirrors.tds.net/hadoop/common/hadoop-2.9.1/hadoop-2.9.1.tar.gz -P ~/hadoop_installation
     
-   iv. Uncompress the tar file in any directory called hadoop_home
+   iv. Uncompress the tar file in any directory called hadoop_home:
         tar zxvf ~/hadoop_installation/hadoop-* -C ~/hadoop_home
  
-   v. set up the env variables in the .profile and .bashrc of all the servers
+   v. set up the env variables in the .profile and .bashrc of all the servers:
  
         export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
         export PATH=$PATH:$JAVA_HOME/bin
@@ -48,10 +48,10 @@ namenode                                    datanode1
         export PATH=$PATH:$HADOOP_HOME/bin
         export HADOOP_CONF_DIR=/home/ubuntu/hadoop_home/hadoop-2.9.1/etc/hadoop
    
-   vi. Load profile in all the servers
+   vi. Load profile in all the :
         ~/.profile
      
-   vii. Change the hadoop-env.sh in $HADOOP_HOME/etc/hadoop in all the instances to add the below line for JAVA_HOME.
+   vii. Change the hadoop-env.sh in $HADOOP_HOME/etc/hadoop in all the instances to add the below line for JAVA_HOME:
           export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
           
    ## Hadoop configurations in $HADOOP_CONF_DIR:(for a cluster where nodes have only 4GB of memory)
