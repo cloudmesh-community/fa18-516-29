@@ -91,12 +91,12 @@ slaves file       datanode1 datanode2 datanode3
            yarn.scheduler.minimum-allocation-mb 1536
            yarn.nodemanager.local-dirs ${hadoop.tmp.dir}/nm-local-dir
            
-     ##  Hadoop Namenode Format
+   ##  Hadoop Namenode Format
           After configuring the config files,format the namenode:
           
           hdfs namenode -format  (Format resets the namenode and should only be done once in the lifetime of a cluster)
       
-     ## Hadoop deamons:
+   ## Hadoop deamons:
       
         Start the following deamons:
         
@@ -114,11 +114,11 @@ slaves file       datanode1 datanode2 datanode3
          The nodemanager process needs to be started in all the slave machines.
          $HADOOP_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start nodemanager
          
-    ## Creating directories in file system:
+   ## Creating directories in file system:
         
          hadoop fs -mkdir /user/externaltables/testdata
          hadoop fs -copyFromLocal /home/ubuntu/datafiles/testfile /user/externaltables/testdata/testfile
          
-    ## Run the map reduce job to test that the containers are getting launched properly in all the nodes:
+   ## Run the map reduce job to test that the containers are getting launched properly in all the nodes:
          
          yarn jar hadoop-mapreduce-examples-2.9.1.jar wordcount /user/externaltables/testdata/testfile /user/logs
