@@ -3,3 +3,20 @@ owner:
   lastname: "Singh"
   hid: "fa18-516-29"
   community: "e516"
+  semester: "fa18"
+project:
+    - title: Installation and Configuration of multi node Hadoop cluster with Spark and Hive on AWS EC2
+      keyword: Hadoop, Hive,Spark,AWS EC2
+      url: https://github.com/cloudmesh-community/fa18-516-29/blob/master/project-paper/report.md 
+      code: https://github.com/cloudmesh-community/fa18-516-29/blob/master/project-code/report.md 
+paper:
+    - title: Setting up of a Multi Node Hadoop Cluster 
+      url: https://github.com/cloudmesh-community/book/blob/master/chapters/mapreduce/HadoopMultiNodeclustersetup.md
+    - title: Setting up of Hive in a Hadoop cluster
+      url: https://github.com/cloudmesh-community/book/blob/master/chapters/mapreduce/HiveOnHadoopCluster.md
+    - title: Setting up of Spark in a Hadoop cluster
+      url: https://github.com/cloudmesh-community/book/blob/master/chapters/mapreduce/SparkOnHadoopCluster.md
+    - title: Integration of Hive with Spark on a Hadoop cluster
+      url: https://github.com/cloudmesh-community/book/blob/master/chapters/mapreduce/HiveIntegrationwithSpark.md
+    - title: Comparison between Map Reduce and In Memory Spark Computation
+      url: https://github.com/cloudmesh-community/book/blob/master/chapters/mapreduce/MapReduceversusSpark.md
