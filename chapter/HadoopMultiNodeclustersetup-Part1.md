@@ -5,7 +5,7 @@
 
 ## Motivation
 Before setting up a Hadoop cluster,it is important to set up connection between our client machine and the EC2 instances as 
-well as passwordless ssh communication between the EC2 instances.Also,the IP of EC2 instances changes whenever we restart the servers.Since,we will need to stop and restart the machines only when we are using them,it is important to set up Elastic ips for these instances,which do not change on restart else our passwordless ssh connection set up will not work.
+well as passwordless ssh communication between the EC2 instances.Also,the IP of EC2 instances changes whenever we restart the servers.Since,we will need to stop and restart the machines only when we are using them,it is important to set up Elastic IPs for these instances,which do not change on restart else our passwordless ssh connection set up will not work.
 
 ## Keywords
 
