@@ -13,18 +13,17 @@ Amazon EC2,Hadoop,Spark,Hive
 
 ### 1. INTRODUCTION
 
-The following section describes what are the minimum configurations required for a multi node Hadoop cluster set-up with Spark and Hive in AWS EC2 instances and how to establish a passwordless ssh connection between the instances.This is applicable for any unix/linux instances which can have a static IP and the same steps need to be followed for establishing a passwordless ssh connection.The recommended amount of memory for an instance is 8GB and atleast 20GB of physical disk space.
+The project describes what are the minimum configurations required for a multi node Hadoop cluster set-up with Spark and Hive in AWS EC2 instances and how to establish a passwordless ssh connection between the instances.This is applicable for any unix/linux instances which can have a static IP and the same steps need to be followed for establishing a passwordless ssh connection.The recommended amount of memory for an instance is 8GB and atleast 20GB of physical disk space.
 
-### 2. IMPLEMENTATION DETAILS
+### 2. SOFTWARE VERSIONS
 
-OpenAPI specification for copy function
-	Boolean isFileCopied = copyFile({name of the file}, {source cloud provider}, {destination cloud provider}) 
+Hadoop 2.9.1
+Hive 2.3.3
+Spark 2.3.2
 	
-Similarly we can have API for other functionalities as well. We can also split verification into a separate API because this might be commonly used across all functionalities.
-
-
 ### 3. ARTIFACTS
 
 * Project Proposal
+  Project Code
 
 ### 4. REFERENCES
