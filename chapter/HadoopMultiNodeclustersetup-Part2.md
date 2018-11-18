@@ -92,3 +92,35 @@ namenode                                    datanode1
            yarn.scheduler.maximum-allocation-mb 3072
            yarn.scheduler.minimum-allocation-mb 1536
            yarn.nodemanager.local-dirs ${hadoop.tmp.dir}/nm-local-dir
+           
+     ##  Hadoop Namenode Format
+          After configuring the config files,format the namenode:
+          
+          hdfs namenode -format  (Format resets the namenode and should only be done once in the lifetime of a cluster)
+      
+     ## Hadoop deamons:
+      
+        Start the following deamons:
+        
+        On Namenode:
+         $HADOOP_HOME/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs start namenode
+         $HADOOP_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start resourcemanager
+         $HADOOP_HOME/sbin/mr-jobhistory-daemon.sh --config $HADOOP_CONF_DIR start historyserver
+         
+        On DataNode1:
+         $HADOOP_HOME/sbin/hadoop-daemons.sh --config $HADOOP_CONF_DIR --script hdfs start datanode
+         The datanode process just needs to be started in 1 node.This will start the process in another nodes on its own through
+         ssh connection.
+         
+        On DataNode1,DataNode2,DataNode3:
+         The nodemanager process needs to be started in all the slave machines.
+         $HADOOP_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start nodemanager
+         
+    ## Creating directories in file system:
+        
+         hadoop fs -mkdir /user/externaltables/testdata
+         hadoop fs -copyFromLocal /home/ubuntu/datafiles/testfile /user/externaltables/testdata/testfile
+         
+    ## Run the map reduce job to test that the containers are getting launched properly in all the nodes:
+         
+         yarn jar hadoop-mapreduce-examples-2.9.1.jar wordcount /user/externaltables/testdata/testfile /user/logs
