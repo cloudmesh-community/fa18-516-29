@@ -104,15 +104,15 @@ slaves file       datanode1 datanode2 datanode3
          $HADOOP_HOME/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs start namenode
          $HADOOP_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start resourcemanager
          $HADOOP_HOME/sbin/mr-jobhistory-daemon.sh --config $HADOOP_CONF_DIR start historyserver
+         The above 3 deamons will run on the Master node.
          
         On DataNode1:
          $HADOOP_HOME/sbin/hadoop-daemons.sh --config $HADOOP_CONF_DIR --script hdfs start datanode
-         The datanode process just needs to be started in 1 node.This will start the process in another nodes on its own through
-         ssh connection.
+         The datanode process just needs to be started in 1 slave machine DataNode1.This will start the process in another nodes on its           own through ssh connection.
          
         On DataNode1,DataNode2,DataNode3:
-         The nodemanager process needs to be started in all the slave machines.
          $HADOOP_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start nodemanager
+         The nodemanager process needs to be started in all the slave machines.
          
    ## Creating directories in file system:
         
