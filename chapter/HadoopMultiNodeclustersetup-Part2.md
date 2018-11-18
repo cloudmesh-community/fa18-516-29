@@ -14,10 +14,8 @@ substantial amount of data transfer,one should go for T2.Xlarge instances which 
 There will be 1 Master instance.This will have the Namemode,Resourcemanager and Jobhistoryserver deamons running.Ideally,the Resource manager and Job history server runs on different machines in actual production environment,but here we will set up only 1 Master node
 for HDFS as well as Yarn.There is no Secondary NameNode in our set up.There will be 3 Slave nodes where Datanode and Nodemanager deamons will run.To configure Masters and Slaves create 2 files with names masters and slaves inside $HADOOP_CONF_DIR in each instance.Add the following to them.
 
-masters file                               slaves file
-namenode                                    datanode1
-                                            datanode2
-                                            datanode3
+masters file      namenode                          
+slaves file       datanode1 datanode2 datanode3
                                             
 ## Software
  Java 8,Hadoop 2.9
