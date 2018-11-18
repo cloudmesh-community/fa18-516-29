@@ -28,7 +28,7 @@ namenode                                    datanode1
  ## Installation steps:
    (Everything is done when logged in as user ubuntu)
    
-   i. Before starting the installation,update all the servers as a good practice by the below command.
+   i. Before starting the installation,update all the servers as a good practice by the below command:
         sudo apt-get update
    
    ii. Install java version8 in all the servers:
