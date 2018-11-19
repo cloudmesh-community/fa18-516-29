@@ -1,26 +1,65 @@
-# Hadoop,Hive and Spark multi node Cluster set up on Amazon EC2 instances
+# Installation and Configuration of Spark in a Multi node Hadoop Cluster
 
 
-| github: [:cloud:](https://github.com/cloudmesh-community/fa18-516-29/blob/master/project-paper/report.md)
+## Introduction:
+ The following section describes the installation and configuration of Spark on Hadoop cluster.
+ | github: [:cloud:](https://github.com/cloudmesh-community/fa18-516-29/blob/master/project-paper/report.md)
 
-## ABSTRACT
+## Motivation
 
-The goal of this project is to demonstrate the steps needed to set up a 4 node Hadoop Cluster with Spark and Hive on Amazon EC2 instances from the scratch and do comparison between the traditional mapreduce and Distributed Computing through Spark.It details the Hadoop and Spark configurations required for a 4GB and 8GB(memory) node Hadoop cluster for developmental and testing purpose.The objective is to do all the installations and configurations from the scratch.This process will be the same as doing the installation and set up on any 4 unix machines which have a static IP.
+Spark by design is a Distributed Computing Engine and creates an immutable resilient dataset RDD in memory on top of the data in 
+the underlying file system.These RDDs are partitioned and loaded into the memory of all the nodes in the cluster.The computation
+from one stage to another happens in memory itself by streaming data to subsequent RDDs without the need of writing the intermediate data to the file system as in the case of traditional map reduce where the output of each map phase is written to HDFS resulting in a
+lot of Physical I/O.Spark minimizes this Physical I/O and does the entire computation in memory making the processing much faster.
+Almost all the contemporary Big Data platforms today are using Hadoop as a storage and Spark as a Compute Engine.Spark integrates very well with Hive through HiveContext and Spark SQL is used to write Procedural SQL code on data described in relational format in Hive by importing them in Spark Dataframes which is an abstraction over RDD.
 
+## Software
+ Spark-2.3.2
+ 
 ## Keywords
+ Amazon EC2,Hadoop,Spark,Hive
+ 
+## Installation
 
-Amazon EC2,Hadoop,Spark,Hive
+i. Download and install spark 2.3.2.
+    wget https://www-eu.apache.org/dist/spark/spark-2.3.2/spark-2.3.2-bin-hadoop2.7.tgz -P ~/spark_installation
+    
+ ii. Untar the zip file in SPARK_HOME
+     tar zxvf spark-2.3.2-bin-hadoop2.7.tgz -C ~/spark_home
+     
+ iii. set the env variables in .profile and .bashrc
+ 
+      export SPARK_HOME=/home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7
+      export PATH=$PATH:$SPARK_HOME/bin
+      export SPARK_CONF_DIR=/home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7/conf
 
-### 1. INTRODUCTION
-
-The project describes what are the minimum configurations required for a multi node Hadoop cluster set-up with Spark and Hive in AWS EC2 instances and how to establish a passwordless ssh connection between the instances.This is applicable for any unix/linux instances which can have a static IP and the same steps need to be followed for establishing a passwordless ssh connection and configuring the hadoop and Spark config files.The recommended amount of memory for an instance is 8GB and atleast 20GB of physical disk space.
-
-### 2. SOFTWARE VERSIONS
-
-Hadoop 2.9.1,Hive 2.3.3,Spark 2.3.2
-	
-### 3. ARTIFACTS
-
-* Project Proposal,Project Code
-
-### 4. REFERENCES
+## Spark configuration in spark-defaults.conf for a 4GB node:
+   
+        spark.master                     yarn
+        spark.executor.memory            2g
+        spark.eventLog.enabled           false
+        spark.serializer                 org.apache.spark.serializer.KryoSerializer
+        spark.yarn.executor.memoryOverhead 384m
+        spark.yarn.submit.file.replication 1
+        spark.yarn.stagingDir  /home/ubuntu/yarnstage
+        spark.yarn.historyServer.address ${hadoopconf-yarn.resourcemanager.hostname}:18080
+        spark.dynamicAllocation.enabled false
+        
+        
+ ## Running Spark
+    Test that spark is getting launched through yarn by running the spark wordcount job in client mode.
+   
+   spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCount $SPARK_HOME/examples/jars/spark-examples_2.11-  2.3.2.jar /user/externaltables/testdata/testfile
+   
+   ## Spark configuration in spark-defaults.conf for a 8GB(memory) node:
+   
+   For a T2.large instance which is 8GB memory node and the yarn.scheduler.maximum-allocation-mb is configured as 6GB,we can do 
+   the following configuration for spark.
+    
+       spark.executor.memory            4g
+       spark.yarn.executor.memoryOverhead 384m
+       
+    We have to keep the executor memory + overhead less than the one allocated to the yarn.scheduler.maximum-allocation-mb
+   
+   
+   
