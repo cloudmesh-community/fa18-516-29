@@ -1,7 +1,7 @@
 # Integration of Hive with Spark
 
 ## Introduction:
- The following section describes how to integrate Hive with Spark
+ The following section describes how to integrate Hive with Spark.
  
  | github: [:cloud:](https://github.com/cloudmesh-community/fa18-516-29/blob/master/project-paper/report.md)
 
