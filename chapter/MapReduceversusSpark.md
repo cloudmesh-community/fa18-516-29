@@ -37,6 +37,9 @@ testfile2         1.58 GB                                          18 seconds   
 testfile3         6.48 GB                                          20 seconds                                               4 seconds
 
 
-## Spark architecture 
+## Spark architecture :
 
+![ Spark Architecture](images/spark_architecture.png){#fig:spark-Architecture}
+
+Spark has a distributed computing model with one driver and multiple executors running on different nodes.
 
