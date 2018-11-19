@@ -29,7 +29,8 @@
 	ln -s /home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7/jars/scala-library-2.11.8.jar /home/ubuntu/hive_home/apache-hive-2.3.3-bin/lib/scala-library-2.11.8.jar
   
   
-   2. Do the following configurations in hive-site.xml(For a 8GB memory node)
+   2. Do the following configurations in hive-site.xml(For a 8GB memory node):
+       
        hive.execution.engine=spark
        spark.master=yarn-cluster
        spark.eventLog.enabled=TRUE
