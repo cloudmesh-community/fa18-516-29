@@ -33,7 +33,7 @@ i. Download and install spark 2.3.2.
       export PATH=$PATH:$SPARK_HOME/bin
       export SPARK_CONF_DIR=/home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7/conf
 
-## Spark configuration in spark-defaults.conf for a 4GB node:
+## Spark configuration in spark-defaults.conf for a 4GB(memory) node:
    
         spark.master                     yarn
         spark.executor.memory            2g
