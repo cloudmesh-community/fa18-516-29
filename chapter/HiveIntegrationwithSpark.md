@@ -10,7 +10,7 @@
  a great use case in industries where most of the data are in relational format in legacy systems and are archived in disks.
  When there is a business use case to bring such data on a Big Data Platform and do some analytics on the history data inorder to 
  do predictions about future,then Hive comes as the first choice.
- Hive can run on multiple exceution engines and can be integrated with Spark so that the underlying computation engine is Spark and not
+ Hive can run on multiple execution engines and can be integrated with Spark so that the underlying computation engine is Spark and not
  Mapreduce.This increases the performance of hive queries by a large percentage.Tez is another execution engine of choice with Hive.Both have
  an advantage over map reduce that they do the computation of data in memory by creating immutable datasets and do not write
  the intermediate query outputs to the hdfs like Mapreduce.This saves lot of Physical I/O and makes the processing much faster.
