@@ -1,4 +1,4 @@
-# Installation and Configuration of Hive in a multi node Hadoop Cluster
+# Installation and Configuration of Hive in a Multi node Hadoop Cluster
 
 ## Introduction:
  The following section describes the installation and configuration of Hive on Hadoop cluster.
