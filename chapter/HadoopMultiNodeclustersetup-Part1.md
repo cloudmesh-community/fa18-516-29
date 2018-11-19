@@ -2,7 +2,7 @@
 
 ## Introduction
 The following section describes what are the minimum configurations required for a multi node Hadoop cluster set-up on AWS EC2 instances and how to establish a passwordless ssh connection between the instances.This is applicable for any unix/linux instances which can 
-have a static IP and the same below steps need to be followed for establishing a passwordlessh ssh connection.The recommended minimum
+have a static IP and the same below steps need to be followed for establishing a passwordless ssh connection.The recommended minimum
 memory for an instance is 8GB and atleast 20GB of physical disk space.
 
 | github: [:cloud:](https://github.com/cloudmesh-community/fa18-516-29/blob/master/project-paper/report.md)
