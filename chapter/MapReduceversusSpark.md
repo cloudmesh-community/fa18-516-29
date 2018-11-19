@@ -1,26 +1,37 @@
-# Hadoop,Hive and Spark multi node Cluster set up on Amazon EC2 instances
-
+# Comparison of Data processing between traditional Mapreduce and Spark
 
 | github: [:cloud:](https://github.com/cloudmesh-community/fa18-516-29/blob/master/project-paper/report.md)
 
-## ABSTRACT
+## Introduction
+The following section describes the performance comparison of a wordcount program between the Mapreduce and Spark engine on 
+the 4 node cluster which we have installed:
 
-The goal of this project is to demonstrate the steps needed to set up a 4 node Hadoop Cluster with Spark and Hive on Amazon EC2 instances from the scratch and do comparison between the traditional mapreduce and Distributed Computing through Spark.It details the Hadoop and Spark configurations required for a 4GB and 8GB(memory) node Hadoop cluster for developmental and testing purpose.The objective is to do all the installations and configurations from the scratch.This process will be the same as doing the installation and set up on any 4 unix machines which have a static IP.
+## Motivation
 
-## Keywords
+We have completed the process of building up a 4 node cluster in Hadoop,Hive and Spark.Now,we can run wordcount mapreduce program
+on files of different sizes and can check the completion time of the job when submitted in spark and mapreduce seperately.
 
-Amazon EC2,Hadoop,Spark,Hive
+## Running the jobs and comparing the output:
 
-### 1. INTRODUCTION
+i. Run the below mapreduce jobs
 
-The project describes what are the minimum configurations required for a multi node Hadoop cluster set-up with Spark and Hive in AWS EC2 instances and how to establish a passwordless ssh connection between the instances.This is applicable for any unix/linux instances which can have a static IP and the same steps need to be followed for establishing a passwordless ssh connection and configuring the hadoop and Spark config files.The recommended amount of memory for an instance is 8GB and atleast 20GB of physical disk space.
+yarn jar hadoop-mapreduce-examples-2.9.1.jar wordcount /user/externaltables/testdata1/testfile1 /user/logs1
+yarn jar hadoop-mapreduce-examples-2.9.1.jar wordcount /user/externaltables/testdata2/testfile2 /user/logs2
+yarn jar hadoop-mapreduce-examples-2.9.1.jar wordcount /user/externaltables/testdata3/testfile3 /user/logs3
 
-### 2. SOFTWARE VERSIONS
+ii. Run the below Spark jobs
 
-Hadoop 2.9.1,Hive 2.3.3,Spark 2.3.2
-	
-### 3. ARTIFACTS
+spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCount $SPARK_HOME/examples/jars/spark-examples_2.11-2.3.2.jar /user/externaltables/testdata1/testfile1
+spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCount $SPARK_HOME/examples/jars/spark-examples_2.11-2.3.2.jar /user/externaltables/testdata2/testfile2
+spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCount $SPARK_HOME/examples/jars/spark-examples_2.11-2.3.2.jar /user/externaltables/testdata3/testfile3
 
-* Project Proposal,Project Code
+Benchmark Data:
+ 
+ Filename          FileSize                        mapreduce completion time                               spark completion time
 
-### 4. REFERENCES
+testfile1          724 MB                           20 seconds                                               3 seconds
+testfile2         1.58 GB                           18 seconds                                               4 seconds
+testfile3         6.48 GB                           20 seconds                                               4 seconds
+
+
+
