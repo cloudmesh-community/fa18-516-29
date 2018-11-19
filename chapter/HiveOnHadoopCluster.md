@@ -59,8 +59,10 @@
  ## Hive Configuration:
 
    Replace the values of ${system:java.io.tmpdir}/${system:user.name} in hive-site.xml with the actual values:
-          hive.exec.local.scratchdir /tmp/ubuntu
-          hive.querylog.location /tmp/ubuntu
+          
+	  hive.exec.local.scratchdir /tmp/ubuntu
+          
+	  hive.querylog.location /tmp/ubuntu
           
 	
 ## Running Hive
@@ -71,7 +73,8 @@
         hadoop fs -copyFromLocal insurance_datafile /user/externaltables/insurancedata/
         
      ii. Start the hive terminal by typing command hive
-         hive
+         
+	 hive
          
      iii. Create an external table in hive pointing to the file in hdfs:
          
