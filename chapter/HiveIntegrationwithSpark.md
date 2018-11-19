@@ -32,7 +32,6 @@
    2. Do the following configurations in hive-site.xml(For a 8GB memory node)
   
           key                      				value
-	  
 	  hive.execution.engine    				spark
 	  spark.master             				yarn-cluster
 	  spark.eventLog.enabled   				true
