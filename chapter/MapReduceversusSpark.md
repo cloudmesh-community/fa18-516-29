@@ -50,6 +50,10 @@ Spark has a Distributed computing model with one driver and multiple executors r
 Spark does the in-memory processing through Dataframes which are schema defined RDDs loaded in memory of each node in the cluster
 over the file present in HDFS.The computation from one stage to another(map to map/reduce) happens by streaming data from one
 dataframe to the subsequent one.This is an in-memory operation and does not require the intermediate data to be written to the 
-local file system,hence saving in a lot of Physical I/O and making processing much faster.
+local file system,hence saving a lot of Physical I/O and making processing much faster than traditional Mapreduce where
+the output of each intermediate stage is written to HDFS and is read by the subsequent stage from HDFS.This leads to a lot 
+of disk operations thus slowing down the processing.In our benchmarking,we can easily see the large difference in time of completion
+of a Mapreduce job and a Spark job.This difference gets predominant as the file size increases, thus making mapreduce inefficient
+for processing large volumes when timing is an important factor and Spark comes as the obvious choice for Distributed Computation with Hadoop as the Distributed Storage.
 
 
