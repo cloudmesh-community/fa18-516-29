@@ -30,9 +30,7 @@
   
   
    2. Do the following configurations in hive-site.xml(For a 8GB memory node)
-  
-                            	
-       hive.execution.engine=spark
+       hive.execution.engine=spark
        spark.master=yarn-cluster
        spark.eventLog.enabled=TRUE
        spark.eventLog.dir=file:///home/ubuntu/hive_home/apache-hive-2.3.3-bin/spark_logs
