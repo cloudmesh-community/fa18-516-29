@@ -63,7 +63,7 @@ slaves file       datanode1 datanode2 datanode3
         hadoop.tmp.dir  file:///home/ubuntu/hadoop_home/hadoop-2.9.1/hadoop_tmp(The filesystem should be the one where we can add more
         volume if required)
                        
-.   ii. hdfs-site.xml
+    ii. hdfs-site.xml
 
           dfs.namenode.name.dir  file:///home/ubuntu/hadoop_home/hadoop-2.9.1/hadoop_data/hdfs/namenode
                              (This is the namenode directory in the Master instance which will have the fs image and edit logs)
