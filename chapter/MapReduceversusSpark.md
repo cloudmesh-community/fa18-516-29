@@ -29,8 +29,11 @@ Benchmark Data:
  
  Filename          FileSize                        mapreduce completion time                               spark completion time
 
+
 testfile1          724 MB                           20 seconds                                               3 seconds
+
 testfile2         1.58 GB                           18 seconds                                               4 seconds
+
 testfile3         6.48 GB                           20 seconds                                               4 seconds
 
 
