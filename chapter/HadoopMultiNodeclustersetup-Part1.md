@@ -21,7 +21,6 @@ In AWS,create an EC2 instance of type T2.Medium by following the guidelines give
 ### 2. Configuring Elastic Ips for the instances:
 After allocating 4 instances,1 Namenode and 3 DataNodes of type T2.medium,go to the Network and Security section of the EC2 Mangaement console and allocate 4 new Elastic IPs from the IPv4 address pool.After this IP is allocated,map this IP to any instance.Repeat this step for the remaining 3 instances.
 
-
 ![4 node cluster on AWS EC2](images/EC2_instances.png){#fig:1 Namenode and 3 Datanodes in AWS EC2}
 
 
