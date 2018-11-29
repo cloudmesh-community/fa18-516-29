@@ -20,7 +20,13 @@ In AWS,create an EC2 instance of type T2.Medium by following the guidelines give
 
 ### 2. Configuring Elastic Ips for the instances:
 After allocating 4 instances,1 Namenode and 3 DataNodes of type T2.medium,go to the Network and Security section of the EC2 Mangaement console and allocate 4 new Elastic IPs from the IPv4 address pool.After this IP is allocated,map this IP to any instance.Repeat this step for the remaining 3 instances.
+
+
+![4 node cluster on AWS EC2](images/EC2_instances.png){#fig:1 Namenode and 3 Datanodes in AWS EC2}
+
+
 ![AWS EC2 Elastic IP](images/Elastic_IPs.png){#fig:Elastic Ip allocation for AWS EC2 instances}
+
 
 ### 3. Configuring ssh connection between the client machine and EC2 instances:
 Get the client-keypair.pem file from AWS while creating instances.Use Putty keygen feature to generate .ppk file from the .pem file for an SSH connection.Add .ppk file in SSH Auth session of the all the nodes and save the session information in putty.Now,we can login in the instances with username ubuntu.
