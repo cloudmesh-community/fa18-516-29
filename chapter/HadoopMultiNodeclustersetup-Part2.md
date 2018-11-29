@@ -16,6 +16,8 @@ for HDFS as well as Yarn.There is no Secondary NameNode in our set up.There will
 
 masters file      namenode                          
 slaves file       datanode1 datanode2 datanode3
+
+![4 node cluster on AWS EC2](images/EC2_instances.png){#fig:1 Namenode and 3 Datanodes in AWS EC2}
                                             
 ## Software
  Java 8,Hadoop 2.9
