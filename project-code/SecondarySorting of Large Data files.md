@@ -61,8 +61,6 @@ to only include natural key while partitioning the data.
   
   The above steps will ensure that the data is sorted by the natural key and then by the desired value column for sorting.
   
-   ![ Secondary Sort Logical key-value pair](chapter/images/secondarysort.png){#fig:Composite Key}
-  
  
   
   
