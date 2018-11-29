@@ -88,3 +88,7 @@
 	5. We can see the spark jobs being launched on the web ui:
 	   
 	   http://ec2-52-24-204-101.us-west-2.compute.amazonaws.com:4040
+	   
+## Reference:	   
+	   
+	   https://cwiki.apache.org/confluence/display/Hive/Hive+on+Spark%3A+Getting+Started
