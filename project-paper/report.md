@@ -10,7 +10,7 @@ The goal of this project is to demonstrate the steps needed to set up a 4 node H
 Also,we will aim to compare the processing times bewteen mapreduce computation and spark computation and prove how spark is much
 faster than mapreduce.The project also aims to show how to integrate spark as a compute engine in hive and bypass mapreduce in hive.
 
-Lastly,the project explores a sorting technique called secondary sort where we sort values in large data files by making use of map reduce framework and spark in memory computation without bringing all the data in memory of one node in a distributed environment.
+Lastly,the project explores a sorting technique called secondary sort where we sort values in large data files by making use of map reduce framework without bringing all the data in memory of one node in a distributed environment.
 
 
 ## Keywords
