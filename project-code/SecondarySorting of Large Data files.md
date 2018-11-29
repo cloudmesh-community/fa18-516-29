@@ -63,6 +63,8 @@ to only include natural key while partitioning the data.
   
   Logical key-value pair:
   
+  ![ Secondary Sort Logical key-value pair](images/secondarysort.png){#fig:Composite Key}
+  
   
   
 
