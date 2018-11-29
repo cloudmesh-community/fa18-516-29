@@ -7,6 +7,12 @@
 
 The goal of this project is to demonstrate the steps needed to set up a 4 node Hadoop Cluster with Spark and Hive on Amazon EC2 instances from the scratch and do comparison between the traditional mapreduce and Distributed Computing through Spark.It details the Hadoop and Spark configurations required for a 4GB and 8GB(memory) node Hadoop cluster for developmental and testing purpose.The objective is to do all the installations and configurations from the scratch.This process will be the same as doing the installation and set up on any 4 unix machines which have a static IP.
 
+Also,we will aim to compare the processing times bewteen mapreduce computation and spark computation and prove how spark is much
+faster than mapreduce.The project also aims to show how to integrate spark as a compute engine in hive and bypass mapreduce in hive.
+
+Lastly,the project explores a sorting technique called secondary sort where we sort values in large data files by making use of map reduce framework and spark in memory computation without bringing all the data in memory of one node in a distributed environment.
+
+
 ## Keywords
 
 Amazon EC2,Hadoop,Spark,Hive
