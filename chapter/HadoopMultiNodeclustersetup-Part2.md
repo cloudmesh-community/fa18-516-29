@@ -161,6 +161,9 @@ slaves file       datanode1 datanode2 datanode3
            
        vi. Do df -h and confirm that the space allocated to the filesystem /dev/xvda1 is increased by 8GB.
        
+   ![Adding Volume to AWS EC2 instances](images/Adding_volumes.png){#fig:Adding volume in AWS EC2}
+       
+   
    ## Hadoop configuration for a 8GB(Memory) node cluster:
       This is feasible if we are taking T2.large instances.
         
