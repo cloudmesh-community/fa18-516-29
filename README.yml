@@ -8,7 +8,7 @@ project:
     - title: Installation and Configuration of multi node Hadoop cluster with Spark and Hive on AWS EC2
       keyword: Hadoop, Hive,Spark,AWS EC2
       url: https://github.com/cloudmesh-community/fa18-516-29/blob/master/project-paper/report.md 
-      code: https://github.com/cloudmesh-community/fa18-516-29/blob/master/project-code/report.md 
+      code: https://github.com/cloudmesh-community/fa18-516-29/blob/master/project-code
 section:
     - title: Setting up of a Multi Node Hadoop Cluster 
       url: https://github.com/cloudmesh-community/book/blob/master/chapters/mapreduce/HadoopMultiNodeclustersetup.md
@@ -20,3 +20,4 @@ section:
       url: https://github.com/cloudmesh-community/book/blob/master/chapters/mapreduce/HiveIntegrationwithSpark.md
     - title: Comparison between Map Reduce and In Memory Spark Computation
       url: https://github.com/cloudmesh-community/book/blob/master/chapters/mapreduce/MapReduceversusSpark.md
+   
