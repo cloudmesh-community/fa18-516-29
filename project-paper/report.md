@@ -28,23 +28,23 @@ Lastly, we explores a sorting technique called secondary sort where we sort valu
 
 ## Keywords
 
-Amazon EC2,Hadoop,Spark,Hive
+Amazon EC2, Hadoop, Spark, Hive
 
-### INTRODUCTION
+## INTRODUCTION
 
 The project describes what are the minimum configurations required for a multi node Hadoop cluster set-up with Spark and Hive in AWS EC2 instances and how to establish a passwordless ssh connection between the instances.This is applicable for any unix/linux instances which can have a static IP and the same steps need to be followed for establishing a passwordless ssh connection and configuring the hadoop and Spark config files.The recommended amount of memory for an instance is 8GB and atleast 20GB of physical disk space.
 
-### SOFTWARE VERSIONS
+## SOFTWARE VERSIONS
 
 * Hadoop 2.9.1
 * Hive 2.3.3
 * Spark 2.3.2
 	
-### 3. ARTIFACTS
+## ARTIFACTS
 
 :o: links missing
 
 * Project Proposal
 * Project Code
 
-### 4. REFERENCES
+## REFERENCES
