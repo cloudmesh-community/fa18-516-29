@@ -4,6 +4,15 @@
 
 :o: references missing
 
+:o: obviously your report is an early draft. You need to expalin what you do not in person to me, but in written form in this document
+
+:o: you need to have shell scripts that strat the vms, you can leverage cm4 if you like or design your own shell script while for example using the AWS CLI
+
+:o: you need to have a mechnism on telling us how you set up the clould. Science is about reproducability, If your hadoop and spark implementation can not be deployed by others, they can not be reproduced. Thus we can not replicate your benchmark. This is simple, just write a shell script on how to set up hadoop on your 4 machines.
+
+If this can not be done. Write a manaul on how to do this including screenshots where needed.
+
+
 | github: [:cloud:](https://github.com/cloudmesh-community/fa18-516-29/blob/master/project-paper/report.md)
 
 ## ABSTRACT
