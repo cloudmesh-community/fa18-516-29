@@ -1,5 +1,6 @@
---
-# Secondary Sort Design Pattern in Spark and Mapreduce:
+# Secondary Sort Design Pattern in Spark and Mapreduce
+
+:o: why is this not in your report?
 
 ## Introduction
 
