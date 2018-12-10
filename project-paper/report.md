@@ -1,4 +1,4 @@
-# Hadoop, Hive and Spark multi node Cluster set up on Amazon EC2 instances
+# Hadoop, Hive and Spark multi node Cluster set up on Amazon EC2 instances, :hand: fa18-516-29
 
 :o: plese see format from our example
 
