@@ -53,14 +53,21 @@ Get the client-keypair.pem file from AWS while creating instances.Use Putty keyg
          IdentityFile ~/.ssh/client-keypair.pem
 	 
    ii. Copy the keyfile received from aws in the ~/.ssh folder of all the instances.
-           local machine to  ~/.ssh/client-keypair.pem
-            
-   iii.Change the permissions of all the file in ~/.ssh folder to 600 of all the servers.This is a requirement for 
+           local machine to  
+	   
+	   ```bash
+	   ~/.ssh/client-keypair.pem
+           ```
+	   
+   iii.Change the permissions of all the file in `~/.ssh` folder to 600 of all the servers. This is a requirement for 
            ssh to work correctly.
        
-   iv.Go to the ~/.ssh folder of namenode and run the following command.
-          sh-keygen -f ~/.ssh/id_rsa -t rsa -P ""
-        
+   iv.Go to the `~/.ssh` folder of namenode and run the following command.
+          
+	  ```bash
+	  ssh-keygen -f ~/.ssh/id_rsa -t rsa -P ""
+          ```
+	  
 	This will create 2 files sshkey_rsa.pub and sshkey_rsa in ~/.ssh folder. 
         
    v. Copy the contents of sshkey_rsa.pub to authorized_keys file in ~/.ssh folder of namenode by the below command.
