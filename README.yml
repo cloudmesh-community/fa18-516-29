@@ -20,4 +20,6 @@ section:
       url: https://github.com/cloudmesh-community/book/blob/master/chapters/mapreduce/HiveIntegrationwithSpark.md
     - title: Comparison between Map Reduce and In Memory Spark Computation
       url: https://github.com/cloudmesh-community/book/blob/master/chapters/mapreduce/MapReduceversusSpark.md
-   
+other:
+     -title: Hadoop 4-node cluster set up on AWS EC2 instances-Part 1 (Instance configuration and passwordless ssh set up)
+      url: https://github.com/cloudmesh-community/fa18-516-29/blob/master/chapter/HadoopMultiNodeclustersetup-Part1.md
