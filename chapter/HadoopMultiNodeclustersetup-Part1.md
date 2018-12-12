@@ -16,9 +16,11 @@ well as passwordless ssh communication between the EC2 instances.Also,the IP of 
 Amazon EC2,Hadoop,Elastic IP configuartion
 
 ### 1. Memory and Disk Requirements:
+
 In AWS,create an EC2 instance of type T2.Medium by following the guidelines given in EC2 manual of how to create an instance.The T2 Medium instance has 4GB of memory and initially 8GB of physical storage.In order to launch containers in Hadoop and Spark on a yarn cluster,we found that 4GB of memory in the nodes is the mimimum required.If the memory is below this limit,the Application Master on the slave nodes will not start and the jobs will always be in ACCEPTED state.They will never get allocated to the Application master in slave nodes by the Resource Manager running in master node due to lack of resources.In this scenario also we have to specify the memory configurations in yarn-site.xml and mapreduce-site.xml for each process as Hadoop defaults do not work properly if the memory is less than 8GB.The physical storage of EC2 instance is 8GB and everything is mapped to the drive /dev/xvda.There are few challenges here as there are a lot of log files and local intermediate data which gets written in the datanodes when a mapreduce or spark job runs and this space also gets used up quickly.In our experiment,we found that atleast 11GB of physical storage was needed to start the containers but if we switch to T2.large instances then it would be more expensive.So,we chose to add more volume to T2.medium instance in the physical storage.This is feasible as EC2 instances have EBS storage and volume can be added on the fly.
 
 ### 2. Configuring Elastic Ips for the instances:
+
 After allocating 4 instances,1 Namenode and 3 DataNodes of type T2.medium,go to the Network and Security section of the EC2 Mangaement console and allocate 4 new Elastic IPs from the IPv4 address pool.After this IP is allocated,map this IP to any instance.Repeat this step for the remaining 3 instances.
 
 ![4 node cluster on AWS EC2](images/EC2_instances.png){#fig:1 Namenode and 3 Datanodes in AWS EC2}
@@ -28,6 +30,7 @@ After allocating 4 instances,1 Namenode and 3 DataNodes of type T2.medium,go to 
 
 
 ### 3. Configuring ssh connection between the client machine and EC2 instances:
+
 Get the client-keypair.pem file from AWS while creating instances.Use Putty keygen feature to generate .ppk file from the .pem file for an SSH connection.Add .ppk file in SSH Auth session of the all the nodes and save the session information in putty.Now,we can login in the instances with username ubuntu.
 
 ### 3. Configuring passwordless ssh communication between the instances:
@@ -53,20 +56,20 @@ Get the client-keypair.pem file from AWS while creating instances.Use Putty keyg
          IdentityFile ~/.ssh/client-keypair.pem
 	 
    ii. Copy the keyfile received from aws in the ~/.ssh folder of all the instances.
-           local machine to  
+       local machine to  
 	   
-	   ```bash
-	   ~/.ssh/client-keypair.pem
-           ```
+        ```bash
+	~/.ssh/client-keypair.pem
+        ```
 	   
-   iii.Change the permissions of all the file in `~/.ssh` folder to 600 of all the servers. This is a requirement for 
-           ssh to work correctly.
+   iii. Change the permissions of all the file in `~/.ssh` folder to 600 of all the servers. This is a requirement for 
+        ssh to work correctly.
        
-   iv.Go to the `~/.ssh` folder of namenode and run the following command.
+   iv. Go to the `~/.ssh` folder of namenode and run the following command.
           
-	  ```bash
-	  ssh-keygen -f ~/.ssh/id_rsa -t rsa -P ""
-          ```
+       ```bash
+       ssh-keygen -f ~/.ssh/id_rsa -t rsa -P ""
+       ```
 	  
 	This will create 2 files sshkey_rsa.pub and sshkey_rsa in ~/.ssh folder. 
         
