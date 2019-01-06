@@ -62,11 +62,11 @@ After allocating 4 instances,1 Namenode and 3 DataNodes of type T2.large,go to t
 ![AWS EC2 Elastic IP](images/Elastic_IPs.png){#fig:Elastic Ip allocation for AWS EC2 instances}
 
 
-### 3. Configuring ssh connection between the client machine and EC2 instances
+### Configuring ssh connection between the client machine and EC2 instances
 
 The first step after creating EC2 ubuntu instances is to arrange for login through putty.For this,get the client-keypair.pem file from AWS while creating instances.Use Putty keygen feature to generate .ppk file from the .pem file for an SSH connection.Add .ppk file in SSH Auth session of the all the nodes and save the session information in putty.Now,we can login in the instances with username ubuntu.
 
-### 3. Configuring passwordless ssh communication between the instances
+### Configuring passwordless ssh communication between the instances
 
  i. Create a config file with name config in ~/.ssh folder with the below entries in all the instances including namenode and datanodes.
       Add the below entries in the file:
