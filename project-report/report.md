@@ -9,7 +9,7 @@
 
 ---
 
-Keywords: hadoop, hive, Spark, AWS , Java 8
+Keywords: hadoop, hive, Spark, AWS
 
 ---
 
@@ -32,6 +32,7 @@ The project describes what are the minimum configurations required for a multi n
 * Hadoop 2.9.1
 * Hive 2.3.3
 * Spark 2.3.2
+* Java 8
 	
 
 ## Instance configurations and passwordless ssh set up
@@ -49,11 +50,11 @@ and initially 16GB of physical storage.This configuration is fine for doing the 
 
 ### Memory and Disk Requirements
 
-In AWS,create an EC2 instance of type T2.Large by following the guidelines given in EC2 manual of how to create an instance.The T2 large instance has 8GB of RAM.In order to launch containers in Hadoop and Spark on a yarn cluster,we found that 4GB of memory in the nodes is the mimimum required.If the memory is below this limit,the Application Master on the slave nodes will not start and the jobs will always be in ACCEPTED state.They will never get allocated to the Application master in slave nodes by the Resource Manager running in master node due to lack of resources.In this scenario also we have to specify the memory configurations in yarn-site.xml and mapreduce-site.xml for each process as Hadoop defaults do not work properly if the memory is less than 8GB.So, we chose to start with T2.large instances where the memory is 8GB.The physical storage of EC2 instances is 16GB and everything is mapped to the drive /dev/xvda.There are few challenges here as there are a lot of log files and local intermediate data which gets written in the datanodes when a mapreduce or spark job runs and this space also gets used up quickly.In our experiment,we found that atleast 11GB of physical storage was needed to start the containers which can get used up as more and more map reduce job runs.So,we chose to add more volume to T2.large instance in the physical storage whenever the space was getting full.This is feasible as EC2 instances have EBS storage and volume can be added on the fly.
+In AWS,create 4 EC2 instances of type T2.large by following the guidelines given in EC2 manual of how to create an instance.The T2 large instance has 8GB of RAM.In order to launch containers in Hadoop and Spark on a yarn cluster,we found that 4GB of memory in the nodes is the mimimum required.If the memory is below this limit,the Application Master on the slave nodes will not start and the jobs will always be in ACCEPTED state.They will never get allocated to the Application master in slave nodes by the Resource Manager running in master node due to lack of resources.In this scenario also we have to specify the memory configurations in yarn-site.xml and mapreduce-site.xml for each process as Hadoop defaults do not work properly if the memory is less than 8GB.So, we chose to start with T2.large instances where the memory is 8GB.The physical storage of EC2 instances is 16GB and everything is mapped to the drive /dev/xvda.There are few challenges here as there are a lot of log files and local intermediate data which gets written in the datanodes when a mapreduce or spark job runs and this space also gets used up quickly.In our experiment,we found that atleast 11GB of physical storage was needed to start the containers which can get used up as more and more map reduce job runs.So,we chose to add more volume to T2.large instance in the physical storage whenever the space was getting full.This is feasible as EC2 instances have EBS storage and volume can be added on the fly.
 
 ### Configuring Elastic Ips for the instances
 
-After allocating 4 instances,1 Namenode and 3 DataNodes of type T2.medium,go to the Network and Security section of the EC2 Mangaement console and allocate 4 new Elastic IPs from the IPv4 address pool.After this IP is allocated,map this IP to any instance.Repeat this step for the remaining 3 instances.
+After allocating 4 instances,1 Namenode and 3 DataNodes of type T2.large,go to the Network and Security section of the EC2 Management console and allocate 4 new Elastic IPs from the IPv4 address pool.After this IP is allocated,map these IPs to the instances.This is important as the IPs in cloud are dynamic and change whenever we stop our machines.So,the set up will not work when we restart the instances again.Inorder to avoid this issue,we first allocate Elastic Ips to our instances.
 
 ![4 node cluster on AWS EC2](images/EC2_instances.png){#fig:1 Namenode and 3 Datanodes in AWS EC2}
 
