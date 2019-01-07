@@ -134,5 +134,49 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
 	      
        This is very important because the instances know each other by their public DNS names.Repeat this on all the instances.
         
-   ##### The above steps complete the set up of passwordless ssh connection between all the instances.
+   The above steps complete the set up of passwordless ssh connection between all the instances.
+   
+   ## Hadoop Installation and Configuration
+   
+   ### Installation steps:
+   (Everything is done when logged in as user ubuntu)
+   
+   i. Before starting the installation,update all the servers as a good practice by the command:
+        sudo apt-get update
+   
+   ii. Install Java version8 in all the servers:
+        sudo apt install openjdk-8-jdk
+    
+   iii. Download and install Hadoop 2.9 on all the servers:
+        wget http://apache.mirrors.tds.net/hadoop/common/hadoop-2.9.1/hadoop-2.9.1.tar.gz -P ~/hadoop_installation
+    
+   iv. Uncompress the tar file in any directory called hadoop_home:
+        tar zxvf ~/hadoop_installation/hadoop-* -C ~/hadoop_home
+ 
+   v. set up the env variables in the .profile and .bashrc of all the servers:
+ 
+        export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+        export PATH=$PATH:$JAVA_HOME/bin
+        export HADOOP_HOME=/home/ubuntu/hadoop_home/hadoop-2.9.1
+        export PATH=$PATH:$HADOOP_HOME/bin
+        export HADOOP_CONF_DIR=/home/ubuntu/hadoop_home/hadoop-2.9.1/etc/hadoop
+   
+   vi. Load profile in all the instances:
+        ~/.profile
+     
+   vii. Change the hadoop-env.sh in $HADOOP_HOME/etc/hadoop in all the instances to add the below line for JAVA_HOME:
+          export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+	  
+  ### Hadoop configuration for a 8GB(Memory) node cluster:
+      
+      This is the configuration for T2.large instances.
+        
+         filename          config key                          value in mb
+         
+         mapred-site.xml   yarn.app.mapreduce.am.resource.mb    2048
+         mapred-site.xml   mapreduce.map.memory.mb              1024
+         mapred-site.xml   mapreduce.reduce.memory.mb           1024
+         yarn-site.xml     yarn.nodemanager.resource.memory-mb  6144
+         yarn-site.xml     yarn.scheduler.maximum-allocation-mb 6144
+         yarn-site.xml     yarn.scheduler.minimum-allocation-mb 1024
 
