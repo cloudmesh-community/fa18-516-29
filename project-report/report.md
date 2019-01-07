@@ -142,13 +142,22 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
    (Everything is done when logged in as user ubuntu)
    
    i. Before starting the installation,update all the servers as a good practice by the command:
+   
+        ```bash
         sudo apt-get update
+	```
    
    ii. Install Java version8 in all the servers:
+        
+	```bash
         sudo apt install openjdk-8-jdk
+	```
     
    iii. Download and install Hadoop 2.9 on all the servers:
-        wget http://apache.mirrors.tds.net/hadoop/common/hadoop-2.9.1/hadoop-2.9.1.tar.gz -P ~/hadoop_installation
+   
+       ```bash
+       wget http://apache.mirrors.tds.net/hadoop/common/hadoop-2.9.1/hadoop-2.9.1.tar.gz -P ~/hadoop_installation
+       ```
     
    iv. Uncompress the tar file in any directory called hadoop_home:
         tar zxvf ~/hadoop_installation/hadoop-* -C ~/hadoop_home
