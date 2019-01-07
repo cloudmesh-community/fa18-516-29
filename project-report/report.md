@@ -278,4 +278,21 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
             └─xvda1 202:1    0   16G  0 part /
            
        vi. Do df -h and confirm that the space allocated to the filesystem /dev/xvda1 is increased by 8GB.
+       
+   ## Hive Installation and Configuration in the Hadoop Cluster
+   
+   ### Introduction:
+   
+   The following section describes the installation and configuration of Hive on Hadoop cluster.
+   
+   ### Motivation
+
+ Hive provides a datawarehousing solution on hadoop and can be used to do computation on data which is of relational format.This has
+ a great use case in industries where most of the data are in relational format in legacy systems and are archived in disks.
+ When there is a business use case to bring such data on a Big Data Platform and do some analytics on them,then Hive comes as the 
+ first choice of platform.Hive can run on multiple execution engines and can be integrated with Spark so that the underlying computation   engine is Spark and not mapreduce.This increases the performance of hive queries greatly.Tez is another execution engine of choice  with Hive.Both have an advantage over map reduce that they do the computation of data in memory by creating immutable datasets and do not write the intermediate query outputs to the hdfs like mapreduce.This saves lot of Physical I/O and makes the processing much faster.
+ 
+  ### Software
+ 
+  Hive-2.3,Derby 10.4.2
 
