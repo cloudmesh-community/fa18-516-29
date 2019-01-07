@@ -9,7 +9,7 @@
 
 ---
 
-Keywords: hadoop, hive, Spark, AWS
+Keywords: Hadoop, Hive, Spark, AWS
 
 ---
 
