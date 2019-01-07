@@ -347,4 +347,47 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
 	 cd $HIVE_HOME
 	 schematool -dbType derby -initSchema
 	 ```
+	 
+   ### Running Hive
+
+     i. Create directories in HDFS for hive tables:
+     
+        hadoop fs -mkdir /user/externaltables/insurancedata
+        hadoop fs -copyFromLocal insurance_datafile /user/externaltables/insurancedata/
+        
+     ii. Start the hive terminal by typing command hive
+         
+	 hive
+         
+     iii. Create an external table in hive pointing to the file in hdfs:
+         
+         create external table if not exists insurance_data_1(
+         policyID int,
+         statecode char(2),
+         county string,
+         eq_site_limit decimal,
+         hu_site_limit decimal,
+         fl_site_limit decimal,
+         fr_site_limit decimal,
+         tiv_2011 decimal,
+         tiv_2012 decimal,
+         eq_site_deductible decimal,
+         hu_site_deductible decimal,
+         fl_site_deductible decimal,
+         fr_site_deductible decimal,
+         point_latitude decimal,
+         point_longitude decimal,
+         line string,
+         construction string,
+         point_granularity int)
+         comment 'Test data about insurance data'
+         row format delimited
+         fields terminated by ','
+         stored as textfile
+         location '/user/externaltables/insurancedata/';
+         
+       iv. Run a query in hive to count the number of policies:
+       
+          select count(policyID) from insurance_data_1;
+
 
