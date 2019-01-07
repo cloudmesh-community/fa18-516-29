@@ -357,7 +357,7 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
         
      ii. Start the hive terminal by typing command hive
          
-	 hive
+	 	hive
          
      iii. Create an external table in hive pointing to the file in hdfs:
          
