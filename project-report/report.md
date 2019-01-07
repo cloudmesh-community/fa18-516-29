@@ -279,7 +279,7 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
            
        vi. Do df -h and confirm that the space allocated to the filesystem /dev/xvda1 is increased by 8GB.
        
-   ## Hive Installation and Configuration in the Hadoop Cluster
+   ## Hive Installation and Configuration in the multi-node Hadoop Cluster
    
    ### Introduction:
    
@@ -389,5 +389,17 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
        iv. Run a query in hive to count the number of policies:
        
           select count(policyID) from insurance_data_1;
+	  
+   ## Spark Installation and Configuration in a Multi node Hadoop Cluster
+   
+   ### Introduction:
+ 	The following section describes the installation and configuration of Spark on Hadoop cluster.
+	
+   ## Motivation:
+
+	Spark by design is a Distributed Computing Engine and creates an immutable resilient dataset RDD in memory on top of the data in 
+	the underlying file system.These RDDs are partitioned and loaded into the memory of all the nodes in the cluster.The computation
+	from one stage to another happens in memory itself by streaming data to subsequent RDDs without the need of writing the 	         intermediate data to the file system as in the case of traditional map reduce where the output of each map phase is written to           HDFS resulting in lot of Physical I/O.Spark minimizes this Physical I/O and does the entire computation in memory making the             processing much faster.Almost all the contemporary Big Data platforms today are using Hadoop as a storage and Spark as a Compute         Engine.Spark integrates very well with Hive through HiveContext and Spark SQL is used to write Procedural SQL code on data               described in relational format in Hive by importing them in Spark Dataframes which is an abstraction over RDD.
+   
 
 
