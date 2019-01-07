@@ -295,4 +295,57 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
   ### Software
  
   Hive-2.3,Derby 10.4.2
+  
+  ### Installation
+
+  i. Download and Install Hive 2.3 which is compatible with Hadoop 2.9 only in the master machine.
+      
+      ```bash
+      wget https://www-us.apache.org/dist/hive/hive-2.3.3/apache-hive-2.3.3-bin.tar.gz -P ~/hive_installation
+      ```
+   
+  ii.Uncompress the tar file in a directory $HIVE_HOME
+      
+      ```bash
+      tar zxvf ~/hive_installation/apache-hive-* -C ~/hive_home
+      ```
+      
+  iii.Set up the env variables in all the .profile and .bashrc of all the servers
+      
+      ```bash
+      export HIVE_HOME=/home/ubuntu/hive_home/apache-hive-2.3.3-bin
+      export PATH=$PATH:$HIVE_HOME/bin
+      export HIVE_CONF_DIR=/home/ubuntu/hive_home/apache-hive-2.3.3-bin/conf
+      export CLASSPATH=$CLASSPATH:/home/ubuntu/hive_home/apache-hive-2.3.3-bin/lib/*:.
+      ```
+      
+   iv.Download and Install derby database for the metadatastore of hive
+      
+      ```bash
+      wget http://archive.apache.org/dist/db/derby/db-derby-10.4.2.0/db-derby-10.4.2.0-bin.tar.gz
+      
+      tar zxvf db-derby-10.4.2.0-bin.tar.gz -C ~/derby_home
+      ```
+      
+   v. Set up the env variables for Derby in .bashrc and .profile
+      
+      ```bash
+      export DERBY_HOME=/home/ubuntu/derby_home/db-derby-10.4.2.0-bin
+      export PATH=$PATH:$DERBY_HOME/bin
+      export CLASSPATH=$CLASSPATH:$DERBY_HOME/lib/derby.jar:$DERBY_HOME/lib/derbytools.jar
+      ```
+      
+   vi. Load profile in all the servers
+       
+       ```bash
+        ~/.profile
+	```
+        
+   vii. Initialize the schema in derby in $HIVE_HOME folder.This will create a metastore_db directory which is the database
+         directory and will be loaded in memory.
+         
+         ```bash
+	 cd $HIVE_HOME
+         schematool -dbType derby -initSchema
+	 ```
 
