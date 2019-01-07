@@ -56,10 +56,10 @@ In AWS,create 4 EC2 instances of type T2.large by following the guidelines given
 
 After allocating 4 instances,1 Namenode and 3 DataNodes of type T2.large,go to the Network and Security section of the EC2 Management console and allocate 4 new Elastic IPs from the IPv4 address pool.After this IP is allocated,map these IPs to the instances.This is important as the IPs in cloud are dynamic and change whenever we stop our machines.So,the set up will not work when we restart the instances again.Inorder to avoid this issue,we first allocate Elastic Ips to our instances.
 
-![4 node cluster on AWS EC2](https://github.com/cloudmesh-community/fa18-516-29/tree/master/paper/images/EC2_instances.png){#fig:1 Namenode and 3 Datanodes in AWS EC2}
+![4 node cluster on AWS EC2](images/EC2_instances.png){#fig:1 Namenode and 3 Datanodes in AWS EC2}
 
 
-![AWS EC2 Elastic IP](https://github.com/cloudmesh-community/fa18-516-29/tree/master/paper/images/Elastic_IPs.png){#fig:Elastic Ip allocation for AWS EC2 instances}
+![AWS EC2 Elastic IP](images/Elastic_IPs.png){#fig:Elastic Ip allocation for AWS EC2 instances}
 
 
 ### Configuring ssh connection between the client machine and EC2 instances:
