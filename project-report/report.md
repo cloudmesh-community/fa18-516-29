@@ -16,7 +16,7 @@ Keywords: Hadoop, Hive, Spark, AWS
 ## Abstract
 
 The goal of this project is to demonstrate the steps needed to set up a multi node Hadoop Cluster with Spark and Hive on Amazon EC2 instances from the scratch and do comparison between the traditional mapreduce and Distributed Computing through Spark. It details the Hadoop and Spark configurations required for a 8GB node Hadoop cluster for developmental and testing purpose.The objective is to do all the installations and configurations from the scratch.This process will be the same as doing the installation and set up on any 4 unix machines which have a static IP. 
-We will also show how to integrate spark as a compute engine in hive and bypass mapreduce in hive.
+We will also show how to integrate Spark as a compute engine in Hive and bypass mapreduce in Hive.
 Lastly, we demostrate a sorting technique called "sort by value" where we sort data in large files based on a specified column by making use of map reduce framework without bringing all the data in memory of one node in a distributed environment.
 
 
@@ -25,7 +25,7 @@ Lastly, we demostrate a sorting technique called "sort by value" where we sort d
 
 Today,most of the Big data projects are leveraging Hadoop,Hive and Spark to foster an ETL environment in production and this project
 is an approach to set up a multi node distributed environment in AWS EC2 instances and run some map-reduce jobs in this environment.
-The project describes what are the minimum configurations required for a multi node Hadoop cluster set-up with Spark and Hive in AWS EC2 instances and how to establish a passwordless ssh connection between the instances.This is applicable for any unix/linux instances which can have a static IP and the same steps need to be followed for establishing a passwordless ssh connection and configuring the hadoop and Spark config files.The recommended amount of memory for an instance is 8GB and atleast 20GB of physical disk space.
+The project describes what are the minimum configurations required for a multi node Hadoop cluster set-up with Spark and Hive in AWS EC2 instances and how to establish a passwordless ssh connection between the instances.This is applicable for any unix/linux instances which can have a static IP and the same steps need to be followed for establishing a passwordless ssh connection and configuring the Hadoop and Spark config files.The recommended amount of memory for an instance is 8GB and atleast 20GB of physical disk space.
 
 ## Software versions
 
