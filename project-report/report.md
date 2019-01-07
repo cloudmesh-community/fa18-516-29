@@ -430,7 +430,7 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
         spark.executor.memory            4g
         spark.eventLog.enabled           false
         spark.serializer                 org.apache.spark.serializer.KryoSerializer
-        spark.yarn.executor.memoryOverhead 384m
+        spark.yarn.executor.memoryOverhead 750m
         spark.yarn.submit.file.replication 1
         spark.yarn.stagingDir  /home/ubuntu/yarnstage
         spark.yarn.historyServer.address ${hadoopconf-yarn.resourcemanager.hostname}:18080
@@ -445,6 +445,19 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
    ```bash
    spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCount $SPARK_HOME/examples/jars/spark-examples_2.11-  2.3.2.jar /user/externaltables/testdata/testfile
    ```
+   
+   ## Integration of Hive with Spark
+   
+   ### Introduction:
+ 	
+	The following section describes how to integrate Hive with Spark.
+	
+   ### Motivation:
+ 
+ 	Hive can run on multiple execution engines and can be integrated with Spark so that the underlying computation engine is Spark 		and not Mapreduce.This increases the performance of hive queries greatly as Spark does not write the intermediate data to the 		local filesystem and does the computation in memory by creating immutable partitioned datasets RDDS and streaming data from one 	RDD to another without the need of writing the intermediate results to HDFS.This saves lot of Physical I/O and makes the query 		processing much faster.
+
+  ### Software:
+ 	Hive 2.3, Spark 2.3.2
    
 
 
