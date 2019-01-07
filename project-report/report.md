@@ -111,7 +111,7 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
 	   ```bash
            cat ~/.ssh/sshkey_rsa.pub >> ~/.ssh/authorized_keys
 	   ```
-           This will create an entry for the user ubuntu in the authorized_keys file.
+      This will create an entry for the user ubuntu in the authorized_keys file.
 	   
            
    vi. Copy the file authorized_keys to all the datanodes instances in '~/.ssh' folder through winscp.
@@ -125,7 +125,8 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
               172.31.16.132 ec2-52-38-172-19.us-west-2.compute.amazonaws.com
               172.31.19.37 ec2-52-42-185-237.us-west-2.compute.amazonaws.com
               172.31.30.216 ec2-52-89-22-141.us-west-2.compute.amazonaws.com
-           where the first IP is the Private IP and second is the Public DNS (IPv4) in EC2 management console.
+         
+	 where the first IP is the Private IP and second is the Public DNS (IPv4) in EC2 management console.
          
    ix. Change the hostname in all the instances to the public DNS name after login because by default they are the private IPs.
          
