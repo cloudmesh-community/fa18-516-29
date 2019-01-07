@@ -207,4 +207,31 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
 	  ```bash
           hdfs namenode -format  (Format resets the namenode and should only be done once in the lifetime of a cluster)
 	  ```
+	  
+  ### Start the Hadoop deamons:
+      
+      
+        On Namenode:
+	
+	 ```bash
+         $HADOOP_HOME/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs start namenode
+         $HADOOP_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start resourcemanager
+         $HADOOP_HOME/sbin/mr-jobhistory-daemon.sh --config $HADOOP_CONF_DIR start historyserver
+	 ```
+         The above 3 deamons will run on the Master node.
+         
+        On DataNode1:
+	
+	```bash
+         $HADOOP_HOME/sbin/hadoop-daemons.sh --config $HADOOP_CONF_DIR --script hdfs start datanode
+	 ```
+         The datanode process just needs to be started in 1 slave machine DataNode1.This will start the process in another 
+         datanodes on its own through ssh connection.
+         
+        On DataNode1,DataNode2,DataNode3:
+	
+	 ```bash
+         $HADOOP_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start nodemanager
+	 ```
+         The nodemanager process needs to be started in all the slave machines.
 
