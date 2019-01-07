@@ -199,4 +199,12 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
          yarn-site.xml     yarn.nodemanager.resource.memory-mb  6144
          yarn-site.xml     yarn.scheduler.maximum-allocation-mb 6144
          yarn-site.xml     yarn.scheduler.minimum-allocation-mb 1024
+	 
+  ###  Hadoop Namenode Format
+          
+	  After configuring the config files,format the namenode:
+          
+	  ```bash
+          hdfs namenode -format  (Format resets the namenode and should only be done once in the lifetime of a cluster)
+	  ```
 
