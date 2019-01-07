@@ -68,8 +68,7 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
 
 ### Configuring passwordless ssh communication between the instances
 
- i. Create a config file with name config in ~/.ssh folder with the below entries in all the instances including namenode and datanodes.
-      Add the below entries in the file:
+ i. Create a config file with name config in `~/.ssh` folder with the below entries in all the instances including namenode and   datanodes. Add the below entries in the file:
       
       Host namenode
          HostName ec2-18-236-100-223.us-west-2.compute.amazonaws.com
@@ -88,8 +87,8 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
          User ubuntu
          IdentityFile ~/.ssh/client-keypair.pem
 	 
-   ii. Copy the keyfile received from aws in the ~/.ssh folder of all the instances.
-       local machine to  
+   ii. Copy the keyfile received from aws in the `~/.ssh` folder of all the instances from the local machine through winscp.
+         
 	   
         ```bash
 	~/.ssh/client-keypair.pem
@@ -97,6 +96,7 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
 	   
    iii. Change the permissions of all the file in `~/.ssh` folder to 600 of all the servers. This is a requirement for 
         ssh to work correctly.
+	
        
    iv. Go to the `~/.ssh` folder of namenode and run the following command.
           
@@ -104,13 +104,17 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
        ssh-keygen -f ~/.ssh/id_rsa -t rsa -P ""
        ```
 	  
-	This will create 2 files sshkey_rsa.pub and sshkey_rsa in ~/.ssh folder. 
+	This will create 2 files sshkey_rsa.pub and sshkey_rsa in '~/.ssh' folder. 
         
-   v. Copy the contents of sshkey_rsa.pub to authorized_keys file in ~/.ssh folder of namenode by the below command.
-           cat ~/.ssh/sshkey_rsa.pub >> ~/.ssh/authorized_keys
-           This will create an entry for the user ubuntu in the authorized keys.
+   v. Copy the contents of sshkey_rsa.pub to authorized_keys file in '~/.ssh' folder of namenode by the below command.
            
-   vi. Copy the file authorized_keys to all the datanodes instances in .ssh folder.
+	   ```bash
+           cat ~/.ssh/sshkey_rsa.pub >> ~/.ssh/authorized_keys
+	   ```
+           This will create an entry for the user ubuntu in the authorized keys.
+	   
+           
+   vi. Copy the file authorized_keys to all the datanodes instances in '~/.ssh' folder through winscp.
         
    vii. From the datanode1 and namenode,do ssh to all the other datanodes.It will ask to enter the host names to known_hosts file.
    Confirm yes.
@@ -123,7 +127,7 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
               172.31.30.216 ec2-52-89-22-141.us-west-2.compute.amazonaws.com
            where the first IP is the Private IP and second is the Public DNS (IPv4) in EC2 management console.
          
-   ix. Also change the hostname in all the instances to the public DNS name because by default they are the private IPs.
+   ix. Change the hostname in all the instances to the public DNS name after login because by default they are the private IPs.
          
               sudo hostname ec2-52-24-204-101.us-west-2.compute.amazonaws.com.
 	      
