@@ -144,13 +144,13 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
    i. Before starting the installation,update all the servers as a good practice by the command:
    
         ```bash
-        sudo apt-get update
+	sudo apt-get update
 	```
    
    ii. Install Java version8 in all the servers:
         
 	```bash
-        sudo apt install openjdk-8-jdk
+	sudo apt install openjdk-8-jdk
 	```
     
    iii. Download and install Hadoop 2.9 on all the servers:
@@ -160,21 +160,32 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
        ```
     
    iv. Uncompress the tar file in any directory called hadoop_home:
-        tar zxvf ~/hadoop_installation/hadoop-* -C ~/hadoop_home
+        
+	```bash
+	tar zxvf ~/hadoop_installation/hadoop-* -C ~/hadoop_home
+	```
  
    v. set up the env variables in the .profile and .bashrc of all the servers:
  
-        export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+        ```bash
+	export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
         export PATH=$PATH:$JAVA_HOME/bin
         export HADOOP_HOME=/home/ubuntu/hadoop_home/hadoop-2.9.1
         export PATH=$PATH:$HADOOP_HOME/bin
         export HADOOP_CONF_DIR=/home/ubuntu/hadoop_home/hadoop-2.9.1/etc/hadoop
+	```
    
    vi. Load profile in all the instances:
+   
+        ```bash
         ~/.profile
+	```
      
    vii. Change the hadoop-env.sh in $HADOOP_HOME/etc/hadoop in all the instances to add the below line for JAVA_HOME:
-          export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+          
+	  ```bash
+	  export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+	  ```
 	  
   ### Hadoop configuration for a 8GB(Memory) node cluster:
       
