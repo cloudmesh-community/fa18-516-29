@@ -323,7 +323,6 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
       
       ```bash
       wget http://archive.apache.org/dist/db/derby/db-derby-10.4.2.0/db-derby-10.4.2.0-bin.tar.gz
-      
       tar zxvf db-derby-10.4.2.0-bin.tar.gz -C ~/derby_home
       ```
       
@@ -337,8 +336,8 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
       
    vi. Load profile in all the servers
        
-       ```bash
-        ~/.profile
+        ```bash
+	~/.profile
 	```
         
    vii. Initialize the schema in derby in $HIVE_HOME folder.This will create a metastore_db directory which is the database
@@ -346,6 +345,6 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
          
          ```bash
 	 cd $HIVE_HOME
-         schematool -dbType derby -initSchema
+	 schematool -dbType derby -initSchema
 	 ```
 
