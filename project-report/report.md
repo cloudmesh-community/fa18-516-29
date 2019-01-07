@@ -134,5 +134,5 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
 	      
        This is very important because the instances know each other by their public DNS names.Repeat this on all the instances.
         
-   The above steps complete the set up of passwordless ssh connection between all the instances.
+   ##### The above steps complete the set up of passwordless ssh connection between all the instances.
 
