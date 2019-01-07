@@ -47,6 +47,8 @@ well as passwordless ssh communication between the EC2 instances.Also,the IP of 
 We will set up a 4 node Hadoop cluster with 1 node as master and 3 as slaves.Each instance is T2.large type and has 8 GB of memory
 and initially 16GB of physical storage.This configuration is fine for doing the initial cluster set up and running some map reduce jobs for testing purpose,but definitely will not work for large datasets.For a substantial amount of data transfer,one should go for T2.Xlarge instances which have 16GB of memory and initially 32 GB of physical storage.The only downside is that it will be expensive to own 4 such large instances in EC2 for a developer.
 
+![4 node cluster on AWS EC2](images/EC2_instances.png){#fig:1 Namenode and 3 Datanodes in AWS EC2}
+
 
 ### Memory and Disk Requirements:
 
@@ -56,10 +58,8 @@ In AWS,create 4 EC2 instances of type T2.large by following the guidelines given
 
 After allocating 4 instances,1 Namenode and 3 DataNodes of type T2.large,go to the Network and Security section of the EC2 Management console and allocate 4 new Elastic IPs from the IPv4 address pool.After this IP is allocated,map these IPs to the instances.This is important as the IPs in cloud are dynamic and change whenever we stop our machines.So,the set up will not work when we restart the instances again.Inorder to avoid this issue,we first allocate Elastic Ips to our instances.
 
-![4 node cluster on AWS EC2](images/EC2_instances.png){#fig:1 Namenode and 3 Datanodes in AWS EC2}
 
-
-![AWS EC2 Elastic IP](images/Elastic_IPs.png){#fig:Elastic Ip allocation for AWS EC2 instances}
+![AWS EC2 Elastic IP](images/Elastic_IPs.png){#fig:Elastic IP allocation for AWS EC2 instances}
 
 
 ### Configuring ssh connection between the client machine and EC2 instances:
@@ -278,6 +278,8 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
             └─xvda1 202:1    0   16G  0 part /
            
        vi. Do df -h and confirm that the space allocated to the filesystem /dev/xvda1 is increased by 8GB.
+       
+    ![Adding Volumes in EC2 instances ](images/Adding_volumes.png){#fig:Adding volume to EC2 instances}
        
    ## Hive Installation and Configuration in the multi-node Hadoop Cluster
    
@@ -602,6 +604,8 @@ for a single key.
 by the key of the data in key:value pair.Here,the approach is to introduce the value by which it is to be sorted in the key of the
 data as a composite key {natural key,value to be sorted} and then the framework will do the sorting on multiple nodes without shuffling
 and bringing the entire data in one node.
+
+![ Spark Secondary Sort Design pattern](images/secondarysort.png){#fig:Spark-Secondary Implementation Logic}
 
 ### Implementation in MapReduce:
 
