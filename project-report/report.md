@@ -649,8 +649,25 @@ to only include natural key while partitioning the data.
   not by the entire composite key.
   
   The above steps will ensure that the data is sorted by the natural key and then by the desired value column for sorting.
-   
-  ### Reference:
   
-  https://github.com/mahmoudparsian/data-algorithms-book
+  ## Conclusion:
+  
+  As part of this project,we were able to set up a fully distributed Hadoop cluster with Spark and Hive and able to do comparison
+  between Mapreduce and Spark job on files of different sizes.Also,we explored a design pattern called "Secondary Sort" to sort a file based on a column specified as a value column.This design pattern can be used to sort large files based on a required column by leveraging the mapreduce framework and does not require all the data needed for sorting to come to one particular node.
+  
+  
+  ## Acknowledgement:
+  
+  The author would like to thank Dr. Gregor von Laszewski for his support and suggestions to write this paper.
+   
+  ## References:
+  
+  Seconadry Sort :https://github.com/mahmoudparsian/data-algorithms-book
+  Hadoop installation and configuration: https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/ClusterSetup.html
+  Hive installation and configuration on Hadoop: https://cwiki.apache.org/confluence/display/Hive/GettingStarted
+  Spark installation and configuration on Hadoop: https://spark.apache.org/docs/latest/running-on-yarn.html
+  
+  
+  
+  
 
