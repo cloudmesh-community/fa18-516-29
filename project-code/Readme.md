@@ -25,7 +25,7 @@
     
       mvn package
     
-     This will create 2 folder named target in both the directories where the jar file is built with names hadoop-spark-examples-0.0.1-SNAPSHOT.jar and spark-examples-0.0.1-SNAPSHOT.jar
+     This will create a folder named target in both the directories where the jar file is built with names hadoop-spark-examples-0.0.1-SNAPSHOT.jar and spark-examples-0.0.1-SNAPSHOT.jar
      
    4. copy these jar files to a directory of the namenode machine through winscp.
    
