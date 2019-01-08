@@ -663,8 +663,11 @@ to only include natural key while partitioning the data.
   ## References:
   
   Seconadry Sort :https://github.com/mahmoudparsian/data-algorithms-book
+  
   Hadoop installation and configuration: https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/ClusterSetup.html
+  
   Hive installation and configuration on Hadoop: https://cwiki.apache.org/confluence/display/Hive/GettingStarted
+  
   Spark installation and configuration on Hadoop: https://spark.apache.org/docs/latest/running-on-yarn.html
   
   
