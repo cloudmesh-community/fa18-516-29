@@ -27,20 +27,20 @@
     
      This will create a folder named target in both the directories where the jar file is built with names hadoop-spark-examples-0.0.1-SNAPSHOT.jar and spark-examples-0.0.1-SNAPSHOT.jar
      
-   4. copy these jar files to a directory of the namenode machine through winscp.
+   4. Copy these jar files to a directory of the namenode machine through winscp.
    
-   5. Go to the above diretoty location where the jar files have been copied and run the below command for running secondary sort
+   5. Go to the above directory location where the jar files have been copied and run the below command for running secondary sort
    in mapreduce:
    
    yarn jar  /home/ubuntu/projectjars/hadoop-spark-examples-0.0.1-SNAPSHOT.jar com.mapreduce.secondarysort.MapreduceSecondarySort /user/externaltables/secondarysortdata/secondarysorttestfile /user/logs1
    
-   6. Check the output of the secondary sort in /user/logs1/part-00000 file which will be a soorted file on both the first and second columns.
+   6. Check the output of the secondary sort in /user/logs1/part-00000 file which will be a sorted file on both the first and second columns.
    
    7. Run the jar for the spark secondary sort by the below command:
    
    spark-submit --deploy-mode client --class com.spark.secondarysort.SparkSecondarySort  /home/ubuntu/projectjars/spark-examples-0.0.1-SNAPSHOT.jar /user/externaltables/secondarysortdata/secondarysorttestfile /user/logs2
    
-   8. Check the output of the spark secondary sort in /user/logs2/part-00000 file which will be a soorted file on the second column
+   8. Check the output of the Spark secondary sort in /user/logs2/part-00000 file which will be a sorted file on the second column
    which is the value column.
    
    
