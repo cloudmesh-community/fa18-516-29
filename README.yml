@@ -5,21 +5,7 @@ owner:
   community: "e516"
   semester: "fa18"
 project:
-    - title: Installation and Configuration of multi node Hadoop cluster with Spark and Hive on AWS EC2
+    - title: Installation and Configuration of fully-distributed multi node Hadoop cluster with Spark and Hive on AWS EC2
       keyword: Hadoop, Hive,Spark,AWS EC2
-      url: https://github.com/cloudmesh-community/fa18-516-29/blob/master/project-report/report.md 
-      code: https://github.com/cloudmesh-community/fa18-516-29/blob/master/project-code
-section:
-    - title: Setting up of a Multi Node Hadoop Cluster 
-      url: https://github.com/cloudmesh-community/book/blob/master/paper/mapreduce/HadoopMultiNodeclustersetup.md
-    - title: Setting up of Hive in a Hadoop cluster
-      url: https://github.com/cloudmesh-community/book/blob/master/paper/mapreduce/HiveOnHadoopCluster.md
-    - title: Setting up of Spark in a Hadoop cluster
-      url: https://github.com/cloudmesh-community/book/blob/master/paper/mapreduce/SparkOnHadoopCluster.md
-    - title: Integration of Hive with Spark on a Hadoop cluster
-      url: https://github.com/cloudmesh-community/book/blob/master/paper/mapreduce/HiveIntegrationwithSpark.md
-    - title: Comparison between Map Reduce and In Memory Spark Computation
-      url: https://github.com/cloudmesh-community/book/blob/master/paper/mapreduce/MapReduceversusSpark.md
-other:
-     -title: Hadoop 4-node cluster set up on AWS EC2 instances-Part 1 (Instance configuration and passwordless ssh set up)
-      url: https://github.com/cloudmesh-community/fa18-516-29/blob/master/paper/HadoopMultiNodeclustersetup-Part1.md
+      url: https://github.com/cloudmesh-community/fa18-516-29/tree/master/project-report/report.md 
+      code: https://github.com/cloudmesh-community/fa18-516-29/tree/master/project-code
