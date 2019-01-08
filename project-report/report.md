@@ -1,4 +1,4 @@
-# Installation and Configuration of fully-distributed multi-node Hadoop, Hive and Spark Cluster set up on Amazon EC2 instances
+# Installation and Configuration of fully-distributed multi-node Hadoop, Hive and Spark Cluster on Amazon EC2 instances
 
 | Shilpa Singh
 | shilsing@iu.edu
