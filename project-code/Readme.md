@@ -12,6 +12,7 @@
   2. Make a directory in hdfs and copy the file to the hdfs file system by the below commands:
   
   hadoop fs -mkdir /user/externaltables/secondarysortdata
+  
   hadoop fs -copyFromLocal /home/ubuntu/datafiles/secondarysorttestfile /user/externaltables/secondarysortdata
   
   3. create the 2 jars from the project-code folder Mapreduce and Spark by using maven.(Maven should be installed in the local system)
