@@ -5,7 +5,7 @@ owner:
   community: "e516"
   semester: "fa18"
 project:
-    - title: Installation and Configuration of fully-distributed multi node Hadoop cluster with Spark and Hive on AWS EC2
-      keyword: Hadoop, Hive,Spark,AWS EC2
-      url: https://github.com/cloudmesh-community/fa18-516-29/tree/master/project-report/report.md 
-      code: https://github.com/cloudmesh-community/fa18-516-29/tree/master/project-code
+  - title: Installation and Configuration of fully-distributed multi node Hadoop cluster with Spark and Hive on AWS EC2
+    keyword: Hadoop, Hive,Spark,AWS EC2
+    url: https://github.com/cloudmesh-community/fa18-516-29/tree/master/project-report/report.md 
+    code: https://github.com/cloudmesh-community/fa18-516-29/tree/master/project-code
