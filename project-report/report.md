@@ -14,8 +14,12 @@ Keywords: Hadoop, Hive, Spark, AWS
 ---
 
 :o: remove : in headings
+
 :o: use proper indentation for verbatim
+
 :o: use proper indentations for lists
+
+:o: are images drawn by yourslef? if not they are plagarized as citations are missing
 
 ## Abstract
 
