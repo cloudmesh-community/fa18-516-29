@@ -41,6 +41,8 @@ Keywords: Hadoop, Hive, Spark, AWS
 
 :o: Hadoop is at version Release 3.2.0 available available, so your project seems outdated. Also security alerts are reported due to outdated software usage. Certainly it would be useful to use that. I know you have done this last semester, but we have made switches to new hadoop in a matetr of a day for our software, so this is nt that difficult. I will not deduct points for the older version. However, version 2.9.2 was available to you ... and as you should consider writing scipts, why not use the new version ... instead. E.g. your activity does not yet include the automation of the process which we focused on.
 
+:o: due to the trivial markdown errors it is difficult to read the rest of the paper, I am sure you can see that. please correct.
+
 ## Abstract
 
 The goal of this project is to demonstrate the steps needed to set up a multi node Hadoop Cluster with Spark and Hive on Amazon EC2 instances from the scratch and do comparison between the traditional mapreduce and Distributed Computing through Spark. It details the Hadoop and Spark configurations required for a 8GB node Hadoop cluster for developmental and testing purpose.The objective is to do all the installations and configurations from the scratch.This process will be the same as doing the installation and set up on any 4 unix machines which have a static IP. 
