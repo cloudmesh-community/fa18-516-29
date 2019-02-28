@@ -45,6 +45,8 @@ Keywords: Hadoop, Hive, Spark, AWS
 
 :o: why not create a script for volume adjustment? Your documentation could be made much much simpler if you would use a scripted aproach. Maybe even create commands wioth docopts.
 
+:o: the same we said about hadoop is valid for hive and spark
+
 ## Abstract
 
 The goal of this project is to demonstrate the steps needed to set up a multi node Hadoop Cluster with Spark and Hive on Amazon EC2 instances from the scratch and do comparison between the traditional mapreduce and Distributed Computing through Spark. It details the Hadoop and Spark configurations required for a 8GB node Hadoop cluster for developmental and testing purpose.The objective is to do all the installations and configurations from the scratch.This process will be the same as doing the installation and set up on any 4 unix machines which have a static IP. 
@@ -98,7 +100,12 @@ After allocating 4 instances,1 Namenode and 3 DataNodes of type T2.large,go to t
 
 The first step after creating EC2 ubuntu instances is to arrange for login through putty.For this,get the client-keypair.pem file from AWS while creating instances.Use Putty keygen feature to generate .ppk file from the .pem file for an SSH connection.Add .ppk file in SSH Auth session of the all the nodes and save the session information in putty.Now,we can login in the instances with username ubuntu.
 
+
 ### Configuring passwordless ssh communication between the instances:
+
+:o: EVERYTHING BEFORE THIS LINE SEEMS TO USE PROPER MARKDOWN, SO WHY NOT CONTINUE AND DO THE REST OF THE PAPER IN PROPER MARKDOWN. PLEASE READ UP ON MARKDOWN.
+
+:o: use proper markdown
 
  i. Create a config file with name config in `~/.ssh` folder with the below entries in all the instances including namenode and   datanodes. Add the below entries in the file:
       
@@ -168,10 +175,17 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
         
    The above steps complete the set up of passwordless ssh connection between all the instances.
    
-   ## Hadoop Installation and Configuration
+:o: use proper markdown
    
+   ## Hadoop Installation and Configuration
+
+:o: use proper markdown
+
    ### Installation steps:
-   (Everything is done when logged in as user ubuntu)
+
+:o: use proper markdown
+
+(Everything is done when logged in as user ubuntu)
    
    i. Before starting the installation,update all the servers as a good practice by the command:
    
@@ -199,6 +213,8 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
  
    v. set up the env variables in the .profile and .bashrc of all the servers:
  
+      :o: use proper markdown
+
         ```bash
 	export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
         export PATH=$PATH:$JAVA_HOME/bin
@@ -208,18 +224,27 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
 	```
    
    vi. Load profile in all the instances:
+  
+       :o: use proper markdown
+
    
         ```bash
         ~/.profile
 	```
      
    vii. Change the hadoop-env.sh in $HADOOP_HOME/etc/hadoop in all the instances to add the below line for JAVA_HOME:
-          
+
+        :o: use proper markdown
+
 	  ```bash
 	  export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 	  ```
+
+:o: use proper markdown
 	  
   ### Hadoop configuration for a 8GB(Memory) node cluster:
+      
+:o: use proper markdown
       
       This is the configuration for T2.large instances.
         
@@ -231,17 +256,23 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
          yarn-site.xml     yarn.nodemanager.resource.memory-mb  6144
          yarn-site.xml     yarn.scheduler.maximum-allocation-mb 6144
          yarn-site.xml     yarn.scheduler.minimum-allocation-mb 1024
-	 
+
+:o: use proper markdown
+
   ###  Hadoop Namenode Format:
-          
+
+:o: use proper markdown
+
 	  After configuring the config files,format the namenode:
           
 	  ```bash
           hdfs namenode -format  (Format resets the namenode and should only be done once in the lifetime of a cluster)
 	  ```
+:o: use proper markdown
 	  
   ### Start the Hadoop deamons:
       
+:o: use proper markdown
       
         On Namenode:
 	
@@ -266,15 +297,21 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
          $HADOOP_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start nodemanager
 	 ```
          The nodemanager process needs to be started in all the slave machines.
+
+:o: use proper markdown
 	 
    ### Creating directories in file system:
         
          hadoop fs -mkdir /user/externaltables/testdata
          hadoop fs -copyFromLocal /home/ubuntu/datafiles/testfile /user/externaltables/testdata/testfile
-         
+
+:o: use proper markdown
+
    ### Run the map reduce job to test that the containers are getting launched properly in all the nodes:
          
          yarn jar hadoop-mapreduce-examples-2.9.1.jar wordcount /user/externaltables/testdata/testfile /user/logs
+	 
+:o: use proper markdown
 	 
    ### Issues and resolution: 
        
@@ -312,13 +349,19 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
        vi. Do df -h and confirm that the space allocated to the filesystem /dev/xvda1 is increased by 8GB.
        
     ![Adding Volumes in EC2 instances ](images/Adding_volumes.png){#fig:Adding volume to EC2 instances}
-       
+
+:o: use proper markdown
+
    ## Hive Installation and Configuration in the multi-node Hadoop Cluster
-   
+
+:o: use proper markdown
+
    ### Introduction:
    
    The following section describes the installation and configuration of Hive on Hadoop cluster.
    
+ :o: use proper markdown
+
    ### Motivation
 
  Hive provides a datawarehousing solution on hadoop and can be used to do computation on data which is of relational format.This has
@@ -334,18 +377,22 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
 
   i. Download and Install Hive 2.3 which is compatible with Hadoop 2.9 only in the master machine.
       
+     :o: use proper markdown
+
       ```bash
       wget https://www-us.apache.org/dist/hive/hive-2.3.3/apache-hive-2.3.3-bin.tar.gz -P ~/hive_installation
       ```
    
-  ii.Uncompress the tar file in a directory $HIVE_HOME
+  ii. Uncompress the tar file in a directory $HIVE_HOME
       
       ```bash
       tar zxvf ~/hive_installation/apache-hive-* -C ~/hive_home
       ```
       
-  iii.Set up the env variables in all the .profile and .bashrc of all the servers
+  iii. Set up the env variables in all the .profile and .bashrc of all the servers
       
+        :o: use proper markdown
+
       ```bash
       export HIVE_HOME=/home/ubuntu/hive_home/apache-hive-2.3.3-bin
       export PATH=$PATH:$HIVE_HOME/bin
@@ -369,7 +416,9 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
       ```
       
    vi. Load profile in all the servers
-       
+
+       :o: use proper markdown
+	
         ```bash
 	~/.profile
 	```
@@ -381,7 +430,9 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
 	 cd $HIVE_HOME
 	 schematool -dbType derby -initSchema
 	 ```
-	 
+	
+:o: use proper markdown
+	
    ### Running Hive
 
      i. Create directories in HDFS for hive tables:
@@ -395,6 +446,8 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
          
      iii. Create an external table in hive pointing to the file in hdfs:
          
+         :o: use proper markdown
+	 
          create external table if not exists insurance_data_1(
          policyID int,
          statecode char(2),
@@ -423,13 +476,22 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
        iv. Run a query in hive to count the number of policies:
        
           select count(policyID) from insurance_data_1;
-	  
+
+:o: use proper markdown
+
    ## Spark Installation and Configuration in a Multi node Hadoop Cluster
-   
+
+:o: use proper markdown
+
    ### Introduction:
  	The following section describes the installation and configuration of Spark on Hadoop cluster.
-	
+
+:o: use proper markdown
+
    ### Motivation:
+   
+   :o: use proper markdown
+
 
 	Spark by design is a Distributed Computing Engine and creates an immutable resilient dataset RDD in memory on top of the data in 
 	the underlying file system.These RDDs are partitioned and loaded into the memory of all the nodes in the cluster.The computation
@@ -441,17 +503,25 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
    ### Installation:
 
 	i. Download and install spark 2.3.2.
-	``bash
+	
+	:o: use proper markdown
+
+	```bash
     	wget https://www-eu.apache.org/dist/spark/spark-2.3.2/spark-2.3.2-bin-hadoop2.7.tgz -P ~/spark_installation
 	```
     
  	ii. Untar the zip file in SPARK_HOME
+	
+	:o: use proper markdown
+
 	```bash
      	tar zxvf spark-2.3.2-bin-hadoop2.7.tgz -C ~/spark_home
 	```
      
  	iii. set the env variables in .profile and .bashrc
- 
+
+	 :o: use proper markdown
+
          ```bash
 	 export SPARK_HOME=/home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7
          export PATH=$PATH:$SPARK_HOME/bin
@@ -460,6 +530,8 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
 	 
    ### Spark configuration in spark-defaults.conf for a 8GB(memory) node:
    
+   :o: use proper markdown
+
         spark.master                     yarn
         spark.executor.memory            4g
         spark.eventLog.enabled           false
@@ -471,21 +543,35 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
         spark.dynamicAllocation.enabled false
 	
 	We have to keep the executor memory + overhead less than the one allocated to the yarn.scheduler.maximum-allocation-mb
-	
+
+:o: use proper markdown
+
    ### Running Spark:
     
+    :o: use proper markdown
+
     Test that spark is getting launched through yarn by running the spark wordcount job in client mode.
    
    ```bash
    spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCount $SPARK_HOME/examples/jars/spark-examples_2.11-  2.3.2.jar /user/externaltables/testdata/testfile
    ```
    
+   :o: use proper markdown
+
    ## Integration of Hive with Spark
-   
+
+:o: use proper markdown
+
    ### Introduction:
- 	The following section describes how to integrate Hive with Spark.
-	
+
+The following section describes how to integrate Hive with Spark.
+
+:o: use proper markdown
+
    ### Motivation:
+   
+   :o: use proper markdown
+
         Hive can run on multiple execution engines and can be integrated with Spark so that the underlying computation engine is Spark and not Mapreduce.This increases the performance of hive queries greatly as Spark does not write the intermediate data to the local filesystem and does the computation in memory by creating immutable partitioned datasets RDDS and streaming data from one RDD to another without the need of writing the intermediate results to HDFS.This saves lot of Physical I/O and makes the query processing much faster.
 
   ### Software:
@@ -495,6 +581,8 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
   
     1. Link the following Spark jars to Hive:
   
+       :o: use proper markdown
+
 	ln -s /home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7/jars/spark-network-common_2.11-2.3.2.jar /home/ubuntu/hive_home/apache-hive-2.3.3-bin/lib/spark-network-common_2.11-2.3.2.jar
 
 	ln -s /home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7/jars/spark-core_2.11-2.3.2.jar /home/ubuntu/hive_home/apache-hive-2.3.3-bin/lib/spark-core_2.11-2.3.2.jar
@@ -504,6 +592,8 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
   
    2. Do the following configurations in hive-site.xml(For a 8GB memory node):
        
+       :o: use proper markdown
+
        hive.execution.engine=spark
        spark.master=yarn-cluster
        spark.eventLog.enabled=TRUE
@@ -514,6 +604,8 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
 
   3. Configure yarn-site.xml with the Fair Scheduler:
 
+     :o: use proper markdown
+
      yarn.resourcemanager.scheduler.class=org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler
 
 
@@ -521,14 +613,21 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
 	  
       1. Create directories in HDFS for storing Hive data as an external table
      
+     	:o: use proper markdown
+
         hadoop fs -mkdir /user/externaltables/insurancedata
         hadoop fs -copyFromLocal insurance_datafile /user/externaltables/insurancedata/
         
       2. Start the hive terminal by typing command Hive
+      
+      	 :o: use proper markdown
+
          hive
          
       3. Create an External table in Hive pointing to the file in HDFS:
          
+	 :o: use proper markdown
+
          create external table if not exists insurance_data_1(
          policyID int,
          statecode char(2),
@@ -556,15 +655,22 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
          
        4. Run a query in debug mode to count the number of policies:
        
+       :o: use proper markdown
+
            hive --hiveconf hive.root.logger=DEBUG,console -e "select count(policyID) from insurance_data_1"
 	  
 	5. We can see the spark jobs being launched on the web ui:
-	   
+
+	   :o: use proper markdown
+	
 	   http://ec2-52-24-204-101.us-west-2.compute.amazonaws.com:4040
-	   
+
+:o: use proper markdown sections must start to left
+
    ## Comparison of Data processing between traditional Mapreduce and Spark
    
    ### Introduction
+   
 The following section describes the performance comparison of a wordcount program between the Mapreduce and Spark engine on 
 the 4 node cluster which we have installed:
 
@@ -577,16 +683,23 @@ on files of different sizes and can check the completion time of the job when su
 
 i. Run the below mapreduce jobs
 
+:o: use proper markdown
+
 yarn jar hadoop-mapreduce-examples-2.9.1.jar wordcount /user/externaltables/testdata1/testfile1 /user/logs1
 yarn jar hadoop-mapreduce-examples-2.9.1.jar wordcount /user/externaltables/testdata2/testfile2 /user/logs2
 yarn jar hadoop-mapreduce-examples-2.9.1.jar wordcount /user/externaltables/testdata3/testfile3 /user/logs3
 
 ii. Run the below Spark jobs
 
+:o: use proper markdown
+
 spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCount $SPARK_HOME/examples/jars/spark-examples_2.11-2.3.2.jar /user/externaltables/testdata1/testfile1
 spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCount $SPARK_HOME/examples/jars/spark-examples_2.11-2.3.2.jar /user/externaltables/testdata2/testfile2
 spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCount $SPARK_HOME/examples/jars/spark-examples_2.11-2.3.2.jar /user/externaltables/testdata3/testfile3
 
+:o: fix spaceing by removing some or better put in markdown table.
+
+```
 Benchmark Data:
  
  Filename          FileSize                        mapreduce completion time                               spark completion time
@@ -597,7 +710,7 @@ testfile1          724 MB                                          20 seconds   
 testfile2         1.58 GB                                          18 seconds                                               4 seconds
 
 testfile3         6.48 GB                                          20 seconds                                               4 seconds
-
+```
 
 ### Spark Architecture :
 
@@ -629,6 +742,8 @@ The MapReduce framework automatically sorts the keys generated by mappers. This 
 For a large dataset,if we want to sort the values in the reducer for example [Key : list {Value1,Value2,Value3....}] where values should
 also be sorted,then we have 2 options:
 
+:o: use proper markdown
+
 1.To bring all the data for a key in an array in a single reducer then sort them.This may not scale if there are too many values
 for a single key.
 
@@ -643,6 +758,8 @@ and bringing the entire data in one node.
 
 For example,we have the data:
  
+:o: use proper markdown
+ 
  2012, 50
  2012, 45
  2012, 35
@@ -655,6 +772,9 @@ For example,we have the data:
  2005, 01 
 
 We want to achieve the following output,where it is sorted by key(1st column) as well as by value(2nd column):
+
+:o: use proper markdown
+
 
 2001    40
 2001    46
@@ -669,31 +789,43 @@ We want to achieve the following output,where it is sorted by key(1st column) as
 
 Then using mapreduce framework we have to do the following:
 
+:o: use proper markdown
+
 1.Tell the framework how to sort the reducer keys.This done by making a composite key which consists of both natural key and the
 actula value and attaching a compartor to it which will compare the 2 composite keys based on natual key and actual value and
 sort the data accordingly for sending it to the reducer.This sorting is done before the reduce phase.
 
+:o: use proper markdown
+
 2.Secondly, we have to introduce a custom partitioner which will partition the data and send it to the reducers based on actual
 natural keys.Since we have modified the natural key to include the value column as well,we have to specify in custom partitioner
 to only include natural key while partitioning the data.
+
+:o: use proper markdown
 
 3.Lastly,once the data reaches the reducer we have to tell the reduce method to group the data by the actual natural key and
   not by the entire composite key.
   
   The above steps will ensure that the data is sorted by the natural key and then by the desired value column for sorting.
   
-  ## Conclusion:
-  
+## Conclusion:
+
+:o: use proper markdown
+
   As part of this project,we were able to set up a fully distributed Hadoop cluster with Spark and Hive and able to do comparison
   between Mapreduce and Spark job on files of different sizes.Also,we explored a design pattern called "Secondary Sort" to sort a file based on a column specified as a value column.This design pattern can be used to sort large files based on a required column by leveraging the mapreduce framework and does not require all the data needed for sorting to come to one particular node.
   
-  
-  ## Acknowledgement:
-  
+
+## Acknowledgement:
+
+:o: use proper markdown
+
   The author would like to thank Dr. Gregor von Laszewski for his support and suggestions to write this paper.
    
-  ## References:
-  
+## References:
+
+:o: use proper markdown
+
   Seconadry Sort :https://github.com/mahmoudparsian/data-algorithms-book
   
   Hadoop installation and configuration: https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/ClusterSetup.html
