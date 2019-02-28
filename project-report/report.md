@@ -27,7 +27,7 @@ Keywords: Hadoop, Hive, Spark, AWS
 
 :o: review grammare when using and the, sometimes they seem missing.
 
-:o: you should not use putty but gitbash
+:o: you should not use putty but gitbash as this makes the project not only runable on windows but also linux via bash. As is the usability of the code is limited to windows which is something we try to avoid.
 
 :o: you should use a local key generated with ssh-keygen as discussed in class.
 
