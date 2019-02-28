@@ -37,6 +37,8 @@ Keywords: Hadoop, Hive, Spark, AWS
 
 :o: The creation of the  /etc/hosts shoudl be automatized and also its distribution
 
+:o: the entire hadoop instaltion can be done with scripts or python programs.
+
 ## Abstract
 
 The goal of this project is to demonstrate the steps needed to set up a multi node Hadoop Cluster with Spark and Hive on Amazon EC2 instances from the scratch and do comparison between the traditional mapreduce and Distributed Computing through Spark. It details the Hadoop and Spark configurations required for a 8GB node Hadoop cluster for developmental and testing purpose.The objective is to do all the installations and configurations from the scratch.This process will be the same as doing the installation and set up on any 4 unix machines which have a static IP. 
