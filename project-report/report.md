@@ -43,6 +43,8 @@ Keywords: Hadoop, Hive, Spark, AWS
 
 :o: due to the trivial markdown errors it is difficult to read the rest of the paper, I am sure you can see that. please correct.
 
+:o: why not create a script for volume adjustment? Your documentation could be made much much simpler if you would use a scripted aproach. Maybe even create commands wioth docopts.
+
 ## Abstract
 
 The goal of this project is to demonstrate the steps needed to set up a multi node Hadoop Cluster with Spark and Hive on Amazon EC2 instances from the scratch and do comparison between the traditional mapreduce and Distributed Computing through Spark. It details the Hadoop and Spark configurations required for a 8GB node Hadoop cluster for developmental and testing purpose.The objective is to do all the installations and configurations from the scratch.This process will be the same as doing the installation and set up on any 4 unix machines which have a static IP. 
