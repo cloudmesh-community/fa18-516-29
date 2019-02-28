@@ -109,7 +109,7 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
 
  #### 1. Create a config file with name config in `~/.ssh` folder with the below entries in all the instances including namenode and   datanodes. Add the below entries in the file:
       
-      Host namenode
+     Host namenode
          HostName ec2-18-236-100-223.us-west-2.compute.amazonaws.com
          User ubuntu
          IdentityFile ~/.ssh/client-keypair.pem
@@ -130,7 +130,7 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
          
 	   
         ```bash
-	~/.ssh/client-keypair.pem
+	$ ~/.ssh/client-keypair.pem
         ```
 	   
    #### 3. Change the permissions of all the file in `~/.ssh` folder to 600 of all the servers. This is a requirement for 
@@ -140,7 +140,7 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
    #### 4. Go to the `~/.ssh` folder of namenode and run the following command.
           
        ```bash
-       ssh-keygen -f ~/.ssh/id_rsa -t rsa -P ""
+       $ ssh-keygen -f ~/.ssh/id_rsa -t rsa -P ""
        ```
 	  
 	This will create 2 files sshkey_rsa.pub and sshkey_rsa in '~/.ssh' folder. 
@@ -148,7 +148,7 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
    #### 5.Copy the contents of sshkey_rsa.pub to authorized_keys file in '~/.ssh' folder of namenode by the below command.
            
 	   ```bash
-           cat ~/.ssh/sshkey_rsa.pub >> ~/.ssh/authorized_keys
+           $ cat ~/.ssh/sshkey_rsa.pub >> ~/.ssh/authorized_keys
 	   ```
       This will create an entry for the user ubuntu in the authorized_keys file.
 	   
@@ -190,25 +190,25 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
    i. Before starting the installation,update all the servers as a good practice by the command:
    
         ```bash
-	sudo apt-get update
+	$ sudo apt-get update
 	```
    
    ii. Install Java version8 in all the servers:
         
 	```bash
-	sudo apt install openjdk-8-jdk
+	$ sudo apt install openjdk-8-jdk
 	```
     
    iii. Download and install Hadoop 2.9 on all the servers:
    
        ```bash
-       wget http://apache.mirrors.tds.net/hadoop/common/hadoop-2.9.1/hadoop-2.9.1.tar.gz -P ~/hadoop_installation
+       $ wget http://apache.mirrors.tds.net/hadoop/common/hadoop-2.9.1/hadoop-2.9.1.tar.gz -P ~/hadoop_installation
        ```
     
    iv. Uncompress the tar file in any directory called hadoop_home:
         
 	```bash
-	tar zxvf ~/hadoop_installation/hadoop-* -C ~/hadoop_home
+	$ tar zxvf ~/hadoop_installation/hadoop-* -C ~/hadoop_home
 	```
  
    v. set up the env variables in the .profile and .bashrc of all the servers:
@@ -229,7 +229,7 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
 
    
         ```bash
-        ~/.profile
+        $ ~/.profile
 	```
      
    vii. Change the hadoop-env.sh in $HADOOP_HOME/etc/hadoop in all the instances to add the below line for JAVA_HOME:
@@ -237,7 +237,7 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
         :o: use proper markdown
 
 	  ```bash
-	  export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+	 $  export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 	  ```
 
 :o: use proper markdown
