@@ -31,6 +31,8 @@ Keywords: Hadoop, Hive, Spark, AWS
 
 :o: you should use a local key generated with ssh-keygen as discussed in class.
 
+:o: I do think you do not do the key management correctly. E.g. why using pem files and private/public keypair and mixing this while using it inconsistently. Please explain in detail so we learn from you why this is needed. Explain in particular why ... we quite do not yet get this.
+
 ## Abstract
 
 The goal of this project is to demonstrate the steps needed to set up a multi node Hadoop Cluster with Spark and Hive on Amazon EC2 instances from the scratch and do comparison between the traditional mapreduce and Distributed Computing through Spark. It details the Hadoop and Spark configurations required for a 8GB node Hadoop cluster for developmental and testing purpose.The objective is to do all the installations and configurations from the scratch.This process will be the same as doing the installation and set up on any 4 unix machines which have a static IP. 
