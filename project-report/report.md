@@ -1,3 +1,7 @@
+:o: The title should be 
+
+*Automated ....*
+
 # Installation and Configuration of fully-distributed multi-node Hadoop, Hive and Spark Cluster on Amazon EC2 instances
 
 | Shilpa Singh
