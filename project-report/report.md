@@ -109,15 +109,15 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
 
 :o: EVERYTHING BEFORE THIS LINE SEEMS TO USE PROPER MARKDOWN, SO WHY NOT CONTINUE AND DO THE REST OF THE PAPER IN PROPER MARKDOWN. PLEASE READ UP ON MARKDOWN.
 
-:o: use proper markdown
+Create a config file with name config in `~/.ssh` folder with the below entries in all the 
+instances including namenode and datanodes. Add the below entries in the file:
 
- #### 1. Create a config file with name config in `~/.ssh` folder with the below entries in all the instances including namenode and   datanodes. Add the below entries in the file:
-      
-     Host namenode
-         HostName ec2-18-236-100-223.us-west-2.compute.amazonaws.com
-         User ubuntu
-         IdentityFile ~/.ssh/client-keypair.pem
-      Host datanode1
+```
+Host namenode
+  HostName ec2-18-236-100-223.us-west-2.compute.amazonaws.com
+  User ubuntu
+  IdentityFile ~/.ssh/client-keypair.pem
+Host datanode1
          HostName ec2-52-88-18-198.us-west-2.compute.amazonaws.com
          User ubuntu
          IdentityFile ~/.ssh/client-keypair.pem
@@ -129,11 +129,14 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
          HostName ec2-34-216-95-55.us-west-2.compute.amazonaws.com
          User ubuntu
          IdentityFile ~/.ssh/client-keypair.pem
+```
 	 
-   #### 2. Copy the keyfile received from aws in the `~/.ssh` folder of all the instances from the local machine through winscp.
+   #### 
+   
+   Copy the keyfile received from aws in the `~/.ssh` folder of all the instances from the local machine through winscp.
          
 	   
-        ```bash
+        ```
 	$ ~/.ssh/client-keypair.pem
         ```
 	   
@@ -141,11 +144,11 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
         ssh to work correctly.
 	
        
-   #### 4. Go to the `~/.ssh` folder of namenode and run the following command.
+Go to the `~/.ssh` folder of namenode and run the following command.
           
-       ```bash
-       $ ssh-keygen -f ~/.ssh/id_rsa -t rsa -P ""
-       ```
+```bash
+$ ssh-keygen -f ~/.ssh/id_rsa -t rsa -P ""
+```
 	  
 	This will create 2 files sshkey_rsa.pub and sshkey_rsa in '~/.ssh' folder. 
         
