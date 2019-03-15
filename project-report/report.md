@@ -132,7 +132,7 @@ Host datanode3
 
 ```
 	 
- 2. Copy the keyfile received from aws in the `~/.ssh` folder of all the instances from the local machine through winscp.
+2. Copy the keyfile received from aws in the `~/.ssh` folder of all the instances from the local machine through winscp.
          
   ```
  > ~/.ssh/client-keypair.pem
@@ -152,7 +152,7 @@ Host datanode3
 ```
 
 5.Copy the contents of sshkey_rsa.pub to authorized_keys file in '~/.ssh' folder of namenode by the below command.
-This will create an entry for the user ubuntu in the authorized_keys file.
+  This will create an entry for the user ubuntu in the authorized_keys file.
            
 ```bash
 
@@ -160,9 +160,9 @@ This will create an entry for the user ubuntu in the authorized_keys file.
 
 ```
 	   
- 6. Copy the file authorized_keys to all the datanodes instances in '~/.ssh' folder through winscp.From the datanode1 and namenode,do ssh to all the other datanodes.It will ask to enter the host names to known_hosts file. Confirm yes.
+6. Copy the file authorized_keys to all the datanodes instances in '~/.ssh' folder through winscp.From the datanode1 and namenode,do ssh to all the other datanodes.It will ask to enter the host names to known_hosts file. Confirm yes.
         
- 7. In the /etc/hosts file of all the instances add the following where the first IP is the Private IP and second is the Public DNS (IPv4) in EC2 management console.
+7. In the /etc/hosts file of all the instances add the following where the first IP is the Private IP and second is the Public DNS (IPv4) in EC2 management console.
         
    172.31.21.154 ec2-52-24-204-101.us-west-2.compute.amazonaws.com
    172.31.16.132 ec2-52-38-172-19.us-west-2.compute.amazonaws.com
@@ -181,7 +181,7 @@ This will create an entry for the user ubuntu in the authorized_keys file.
 	      
  The above steps complete the set up of passwordless ssh connection between all the instances.
    
-:o: use proper markdown
+
    
    ## Hadoop Installation and Configuration
 
