@@ -610,12 +610,12 @@ The nodemanager process needs to be started in all the slave machines.
         spark.serializer                      org.apache.spark.serializer.KryoSerializer
       ```
        
-   3. Configure yarn-site.xml with the Fair Scheduler:
+  3. Configure yarn-site.xml with the Fair Scheduler:
 
-     ```
-     yarn.resourcemanager.scheduler.class=org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler
-     
-     ```
+       ```
+       yarn.resourcemanager.scheduler.class=org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler
+         
+        ```
 
 
  **Running Hive on Spark:**	  
@@ -662,13 +662,13 @@ The nodemanager process needs to be started in all the slave machines.
          fields terminated by ','
          stored as textfile
          location '/user/externaltables/insurancedata/';
-	 ```
+	 
          
    4. Run a query in debug mode to count the number of policies:
        
        ```
         hive --hiveconf hive.root.logger=DEBUG,console -e "select count(policyID) from insurance_data_1"
-       ```
+      
 	  
    5. We can see the spark jobs being launched on the web ui:
 
