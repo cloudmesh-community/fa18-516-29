@@ -517,7 +517,7 @@ The nodemanager process needs to be started in all the slave machines.
    **Software:**
      Spark-2.3.2
 	
-   **Installation steps:
+   **Installation steps:**
 
    1. Download and install spark 2.3.2.
 	
@@ -530,7 +530,7 @@ The nodemanager process needs to be started in all the slave machines.
 	
 	```
      	
-	tar zxvf spark-2.3.2-bin-hadoop2.7.tgz -C ~/spark_home
+        tar zxvf spark-2.3.2-bin-hadoop2.7.tgz -C ~/spark_home
 	
 	```
      
