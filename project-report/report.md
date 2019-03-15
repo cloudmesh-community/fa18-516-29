@@ -107,9 +107,9 @@ The first step after creating EC2 ubuntu instances is to arrange for login throu
 
 ### Configuring passwordless ssh communication between the instances:
 
-:o: EVERYTHING BEFORE THIS LINE SEEMS TO USE PROPER MARKDOWN, SO WHY NOT CONTINUE AND DO THE REST OF THE PAPER IN PROPER MARKDOWN. PLEASE READ UP ON MARKDOWN.
+The following are the steps to configure passwordless ssh between the master and slave nodes.
 
-Create a config file with name config in `~/.ssh` folder with the below entries in all the 
+1. Create a config file with name config in `~/.ssh` folder with the below entries in all the 
 instances including namenode and datanodes. Add the below entries in the file:
 
 ```
@@ -118,69 +118,68 @@ Host namenode
   User ubuntu
   IdentityFile ~/.ssh/client-keypair.pem
 Host datanode1
-         HostName ec2-52-88-18-198.us-west-2.compute.amazonaws.com
-         User ubuntu
-         IdentityFile ~/.ssh/client-keypair.pem
-      Host datanode2
-         HostName ec2-54-149-168-101.us-west-2.compute.amazonaws.com
-         User ubuntu
-         IdentityFile ~/.ssh/client-keypair.pem
-      Host datanode3
-         HostName ec2-34-216-95-55.us-west-2.compute.amazonaws.com
-         User ubuntu
-         IdentityFile ~/.ssh/client-keypair.pem
+  HostName ec2-52-88-18-198.us-west-2.compute.amazonaws.com
+  User ubuntu
+  IdentityFile ~/.ssh/client-keypair.pem
+Host datanode2
+  HostName ec2-54-149-168-101.us-west-2.compute.amazonaws.com
+  User ubuntu
+  IdentityFile ~/.ssh/client-keypair.pem
+Host datanode3
+  HostName ec2-34-216-95-55.us-west-2.compute.amazonaws.com
+  User ubuntu
+  IdentityFile ~/.ssh/client-keypair.pem
+
 ```
 	 
-   #### 
-   
-   Copy the keyfile received from aws in the `~/.ssh` folder of all the instances from the local machine through winscp.
+ 2. Copy the keyfile received from aws in the `~/.ssh` folder of all the instances from the local machine through winscp.
          
+  ```
+ > ~/.ssh/client-keypair.pem
+
+  ```
 	   
-        ```
-	$ ~/.ssh/client-keypair.pem
-        ```
-	   
-   #### 3. Change the permissions of all the file in `~/.ssh` folder to 600 of all the servers. This is a requirement for 
-        ssh to work correctly.
+3. Change the permissions of all the file in `~/.ssh` folder to 600 of all the servers. This is a requirement for 
+    ssh to work correctly.
 	
        
-Go to the `~/.ssh` folder of namenode and run the following command.
+4. Go to the `~/.ssh` folder of namenode and run the following command.This will create 2 files sshkey_rsa.pub and sshkey_rsa in '~/.ssh' folder. 
           
 ```bash
-$ ssh-keygen -f ~/.ssh/id_rsa -t rsa -P ""
+
+> ssh-keygen -f ~/.ssh/id_rsa -t rsa -P ""
+ 
 ```
-	  
-	This will create 2 files sshkey_rsa.pub and sshkey_rsa in '~/.ssh' folder. 
-        
-   #### 5.Copy the contents of sshkey_rsa.pub to authorized_keys file in '~/.ssh' folder of namenode by the below command.
+
+5.Copy the contents of sshkey_rsa.pub to authorized_keys file in '~/.ssh' folder of namenode by the below command.
+This will create an entry for the user ubuntu in the authorized_keys file.
            
-	   ```bash
-           $ cat ~/.ssh/sshkey_rsa.pub >> ~/.ssh/authorized_keys
-	   ```
-      This will create an entry for the user ubuntu in the authorized_keys file.
+```bash
+
+> cat ~/.ssh/sshkey_rsa.pub >> ~/.ssh/authorized_keys
+
+```
 	   
-           
-   #### 6. Copy the file authorized_keys to all the datanodes instances in '~/.ssh' folder through winscp.
+ 6. Copy the file authorized_keys to all the datanodes instances in '~/.ssh' folder through winscp.From the datanode1 and namenode,do ssh to all the other datanodes.It will ask to enter the host names to known_hosts file. Confirm yes.
         
-   From the datanode1 and namenode,do ssh to all the other datanodes.It will ask to enter the host names to known_hosts file.
-   Confirm yes.
+ 7. In the /etc/hosts file of all the instances add the following where the first IP is the Private IP and second is the Public DNS (IPv4) in EC2 management console.
         
-   #### 7. In the /etc/hosts file of all the instances add the following:
-        
-              172.31.21.154 ec2-52-24-204-101.us-west-2.compute.amazonaws.com
-              172.31.16.132 ec2-52-38-172-19.us-west-2.compute.amazonaws.com
-              172.31.19.37 ec2-52-42-185-237.us-west-2.compute.amazonaws.com
-              172.31.30.216 ec2-52-89-22-141.us-west-2.compute.amazonaws.com
+   172.31.21.154 ec2-52-24-204-101.us-west-2.compute.amazonaws.com
+   172.31.16.132 ec2-52-38-172-19.us-west-2.compute.amazonaws.com
+   172.31.19.37 ec2-52-42-185-237.us-west-2.compute.amazonaws.com
+   172.31.30.216 ec2-52-89-22-141.us-west-2.compute.amazonaws.com
          
-	 where the first IP is the Private IP and second is the Public DNS (IPv4) in EC2 management console.
+	
+8. Change the hostname in all the instances to the public DNS name after login because by default they are the private IPs.
+ This is very important because the instances know each other by their public DNS names.Repeat this on all the instances.
          
-   #### 8. Change the hostname in all the instances to the public DNS name after login because by default they are the private IPs.
-         
-              sudo hostname ec2-52-24-204-101.us-west-2.compute.amazonaws.com.
+  ```bash
+  
+  sudo hostname ec2-52-24-204-101.us-west-2.compute.amazonaws.com.
+  
+  ```
 	      
-       This is very important because the instances know each other by their public DNS names.Repeat this on all the instances.
-        
-   The above steps complete the set up of passwordless ssh connection between all the instances.
+ The above steps complete the set up of passwordless ssh connection between all the instances.
    
 :o: use proper markdown
    
