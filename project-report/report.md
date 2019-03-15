@@ -597,22 +597,19 @@ The nodemanager process needs to be started in all the slave machines.
       ln -s /home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7/jars/scala-library-2.11.8.jar 
       /home/ubuntu/hive_home/apache-hive-2.3.3-bin/lib/scala-library-2.11.8.jar
       
-      ```
-  
-  2. Do the following configurations in hive-site.xml(For a 8GB memory node):
+    
+  **2. Do the following configurations in hive-site.xml(For a 8GB memory node):**
        
-      ```
-       hive.execution.engine                 spark
-       spark.master                          yarn-cluster
-       spark.eventLog.enabled                TRUE
-       spark.eventLog.dir                    file:///home/ubuntu/hive_home/apache-hive-2.3.3-bin/spark_logs
-       spark.executor.memory                 4g
-       spark.yarn.executor.memoryOverhead    750	
-       spark.serializer                      org.apache.spark.serializer.KryoSerializer
+       ```
+        hive.execution.engine                 spark
+        spark.master                          yarn-cluster
+        spark.eventLog.enabled                TRUE
+        spark.eventLog.dir                    file:///home/ubuntu/hive_home/apache-hive-2.3.3-bin/spark_logs
+        spark.executor.memory                 4g
+        spark.yarn.executor.memoryOverhead    750	
+        spark.serializer                      org.apache.spark.serializer.KryoSerializer
        
-     ```
-  
-  3. Configure yarn-site.xml with the Fair Scheduler:
+   3. Configure yarn-site.xml with the Fair Scheduler:
 
      ```
      yarn.resourcemanager.scheduler.class=org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler
