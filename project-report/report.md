@@ -499,53 +499,54 @@ The nodemanager process needs to be started in all the slave machines.
 
 
    **Introduction:**
- 	The following section describes the installation and configuration of Spark on Hadoop cluster.
-
-:o: use proper markdown
-
-   ### Motivation:
-   
-   :o: use proper markdown
+     The following section describes the installation and configuration of Spark on Hadoop cluster.
 
 
-	Spark by design is a Distributed Computing Engine and creates an immutable resilient dataset RDD in memory on top of the data in 
-	the underlying file system.These RDDs are partitioned and loaded into the memory of all the nodes in the cluster.The computation
-	from one stage to another happens in memory itself by streaming data to subsequent RDDs without the need of writing the 	         intermediate data to the file system as in the case of traditional map reduce where the output of each map phase is written to           HDFS resulting in lot of Physical I/O.Spark minimizes this Physical I/O and does the entire computation in memory making the             processing much faster.Almost all the contemporary Big Data platforms today are using Hadoop as a storage and Spark as a Compute         Engine.Spark integrates very well with Hive through HiveContext and Spark SQL is used to write Procedural SQL code on data               described in relational format in Hive by importing them in Spark Dataframes which is an abstraction over RDD.
+
+   **Motivation:**
+    Spark by design is a Distributed Computing Engine and creates an immutable resilient dataset RDD in memory on top of the data 
+    in the underlying file system.These RDDs are partitioned and loaded into the memory of all the nodes in the cluster.
+    The computation from one stage to another happens in memory itself by streaming data to subsequent RDDs without the need 
+    of writing the intermediate data to the file system as in the case of traditional map reduce where the output of each map 
+    phase is written to HDFS resulting in lot of Physical I/O.Spark minimizes this Physical I/O and does the entire computation 
+    in memory making the processing much faster.Almost all the contemporary Big Data platforms today are using Hadoop as a storage 
+    and Spark as a Compute Engine.Spark integrates very well with Hive through HiveContext and Spark SQL is used to write 
+    Procedural SQL code on data described in relational format in Hive by importing them in Spark Dataframes which is an 
+    abstraction over RDD.
 	
-   ### Software:
-        Spark-2.3.2
+   **Software:**
+     Spark-2.3.2
 	
-   ### Installation:
+   **Installation steps:
 
-	i. Download and install spark 2.3.2.
+   1. Download and install spark 2.3.2.
 	
-	:o: use proper markdown
-
-	```bash
+	```
     	wget https://www-eu.apache.org/dist/spark/spark-2.3.2/spark-2.3.2-bin-hadoop2.7.tgz -P ~/spark_installation
+	
 	```
     
- 	ii. Untar the zip file in SPARK_HOME
+   2. Untar the zip file in SPARK_HOME
 	
-	:o: use proper markdown
-
-	```bash
-     	tar zxvf spark-2.3.2-bin-hadoop2.7.tgz -C ~/spark_home
+	```
+     	
+	tar zxvf spark-2.3.2-bin-hadoop2.7.tgz -C ~/spark_home
+	
 	```
      
- 	iii. set the env variables in .profile and .bashrc
+   3. set the env variables in .profile and .bashrc
 
-	 :o: use proper markdown
-
-         ```bash
-	 export SPARK_HOME=/home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7
-         export PATH=$PATH:$SPARK_HOME/bin
-         export SPARK_CONF_DIR=/home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7/conf
-	 ```
+	
+        ```
+	  export SPARK_HOME=/home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7
+          export PATH=$PATH:$SPARK_HOME/bin
+          export SPARK_CONF_DIR=/home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7/conf
 	 
-   ### Spark configuration in spark-defaults.conf for a 8GB(memory) node:
+	```
+	 
+   **Spark configuration in spark-defaults.conf for a 8GB(memory) node**
    
-   :o: use proper markdown
+    ```
 
         spark.master                     yarn
         spark.executor.memory            4g
@@ -557,9 +558,9 @@ The nodemanager process needs to be started in all the slave machines.
         spark.yarn.historyServer.address ${hadoopconf-yarn.resourcemanager.hostname}:18080
         spark.dynamicAllocation.enabled false
 	
-	We have to keep the executor memory + overhead less than the one allocated to the yarn.scheduler.maximum-allocation-mb
+We have to keep the executor memory + overhead less than the one allocated to the yarn.scheduler.maximum-allocation-mb
 
-:o: use proper markdown
+
 
    ### Running Spark:
     
