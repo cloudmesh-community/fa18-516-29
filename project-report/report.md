@@ -602,19 +602,22 @@ The nodemanager process needs to be started in all the slave machines.
   2. Do the following configurations in hive-site.xml(For a 8GB memory node):
        
       ```
-       hive.execution.engine=spark
-       spark.master=yarn-cluster
-       spark.eventLog.enabled=TRUE
-       spark.eventLog.dir=file:///home/ubuntu/hive_home/apache-hive-2.3.3-bin/spark_logs
-       spark.executor.memory=4g
-       spark.yarn.executor.memoryOverhead=750	
-       spark.serializer=org.apache.spark.serializer.KryoSerializer
+       hive.execution.engine                 spark
+       spark.master                          yarn-cluster
+       spark.eventLog.enabled                TRUE
+       spark.eventLog.dir                    file:///home/ubuntu/hive_home/apache-hive-2.3.3-bin/spark_logs
+       spark.executor.memory                 4g
+       spark.yarn.executor.memoryOverhead    750	
+       spark.serializer                      org.apache.spark.serializer.KryoSerializer
        
-
+     ```
+  
   3. Configure yarn-site.xml with the Fair Scheduler:
 
      ```
      yarn.resourcemanager.scheduler.class=org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler
+     
+     ```
 
 
  **Running Hive on Spark:**	  
@@ -624,16 +627,19 @@ The nodemanager process needs to be started in all the slave machines.
       ```
       hadoop fs -mkdir /user/externaltables/insurancedata
       hadoop fs -copyFromLocal insurance_datafile /user/externaltables/insurancedata/
+      
+      ```
         
    2. Start the hive terminal by typing command Hive
       
-      ```
+       ```
        hive
+       
        ```
          
    3. Create an External table in Hive pointing to the file in HDFS:
          
-      ```
+       ```
          create external table if not exists insurance_data_1(
          policyID int,
          statecode char(2),
@@ -658,11 +664,13 @@ The nodemanager process needs to be started in all the slave machines.
          fields terminated by ','
          stored as textfile
          location '/user/externaltables/insurancedata/';
+	 ```
          
    4. Run a query in debug mode to count the number of policies:
        
        ```
         hive --hiveconf hive.root.logger=DEBUG,console -e "select count(policyID) from insurance_data_1"
+       ```
 	  
    5. We can see the spark jobs being launched on the web ui:
 
