@@ -193,7 +193,7 @@ Host datanode3
    
   ```
   
-  > sudo apt-get update
+ sudo apt-get update
   
   ```
    
@@ -201,7 +201,7 @@ Host datanode3
         
    ```
 
-   > sudo apt install openjdk-8-jdk
+  sudo apt install openjdk-8-jdk
 	
    ```
     
@@ -209,7 +209,7 @@ Host datanode3
    
    ```
    
-   > wget http://apache.mirrors.tds.net/hadoop/common/hadoop-2.9.1/hadoop-2.9.1.tar.gz -P ~/hadoop_installation
+  wget http://apache.mirrors.tds.net/hadoop/common/hadoop-2.9.1/hadoop-2.9.1.tar.gz -P ~/hadoop_installation
       
    ```
     
@@ -217,7 +217,7 @@ Host datanode3
         
    ```
    
-   > tar zxvf ~/hadoop_installation/hadoop-* -C ~/hadoop_home
+  tar zxvf ~/hadoop_installation/hadoop-* -C ~/hadoop_home
 	
    ```
  
@@ -236,7 +236,7 @@ export HADOOP_CONF_DIR=/home/ubuntu/hadoop_home/hadoop-2.9.1/etc/hadoop
   
 ```
         
-> ~/.profile
+ ~/.profile
 	
 ```
      
@@ -328,35 +328,32 @@ The nodemanager process needs to be started in all the slave machines.
      
    [INFO] Diagnostics: No space available in any of the local directories.
      
-   To resolve this issue,find the filesystem to which hadoop.temp.dir is mapped to:
-       
-    ```
-    df /home/ubuntu/hadoop_home/hadoop-2.9.1/hadoop_tmp 
+    1. To resolve this issue,find the filesystem to which hadoop.temp.dir is mapped to by thr below command:
+         df /home/ubuntu/hadoop_home/hadoop-2.9.1/hadoop_tmp 
+       This will show the below ext4 filesystem:
+         /dev/xvda1
     
-    will show the below ext4 filesystem:
-    /dev/xvda1
-    
-     df -h will show the space available in the above file system.If it is nearly full,then take more volume for the EC2
+    2. df -h will show the space available in the above file system.If it is nearly full,then take more volume for the EC2
      instances by following the below steps:
        
-    1.On the left side in Elastic Block Store,go to Volumes.Add the number of volumne required(another 8GB) to all the instances.
+    3. On the left side in Elastic Block Store,go to Volumes.Add the number of volumne required(another 8GB) to all the instances.
           All this will be mapped to the drive /dev/xvda.
           
-    2.Login to putty of the machines and run lsblk.This will show something like below:
+    4. Login to putty of the machines and run lsblk.This will show something like below:
            xvda    202:0    0   16G  0 disk
             └─xvda1 202:1    0   8G  0 part /
             
-    3. Increase the partition size of xvda1
+    5. Increase the partition size of xvda1
             growpart /dev/xvda 1
            
-    4. Resize the filesystem:
+    6. Resize the filesystem:
            resize2fs /dev/xvda1
            
-    5. Do lsblk and confirm the partition size.It should be something like below:
+    7. Do lsblk and confirm the partition size.It should be something like below:
            xvda    202:0    0   16G  0 disk
             └─xvda1 202:1    0   16G  0 part /
            
-    6. Do df -h and confirm that the space allocated to the filesystem /dev/xvda1 is increased by 8GB.
+    8. Do df -h and confirm that the space allocated to the filesystem /dev/xvda1 is increased by 8GB.
        
     ![Adding Volumes in EC2 instances ](images/Adding_volumes.png){#fig:Adding volume to EC2 instances}
 
@@ -370,78 +367,84 @@ The nodemanager process needs to be started in all the slave machines.
    
    The following section describes the installation and configuration of Hive on Hadoop cluster.
    
- :o: use proper markdown
+   **Motivation:**
 
-   ### Motivation
-
- Hive provides a datawarehousing solution on hadoop and can be used to do computation on data which is of relational format.This has
- a great use case in industries where most of the data are in relational format in legacy systems and are archived in disks.
+ Hive provides a datawarehousing solution on hadoop and can be used to do computation on data which is of relational format.T
+ his has a great use case in industries where most of the data are in relational format in legacy systems and are archived in disks.
  When there is a business use case to bring such data on a Big Data Platform and do some analytics on them,then Hive comes as the 
- first choice of platform.Hive can run on multiple execution engines and can be integrated with Spark so that the underlying computation   engine is Spark and not mapreduce.This increases the performance of hive queries greatly.Tez is another execution engine of choice  with Hive.Both have an advantage over map reduce that they do the computation of data in memory by creating immutable datasets and do not write the intermediate query outputs to the hdfs like mapreduce.This saves lot of Physical I/O and makes the processing much faster.
+ first choice of platform.Hive can run on multiple execution engines and can be integrated with Spark so that the underlying 
+ computation engine is Spark and not mapreduce.This increases the performance of hive queries greatly.Tez is another execution 
+ engine of choice  with Hive.Both have an advantage over map reduce that they do the computation of data in memory by creating 
+ immutable datasets and do not write the intermediate query outputs to the hdfs like mapreduce.This saves lot of Physical I/O 
+ and makes the processing much faster.
  
-  ### Software
+  **Software:**
  
   Hive-2.3,Derby 10.4.2
   
-  ### Installation
+  **Installation steps:**
 
-  i. Download and Install Hive 2.3 which is compatible with Hadoop 2.9 only in the master machine.
+  1. Download and Install Hive 2.3 which is compatible with Hadoop 2.9 only in the master machine.
       
-     :o: use proper markdown
-
-      ```bash
+     ```
+      
       wget https://www-us.apache.org/dist/hive/hive-2.3.3/apache-hive-2.3.3-bin.tar.gz -P ~/hive_installation
+      
       ```
    
-  ii. Uncompress the tar file in a directory $HIVE_HOME
+  2. Uncompress the tar file in a directory $HIVE_HOME
       
-      ```bash
-      tar zxvf ~/hive_installation/apache-hive-* -C ~/hive_home
       ```
       
-  iii. Set up the env variables in all the .profile and .bashrc of all the servers
+      tar zxvf ~/hive_installation/apache-hive-* -C ~/hive_home
       
-        :o: use proper markdown
-
-      ```bash
+      ```
+      
+  3. Set up the env variables in all the .profile and .bashrc of all the servers
+      
+       ```
       export HIVE_HOME=/home/ubuntu/hive_home/apache-hive-2.3.3-bin
       export PATH=$PATH:$HIVE_HOME/bin
       export HIVE_CONF_DIR=/home/ubuntu/hive_home/apache-hive-2.3.3-bin/conf
       export CLASSPATH=$CLASSPATH:/home/ubuntu/hive_home/apache-hive-2.3.3-bin/lib/*:.
+     
       ```
       
-   iv.Download and Install derby database for the metadatastore of hive
+   4. Download and Install derby database for the metadatastore of hive
       
-      ```bash
+      ```
       wget http://archive.apache.org/dist/db/derby/db-derby-10.4.2.0/db-derby-10.4.2.0-bin.tar.gz
       tar zxvf db-derby-10.4.2.0-bin.tar.gz -C ~/derby_home
+      
       ```
       
-   v. Set up the env variables for Derby in .bashrc and .profile
+   5. Set up the env variables for Derby in .bashrc and .profile
       
-      ```bash
+      ```
+      
       export DERBY_HOME=/home/ubuntu/derby_home/db-derby-10.4.2.0-bin
       export PATH=$PATH:$DERBY_HOME/bin
       export CLASSPATH=$CLASSPATH:$DERBY_HOME/lib/derby.jar:$DERBY_HOME/lib/derbytools.jar
+
       ```
       
-   vi. Load profile in all the servers
+   6. Load profile in all the servers
 
-       :o: use proper markdown
-	
-        ```bash
+      ```
 	~/.profile
-	```
+	
+      ```
         
-   vii. Initialize the schema in derby in $HIVE_HOME folder.This will create a metastore_db directory which is the database
-         directory and will be loaded in memory.
+   7. Initialize the schema in derby in $HIVE_HOME folder.This will create a metastore_db directory which is the database
+      directory and will be loaded in memory.
          
-         ```bash
-	 cd $HIVE_HOME
-	 schematool -dbType derby -initSchema
+        ```
+       cd $HIVE_HOME
+       schematool -dbType derby -initSchema
+	 
 	 ```
 	
-:o: use proper markdown
+
 	
    ### Running Hive
 
