@@ -452,18 +452,17 @@ The nodemanager process needs to be started in all the slave machines.
 	
      ```
         
-   2. Start the hive terminal by typing command hive
+  2. Start the hive terminal by typing command hive
          
-	 ```
-	 hive
+      ```
+       hive
 	 
-	 ```
+      ```
          
-   3. Create an external table in hive pointing to the file in hdfs:
+ 3. Create an external table in hive pointing to the file in hdfs:
          
         ```
-	 
-	 create external table if not exists insurance_data_1(
+        create external table if not exists insurance_data_1(
          policyID int,
          statecode char(2),
          county string,
@@ -491,9 +490,9 @@ The nodemanager process needs to be started in all the slave machines.
 	
 	```
          
-   4. Run a query in hive to count the number of policies:
+  4. Run a query in hive to count the number of policies:
         
-	  ```
+	 ```
           select count(policyID) from insurance_data_1;
 	  
 	  ```
