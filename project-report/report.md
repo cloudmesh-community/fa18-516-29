@@ -250,65 +250,64 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 	  
 **Hadoop configuration for a 8GB(Memory) node cluster:**
       
-:o: use proper markdown
-      
-      This is the configuration for T2.large instances.
-        
-         filename          config key                          value in mb
+This is the configuration for T2.large instances.
+
+```
+
+filename          config key                          value in mb
          
-         mapred-site.xml   yarn.app.mapreduce.am.resource.mb    2048
-         mapred-site.xml   mapreduce.map.memory.mb              1024
-         mapred-site.xml   mapreduce.reduce.memory.mb           1024
-         yarn-site.xml     yarn.nodemanager.resource.memory-mb  6144
-         yarn-site.xml     yarn.scheduler.maximum-allocation-mb 6144
-         yarn-site.xml     yarn.scheduler.minimum-allocation-mb 1024
+mapred-site.xml   yarn.app.mapreduce.am.resource.mb    2048
+mapred-site.xml   mapreduce.map.memory.mb              1024
+mapred-site.xml   mapreduce.reduce.memory.mb           1024
+yarn-site.xml     yarn.nodemanager.resource.memory-mb  6144
+yarn-site.xml     yarn.scheduler.maximum-allocation-mb 6144
+yarn-site.xml     yarn.scheduler.minimum-allocation-mb 1024
 
-:o: use proper markdown
+```
 
-  ###  Hadoop Namenode Format:
-
-:o: use proper markdown
-
-	  After configuring the config files,format the namenode:
+**Hadoop Namenode Format:**
+After configuring the config files,format the namenode:
           
-	  ```bash
-          hdfs namenode -format  (Format resets the namenode and should only be done once in the lifetime of a cluster)
-	  ```
-:o: use proper markdown
+```
+hdfs namenode -format  (Format resets the namenode and should only be done once in the lifetime of a cluster)
 	  
-  ### Start the Hadoop deamons:
-      
-:o: use proper markdown
-      
-        On Namenode:
-	
-	 ```bash
-         $HADOOP_HOME/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs start namenode
-         $HADOOP_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start resourcemanager
-         $HADOOP_HOME/sbin/mr-jobhistory-daemon.sh --config $HADOOP_CONF_DIR start historyserver
-	 ```
-         The above 3 deamons will run on the Master node.
-         
-        On DataNode1:
-	
-	```bash
-         $HADOOP_HOME/sbin/hadoop-daemons.sh --config $HADOOP_CONF_DIR --script hdfs start datanode
-	 ```
-         The datanode process just needs to be started in 1 slave machine DataNode1.This will start the process in another 
-         datanodes on its own through ssh connection.
-         
-        On DataNode1,DataNode2,DataNode3:
-	
-	 ```bash
-         $HADOOP_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start nodemanager
-	 ```
-         The nodemanager process needs to be started in all the slave machines.
+```
 
-:o: use proper markdown
+	  
+ **Start the Hadoop deamons by running the following commands:**
+ 
+ Namenode:
+	
+```
+$HADOOP_HOME/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs start namenode
+$HADOOP_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start resourcemanager
+$HADOOP_HOME/sbin/mr-jobhistory-daemon.sh --config $HADOOP_CONF_DIR start historyserver
 	 
-   ### Creating directories in file system:
+```
+ The above 3 deamons will run on the Master node.
+         
+ DataNode1:
+	
+```
+$HADOOP_HOME/sbin/hadoop-daemons.sh --config $HADOOP_CONF_DIR --script hdfs start datanode
+	 
+```
+The datanode process just needs to be started in 1 slave machine DataNode1.This will start the process in another 
+datanodes on its own through ssh connection.
+         
+DataNode1,DataNode2,DataNode3:
+	
+```
+$HADOOP_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start nodemanager
+	 
+```
+The nodemanager process needs to be started in all the slave machines.
+
+
+	 
+**Creating directories in file system:**
         
-         hadoop fs -mkdir /user/externaltables/testdata
+  hadoop fs -mkdir /user/externaltables/testdata
          hadoop fs -copyFromLocal /home/ubuntu/datafiles/testfile /user/externaltables/testdata/testfile
 
 :o: use proper markdown
