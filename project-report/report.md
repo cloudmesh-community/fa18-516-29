@@ -487,12 +487,10 @@ The nodemanager process needs to be started in all the slave machines.
          stored as textfile
          location '/user/externaltables/insurancedata/';
 	 
-	
 	```
-         
-  4. Run a query in hive to count the number of policies:
+ 4. Run a query in hive to count the number of policies:
         
-	 ```
+	  ```
           select count(policyID) from insurance_data_1;
 	  
 	  ```
