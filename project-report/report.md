@@ -519,20 +519,18 @@ The nodemanager process needs to be started in all the slave machines.
 	
    **Installation steps:**
 
-   1. Download and install spark 2.3.2.
+  1. Download and install spark 2.3.2.
+ 
+     ```
+     wget https://www-eu.apache.org/dist/spark/spark-2.3.2/spark-2.3.2-bin-hadoop2.7.tgz -P ~/spark_installation
 	
-	```
-    	wget https://www-eu.apache.org/dist/spark/spark-2.3.2/spark-2.3.2-bin-hadoop2.7.tgz -P ~/spark_installation
-	
-	```
+     ```
     
-   2. Untar the zip file in SPARK_HOME
-	
-	```
-     	
-        tar zxvf spark-2.3.2-bin-hadoop2.7.tgz -C ~/spark_home
-	
-	```
+  2. Untar the zip file in SPARK_HOME
+
+     ```
+     tar zxvf spark-2.3.2-bin-hadoop2.7.tgz -C ~/spark_home
+     ```
      
    3. set the env variables in .profile and .bashrc
 
