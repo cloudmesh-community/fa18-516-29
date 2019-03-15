@@ -599,45 +599,41 @@ The nodemanager process needs to be started in all the slave machines.
       
       ```
   
-  
-   2. Do the following configurations in hive-site.xml(For a 8GB memory node):
+  2. Do the following configurations in hive-site.xml(For a 8GB memory node):
        
-       :o: use proper markdown
-
+      ```
        hive.execution.engine=spark
        spark.master=yarn-cluster
        spark.eventLog.enabled=TRUE
        spark.eventLog.dir=file:///home/ubuntu/hive_home/apache-hive-2.3.3-bin/spark_logs
        spark.executor.memory=4g
        spark.yarn.executor.memoryOverhead=750	
-       spark.serializer=org.apache.spark.serializer.KryoSerializer	 
+       spark.serializer=org.apache.spark.serializer.KryoSerializer
+       
 
   3. Configure yarn-site.xml with the Fair Scheduler:
 
-     :o: use proper markdown
-
+     ```
      yarn.resourcemanager.scheduler.class=org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler
 
 
- ### Running Hive on Spark:	  
+ **Running Hive on Spark:**	  
 	  
-      1. Create directories in HDFS for storing Hive data as an external table
-     
-     	:o: use proper markdown
-
-        hadoop fs -mkdir /user/externaltables/insurancedata
-        hadoop fs -copyFromLocal insurance_datafile /user/externaltables/insurancedata/
-        
-      2. Start the hive terminal by typing command Hive
+   1. Create directories in HDFS for storing Hive data as an external table
       
-      	 :o: use proper markdown
-
-         hive
+      ```
+      hadoop fs -mkdir /user/externaltables/insurancedata
+      hadoop fs -copyFromLocal insurance_datafile /user/externaltables/insurancedata/
+        
+   2. Start the hive terminal by typing command Hive
+      
+      ```
+       hive
+       ```
          
-      3. Create an External table in Hive pointing to the file in HDFS:
+   3. Create an External table in Hive pointing to the file in HDFS:
          
-	 :o: use proper markdown
-
+      ```
          create external table if not exists insurance_data_1(
          policyID int,
          statecode char(2),
@@ -663,19 +659,16 @@ The nodemanager process needs to be started in all the slave machines.
          stored as textfile
          location '/user/externaltables/insurancedata/';
          
-       4. Run a query in debug mode to count the number of policies:
+   4. Run a query in debug mode to count the number of policies:
        
-       :o: use proper markdown
-
-           hive --hiveconf hive.root.logger=DEBUG,console -e "select count(policyID) from insurance_data_1"
+       ```
+        hive --hiveconf hive.root.logger=DEBUG,console -e "select count(policyID) from insurance_data_1"
 	  
-	5. We can see the spark jobs being launched on the web ui:
+   5. We can see the spark jobs being launched on the web ui:
 
-	   :o: use proper markdown
-	
-	   http://ec2-52-24-204-101.us-west-2.compute.amazonaws.com:4040
+      http://ec2-52-24-204-101.us-west-2.compute.amazonaws.com:4040
 
-:o: use proper markdown sections must start to left
+
 
    ## Comparison of Data processing between traditional Mapreduce and Spark
    
