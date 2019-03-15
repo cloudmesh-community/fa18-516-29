@@ -532,29 +532,27 @@ The nodemanager process needs to be started in all the slave machines.
      tar zxvf spark-2.3.2-bin-hadoop2.7.tgz -C ~/spark_home
      ```
      
-   3. set the env variables in .profile and .bashrc
+  3. set the env variables in .profile and .bashrc
 
+     ```
+      export SPARK_HOME=/home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7
+      export PATH=$PATH:$SPARK_HOME/bin
+      export SPARK_CONF_DIR=/home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7/conf
 	
-        ```
-	  export SPARK_HOME=/home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7
-          export PATH=$PATH:$SPARK_HOME/bin
-          export SPARK_CONF_DIR=/home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7/conf
-	 
-	```
+     ```
 	 
    **Spark configuration in spark-defaults.conf for a 8GB(memory) node**
    
-    ```
-
-        spark.master                     yarn
-        spark.executor.memory            4g
-        spark.eventLog.enabled           false
-        spark.serializer                 org.apache.spark.serializer.KryoSerializer
-        spark.yarn.executor.memoryOverhead 750m
-        spark.yarn.submit.file.replication 1
-        spark.yarn.stagingDir  /home/ubuntu/yarnstage
-        spark.yarn.historyServer.address ${hadoopconf-yarn.resourcemanager.hostname}:18080
-        spark.dynamicAllocation.enabled false
+      ```
+      spark.master                     yarn
+      spark.executor.memory            4g
+      spark.eventLog.enabled           false
+      spark.serializer                 org.apache.spark.serializer.KryoSerializer
+      spark.yarn.executor.memoryOverhead 750m
+      spark.yarn.submit.file.replication 1
+      spark.yarn.stagingDir  /home/ubuntu/yarnstage
+      spark.yarn.historyServer.address ${hadoopconf-yarn.resourcemanager.hostname}:18080
+      spark.dynamicAllocation.enabled false
 	
 We have to keep the executor memory + overhead less than the one allocated to the yarn.scheduler.maximum-allocation-mb
 
