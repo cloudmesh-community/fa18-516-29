@@ -678,38 +678,40 @@ The nodemanager process needs to be started in all the slave machines.
 
    ## Comparison of Data processing between traditional Mapreduce and Spark
    
-   ### Introduction
-   
-The following section describes the performance comparison of a wordcount program between the Mapreduce and Spark engine on 
-the 4 node cluster which we have installed:
+   **Introduction:**
+    The following section describes the performance comparison of a wordcount program between the Mapreduce 
+    and Spark engine on the 4 node cluster which we have installed:
 
-   ### Motivation
+   **Motivation:**
+   We have completed the process of building up a 4 node cluster in Hadoop,Hive and Spark.Now,we can run wordcount 
+   mapreduce program on files of different sizes and can check the completion time of the job when submitted in spark 
+   and mapreduce seperately.
 
-We have completed the process of building up a 4 node cluster in Hadoop,Hive and Spark.Now,we can run wordcount mapreduce program
-on files of different sizes and can check the completion time of the job when submitted in spark and mapreduce seperately.
+   **Running the jobs and comparing the output:**
 
-   ### Running the jobs and comparing the output:
+   1. Run the below mapreduce jobs
 
-i. Run the below mapreduce jobs
+   ```
+   yarn jar hadoop-mapreduce-examples-2.9.1.jar wordcount /user/externaltables/testdata1/testfile1 /user/logs1
+   yarn jar hadoop-mapreduce-examples-2.9.1.jar wordcount /user/externaltables/testdata2/testfile2 /user/logs2
+   yarn jar hadoop-mapreduce-examples-2.9.1.jar wordcount /user/externaltables/testdata3/testfile3 /user/logs3
+   ```
 
-:o: use proper markdown
+2. Run the below Spark jobs
 
-yarn jar hadoop-mapreduce-examples-2.9.1.jar wordcount /user/externaltables/testdata1/testfile1 /user/logs1
-yarn jar hadoop-mapreduce-examples-2.9.1.jar wordcount /user/externaltables/testdata2/testfile2 /user/logs2
-yarn jar hadoop-mapreduce-examples-2.9.1.jar wordcount /user/externaltables/testdata3/testfile3 /user/logs3
+  ```
+  spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCount 
+  $SPARK_HOME/examples/jars/spark-examples_2.11-2.3.2.jar /user/externaltables/testdata1/testfile1
+ 
+  spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCount 
+  $SPARK_HOME/examples/jars/spark-examples_2.11-2.3.2.jar /user/externaltables/testdata2/testfile2
+  
+  spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCount
+  $SPARK_HOME/examples/jars/spark-examples_2.11-2.3.2.jar /user/externaltables/testdata3/testfile3
 
-ii. Run the below Spark jobs
+  ```
 
-:o: use proper markdown
-
-spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCount $SPARK_HOME/examples/jars/spark-examples_2.11-2.3.2.jar /user/externaltables/testdata1/testfile1
-spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCount $SPARK_HOME/examples/jars/spark-examples_2.11-2.3.2.jar /user/externaltables/testdata2/testfile2
-spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCount $SPARK_HOME/examples/jars/spark-examples_2.11-2.3.2.jar /user/externaltables/testdata3/testfile3
-
-:o: fix spaceing by removing some or better put in markdown table.
-
-```
-Benchmark Data:
+ 3.Benchmark Data:
  
  Filename          FileSize                        mapreduce completion time                               spark completion time
 
