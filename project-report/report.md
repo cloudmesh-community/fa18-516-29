@@ -543,16 +543,16 @@ The nodemanager process needs to be started in all the slave machines.
 	 
    **Spark configuration in spark-defaults.conf for a 8GB(memory) node**
    
-      ```
-      spark.master                     yarn
-      spark.executor.memory            4g
-      spark.eventLog.enabled           false
-      spark.serializer                 org.apache.spark.serializer.KryoSerializer
-      spark.yarn.executor.memoryOverhead 750m
-      spark.yarn.submit.file.replication 1
-      spark.yarn.stagingDir  /home/ubuntu/yarnstage
-      spark.yarn.historyServer.address ${hadoopconf-yarn.resourcemanager.hostname}:18080
-      spark.dynamicAllocation.enabled false
+       ```
+      spark.master                         yarn
+      spark.executor.memory                4g
+      spark.eventLog.enabled               false
+      spark.serializer                     org.apache.spark.serializer.KryoSerializer
+      spark.yarn.executor.memoryOverhead   750m
+      spark.yarn.submit.file.replication    1
+      spark.yarn.stagingDir                /home/ubuntu/yarnstage
+      spark.yarn.historyServer.address     ${hadoopconf-yarn.resourcemanager.hostname}:18080
+      spark.dynamicAllocation.enabled      false
 	
 We have to keep the executor memory + overhead less than the one allocated to the yarn.scheduler.maximum-allocation-mb
 
