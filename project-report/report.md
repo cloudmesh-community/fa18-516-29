@@ -135,7 +135,7 @@ Host datanode3
 2. Copy the keyfile received from aws in the `~/.ssh` folder of all the instances from the local machine through winscp.
          
   ```
- > ~/.ssh/client-keypair.pem
+  ~/.ssh/client-keypair.pem
 
   ```
 	   
@@ -147,7 +147,7 @@ Host datanode3
           
 ```
 
-> ssh-keygen -f ~/.ssh/id_rsa -t rsa -P ""
+ssh-keygen -f ~/.ssh/id_rsa -t rsa -P ""
  
 ```
 
@@ -156,7 +156,7 @@ Host datanode3
            
 ```
 
-> cat ~/.ssh/sshkey_rsa.pub >> ~/.ssh/authorized_keys
+cat ~/.ssh/sshkey_rsa.pub >> ~/.ssh/authorized_keys
 
 ```
 	   
@@ -387,15 +387,13 @@ The nodemanager process needs to be started in all the slave machines.
   1. Download and Install Hive 2.3 which is compatible with Hadoop 2.9 only in the master machine.
       
      ```
+     wget https://www-us.apache.org/dist/hive/hive-2.3.3/apache-hive-2.3.3-bin.tar.gz -P ~/hive_installation
       
-      wget https://www-us.apache.org/dist/hive/hive-2.3.3/apache-hive-2.3.3-bin.tar.gz -P ~/hive_installation
-      
-      ```
+     ```
    
   2. Uncompress the tar file in a directory $HIVE_HOME
       
       ```
-      
       tar zxvf ~/hive_installation/apache-hive-* -C ~/hive_home
       
       ```
@@ -421,7 +419,6 @@ The nodemanager process needs to be started in all the slave machines.
    5. Set up the env variables for Derby in .bashrc and .profile
       
       ```
-      
       export DERBY_HOME=/home/ubuntu/derby_home/db-derby-10.4.2.0-bin
       export PATH=$PATH:$DERBY_HOME/bin
       export CLASSPATH=$CLASSPATH:$DERBY_HOME/lib/derby.jar:$DERBY_HOME/lib/derbytools.jar
@@ -431,7 +428,7 @@ The nodemanager process needs to be started in all the slave machines.
    6. Load profile in all the servers
 
       ```
-	~/.profile
+      ~/.profile
 	
       ```
         
@@ -439,29 +436,34 @@ The nodemanager process needs to be started in all the slave machines.
       directory and will be loaded in memory.
          
         ```
-       cd $HIVE_HOME
-       schematool -dbType derby -initSchema
+        cd $HIVE_HOME
+        schematool -dbType derby -initSchema
+	 
+        ```
+	
+
+	
+   **Running Hive:**
+
+     1. Create directories in HDFS for hive tables:
+     
+        ```
+	hadoop fs -mkdir /user/externaltables/insurancedata
+        hadoop fs -copyFromLocal insurance_datafile /user/externaltables/insurancedata/
+	
+	```
+        
+     2. Start the hive terminal by typing command hive
+         
+	 ```
+	 hive
 	 
 	 ```
-	
-
-	
-   ### Running Hive
-
-     i. Create directories in HDFS for hive tables:
-     
-        hadoop fs -mkdir /user/externaltables/insurancedata
-        hadoop fs -copyFromLocal insurance_datafile /user/externaltables/insurancedata/
-        
-     ii. Start the hive terminal by typing command hive
          
-	 	hive
+     3. Create an external table in hive pointing to the file in hdfs:
          
-     iii. Create an external table in hive pointing to the file in hdfs:
-         
-         :o: use proper markdown
-	 
-         create external table if not exists insurance_data_1(
+        ```
+	 create external table if not exists insurance_data_1(
          policyID int,
          statecode char(2),
          county string,
@@ -485,18 +487,20 @@ The nodemanager process needs to be started in all the slave machines.
          fields terminated by ','
          stored as textfile
          location '/user/externaltables/insurancedata/';
+	 
+	```
          
-       iv. Run a query in hive to count the number of policies:
-       
+       4. Run a query in hive to count the number of policies:
+        
+	  ```
           select count(policyID) from insurance_data_1;
+	  
+	  ```
 
-:o: use proper markdown
+  ## Spark Installation and Configuration in a Multi node Hadoop Cluster
 
-   ## Spark Installation and Configuration in a Multi node Hadoop Cluster
 
-:o: use proper markdown
-
-   ### Introduction:
+   **Introduction:**
  	The following section describes the installation and configuration of Spark on Hadoop cluster.
 
 :o: use proper markdown
