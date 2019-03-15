@@ -442,27 +442,24 @@ The nodemanager process needs to be started in all the slave machines.
         ```
 	
 
-	
-   **Running Hive:**
+**Running Hive:**
 
-     1. Create directories in HDFS for hive tables:
+  1. Create directories in HDFS for hive tables:
      
-        ```
+     ```
+      hadoop fs -mkdir /user/externaltables/insurancedata
+      hadoop fs -copyFromLocal insurance_datafile /user/externaltables/insurancedata/
 	
-	hadoop fs -mkdir /user/externaltables/insurancedata
-        hadoop fs -copyFromLocal insurance_datafile /user/externaltables/insurancedata/
-	
-	```
+     ```
         
-     2. Start the hive terminal by typing command hive
+   2. Start the hive terminal by typing command hive
          
 	 ```
-	 
 	 hive
 	 
 	 ```
          
-     3. Create an external table in hive pointing to the file in hdfs:
+   3. Create an external table in hive pointing to the file in hdfs:
          
         ```
 	 
@@ -494,11 +491,10 @@ The nodemanager process needs to be started in all the slave machines.
 	
 	```
          
-       4. Run a query in hive to count the number of policies:
+   4. Run a query in hive to count the number of policies:
         
 	  ```
-          
-	  select count(policyID) from insurance_data_1;
+          select count(policyID) from insurance_data_1;
 	  
 	  ```
 
