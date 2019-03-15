@@ -197,54 +197,56 @@ Host datanode3
   
   ```
    
-   ii. Install Java version8 in all the servers:
+ 2. Install Java version8 in all the servers:
         
-	```bash
-	$ sudo apt install openjdk-8-jdk
-	```
-    
-   iii. Download and install Hadoop 2.9 on all the servers:
-   
-       ```bash
-       $ wget http://apache.mirrors.tds.net/hadoop/common/hadoop-2.9.1/hadoop-2.9.1.tar.gz -P ~/hadoop_installation
-       ```
-    
-   iv. Uncompress the tar file in any directory called hadoop_home:
-        
-	```bash
-	$ tar zxvf ~/hadoop_installation/hadoop-* -C ~/hadoop_home
-	```
- 
-   v. set up the env variables in the .profile and .bashrc of all the servers:
- 
-      :o: use proper markdown
+   ```bash
 
-        ```bash
-	export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-        export PATH=$PATH:$JAVA_HOME/bin
-        export HADOOP_HOME=/home/ubuntu/hadoop_home/hadoop-2.9.1
-        export PATH=$PATH:$HADOOP_HOME/bin
-        export HADOOP_CONF_DIR=/home/ubuntu/hadoop_home/hadoop-2.9.1/etc/hadoop
-	```
+   > sudo apt install openjdk-8-jdk
+	
+   ```
+    
+ 3. Download and install Hadoop 2.9 on all the servers:
    
-   vi. Load profile in all the instances:
+   ```bash
+   
+   > wget http://apache.mirrors.tds.net/hadoop/common/hadoop-2.9.1/hadoop-2.9.1.tar.gz -P ~/hadoop_installation
+      
+   ```
+    
+ 4. Uncompress the tar file in any directory called hadoop_home:
+        
+   ```bash
+   
+   > tar zxvf ~/hadoop_installation/hadoop-* -C ~/hadoop_home
+	
+   ```
+ 
+ 5. set up the env variables in the .profile and .bashrc of all the servers:
+ 
+```bash
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export PATH=$PATH:$JAVA_HOME/bin
+export HADOOP_HOME=/home/ubuntu/hadoop_home/hadoop-2.9.1
+export PATH=$PATH:$HADOOP_HOME/bin
+export HADOOP_CONF_DIR=/home/ubuntu/hadoop_home/hadoop-2.9.1/etc/hadoop
+
+```
+   
+ 6. Load profile in all the instances:
   
-       :o: use proper markdown
-
-   
-        ```bash
-        $ ~/.profile
-	```
+```bash
+        
+> ~/.profile
+	
+```
      
-   vii. Change the hadoop-env.sh in $HADOOP_HOME/etc/hadoop in all the instances to add the below line for JAVA_HOME:
+ 7. Change the hadoop-env.sh in $HADOOP_HOME/etc/hadoop in all the instances to add the below line for JAVA_HOME:
 
-        :o: use proper markdown
+```bash
 
-	  ```bash
-	 $  export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-	  ```
-
-:o: use proper markdown
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+	  
+```
 	  
   ### Hadoop configuration for a 8GB(Memory) node cluster:
       
