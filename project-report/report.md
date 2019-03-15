@@ -88,11 +88,11 @@ and initially 16GB of physical storage.This configuration is fine for doing the 
 ![4 node cluster on AWS EC2](images/EC2_instances.png){#fig:1 Namenode and 3 Datanodes in AWS EC2}
 
 
-### Memory and Disk Requirements:
+**Memory and Disk Requirements:**
 
 In AWS,create 4 EC2 instances of type T2.large by following the guidelines given in EC2 manual of how to create an instance.The T2 large instance has 8GB of RAM.In order to launch containers in Hadoop and Spark on a yarn cluster,we found that 4GB of memory in the nodes is the mimimum required.If the memory is below this limit,the Application Master on the slave nodes will not start and the jobs will always be in ACCEPTED state.They will never get allocated to the Application master in slave nodes by the Resource Manager running in master node due to lack of resources.In this scenario also we have to specify the memory configurations in yarn-site.xml and mapreduce-site.xml for each process as Hadoop defaults do not work properly if the memory is less than 8GB.So, we chose to start with T2.large instances where the memory is 8GB.The physical storage of EC2 instances is 16GB and everything is mapped to the drive /dev/xvda.There are few challenges here as there are a lot of log files and local intermediate data which gets written in the datanodes when a mapreduce or spark job runs and this space also gets used up quickly.In our experiment,we found that atleast 11GB of physical storage was needed to start the containers which can get used up as more and more map reduce job runs.So,we chose to add more volume to T2.large instance in the physical storage whenever the space was getting full.This is feasible as EC2 instances have EBS storage and volume can be added on the fly.
 
-### Configuring Elastic Ips for the instances:
+**Configuring Elastic Ips for the instances:**
 
 After allocating 4 instances,1 Namenode and 3 DataNodes of type T2.large,go to the Network and Security section of the EC2 Management console and allocate 4 new Elastic IPs from the IPv4 address pool.After this IP is allocated,map these IPs to the instances.This is important as the IPs in cloud are dynamic and change whenever we stop our machines.So,the set up will not work when we restart the instances again.Inorder to avoid this issue,we first allocate Elastic Ips to our instances.
 
@@ -100,12 +100,12 @@ After allocating 4 instances,1 Namenode and 3 DataNodes of type T2.large,go to t
 ![AWS EC2 Elastic IP](images/Elastic_IPs.png){#fig:Elastic IP allocation for AWS EC2 instances}
 
 
-### Configuring ssh connection between the client machine and EC2 instances:
+**Configuring ssh connection between the client machine and EC2 instances:**
 
 The first step after creating EC2 ubuntu instances is to arrange for login through putty.For this,get the client-keypair.pem file from AWS while creating instances.Use Putty keygen feature to generate .ppk file from the .pem file for an SSH connection.Add .ppk file in SSH Auth session of the all the nodes and save the session information in putty.Now,we can login in the instances with username ubuntu.
 
 
-### Configuring passwordless ssh communication between the instances:
+**Configuring passwordless ssh communication between the instances:**
 
 The following are the steps to configure passwordless ssh between the master and slave nodes.
 
@@ -185,19 +185,17 @@ Host datanode3
    
 ## Hadoop Installation and Configuration
 
-
-
-   ### Installation steps:
-
-:o: use proper markdown
-
-(Everything is done when logged in as user ubuntu)
+**Installation steps:**
+ 
+ Below are the installation steps for Hadoop.Everything is done when logged in as user ubuntu.
    
-   i. Before starting the installation,update all the servers as a good practice by the command:
+1.Before starting the installation,update all the servers as a good practice by the command:
    
-        ```bash
-	$ sudo apt-get update
-	```
+  ```bash
+  
+  > sudo apt-get update
+  
+  ```
    
    ii. Install Java version8 in all the servers:
         
