@@ -76,12 +76,12 @@ The project describes what are the minimum configurations required for a multi n
 ## Instance configurations and passwordless ssh set up
 
 
-### Motivation:
+**Motivation:** 
 Before setting up a Hadoop cluster,it is important to set up connection between our client machine and the EC2 instances as 
 well as passwordless ssh communication between the EC2 instances.Also,the IP of EC2 instances changes whenever we restart the servers.Since,we will need to stop and restart the machines only when we are using them,it is important to set up Elastic IPs for these instances,which do not change on restart else our passwordless ssh connection set up will not work.
 
 
-### Cluster Planning:
+**Cluster Planning:**
 We will set up a 4 node Hadoop cluster with 1 node as master and 3 as slaves.Each instance is T2.large type and has 8 GB of memory
 and initially 16GB of physical storage.This configuration is fine for doing the initial cluster set up and running some map reduce jobs for testing purpose,but definitely will not work for large datasets.For a substantial amount of data transfer,one should go for T2.Xlarge instances which have 16GB of memory and initially 32 GB of physical storage.The only downside is that it will be expensive to own 4 such large instances in EC2 for a developer.
 
@@ -183,9 +183,9 @@ Host datanode3
    
 
    
-   ## Hadoop Installation and Configuration
+## Hadoop Installation and Configuration
 
-:o: use proper markdown
+
 
    ### Installation steps:
 
