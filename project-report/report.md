@@ -448,6 +448,7 @@ The nodemanager process needs to be started in all the slave machines.
      1. Create directories in HDFS for hive tables:
      
         ```
+	
 	hadoop fs -mkdir /user/externaltables/insurancedata
         hadoop fs -copyFromLocal insurance_datafile /user/externaltables/insurancedata/
 	
@@ -456,6 +457,7 @@ The nodemanager process needs to be started in all the slave machines.
      2. Start the hive terminal by typing command hive
          
 	 ```
+	 
 	 hive
 	 
 	 ```
@@ -463,6 +465,7 @@ The nodemanager process needs to be started in all the slave machines.
      3. Create an external table in hive pointing to the file in hdfs:
          
         ```
+	 
 	 create external table if not exists insurance_data_1(
          policyID int,
          statecode char(2),
@@ -488,12 +491,14 @@ The nodemanager process needs to be started in all the slave machines.
          stored as textfile
          location '/user/externaltables/insurancedata/';
 	 
+	
 	```
          
        4. Run a query in hive to count the number of policies:
         
 	  ```
-          select count(policyID) from insurance_data_1;
+          
+	  select count(policyID) from insurance_data_1;
 	  
 	  ```
 
