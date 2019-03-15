@@ -554,52 +554,50 @@ The nodemanager process needs to be started in all the slave machines.
       spark.yarn.historyServer.address     ${hadoopconf-yarn.resourcemanager.hostname}:18080
       spark.dynamicAllocation.enabled      false
 	
-We have to keep the executor memory + overhead less than the one allocated to the yarn.scheduler.maximum-allocation-mb
+  We have to keep the executor memory + overhead less than the one allocated to the yarn.scheduler.maximum-allocation-mb
 
 
 
-   ### Running Spark:
+   **Running Spark:**
     
-    :o: use proper markdown
-
-    Test that spark is getting launched through yarn by running the spark wordcount job in client mode.
+ Test that spark is getting launched through yarn by running the spark wordcount job in client mode.
    
-   ```bash
-   spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCount $SPARK_HOME/examples/jars/spark-examples_2.11-  2.3.2.jar /user/externaltables/testdata/testfile
+   ```
+   spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCount 
+   $SPARK_HOME/examples/jars/spark-examples_2.11-2.3.2.jar /user/externaltables/testdata/testfile
+   
    ```
    
-   :o: use proper markdown
-
    ## Integration of Hive with Spark
 
-:o: use proper markdown
+  **Introduction:**
+  The following section describes how to integrate Hive with Spark.
 
-   ### Introduction:
+  **Motivation:**
+   Hive can run on multiple execution engines and can be integrated with Spark so that the underlying computation 
+   engine is Spark and not Mapreduce.This increases the performance of hive queries greatly as Spark does not write 
+   the intermediate data to the local filesystem and does the computation in memory by creating immutable partitioned 
+   datasets RDDS and streaming data from one RDD to another without the need of writing the intermediate results to HDFS.
+   This saves lot of Physical I/O and makes the query processing much faster.
 
-The following section describes how to integrate Hive with Spark.
-
-:o: use proper markdown
-
-   ### Motivation:
-   
-   :o: use proper markdown
-
-        Hive can run on multiple execution engines and can be integrated with Spark so that the underlying computation engine is Spark and not Mapreduce.This increases the performance of hive queries greatly as Spark does not write the intermediate data to the local filesystem and does the computation in memory by creating immutable partitioned datasets RDDS and streaming data from one RDD to another without the need of writing the intermediate results to HDFS.This saves lot of Physical I/O and makes the query processing much faster.
-
-  ### Software:
+  **Software:**
  	Hive 2.3, Spark 2.3.2
 	
-  ### Integration:
+  **Integration of Hive and Spark:**
   
-    1. Link the following Spark jars to Hive:
+   1. Link the following Spark jars to Hive:
   
-       :o: use proper markdown
+      ```
+      ln -s /home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7/jars/spark-network-common_2.11-2.3.2.jar 
+      /home/ubuntu/hive_home/apache-hive-2.3.3-bin/lib/spark-network-common_2.11-2.3.2.jar
+      
+      ln -s /home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7/jars/spark-core_2.11-2.3.2.jar 
+      /home/ubuntu/hive_home/apache-hive-2.3.3-bin/lib/spark-core_2.11-2.3.2.jar
 
-	ln -s /home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7/jars/spark-network-common_2.11-2.3.2.jar /home/ubuntu/hive_home/apache-hive-2.3.3-bin/lib/spark-network-common_2.11-2.3.2.jar
-
-	ln -s /home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7/jars/spark-core_2.11-2.3.2.jar /home/ubuntu/hive_home/apache-hive-2.3.3-bin/lib/spark-core_2.11-2.3.2.jar
-
-	ln -s /home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7/jars/scala-library-2.11.8.jar /home/ubuntu/hive_home/apache-hive-2.3.3-bin/lib/scala-library-2.11.8.jar
+      ln -s /home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7/jars/scala-library-2.11.8.jar 
+      /home/ubuntu/hive_home/apache-hive-2.3.3-bin/lib/scala-library-2.11.8.jar
+      
+      ```
   
   
    2. Do the following configurations in hive-site.xml(For a 8GB memory node):
