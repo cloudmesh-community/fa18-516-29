@@ -145,7 +145,7 @@ Host datanode3
        
 4. Go to the `~/.ssh` folder of namenode and run the following command.This will create 2 files sshkey_rsa.pub and sshkey_rsa in '~/.ssh' folder. 
           
-```
+```bash
 
 ssh-keygen -f ~/.ssh/id_rsa -t rsa -P ""
  
@@ -154,7 +154,7 @@ ssh-keygen -f ~/.ssh/id_rsa -t rsa -P ""
 5.Copy the contents of sshkey_rsa.pub to authorized_keys file in '~/.ssh' folder of namenode by the below command.
   This will create an entry for the user ubuntu in the authorized_keys file.
            
-```
+```bash
 
 cat ~/.ssh/sshkey_rsa.pub >> ~/.ssh/authorized_keys
 
@@ -178,7 +178,7 @@ cat ~/.ssh/sshkey_rsa.pub >> ~/.ssh/authorized_keys
 8. Change the hostname in all the instances to the public DNS name after login because by default they are the private IPs.
  This is very important because the instances know each other by their public DNS names.Repeat this on all the instances.
          
-  ```
+  ```bash
   
   sudo hostname ec2-52-24-204-101.us-west-2.compute.amazonaws.com.
   
