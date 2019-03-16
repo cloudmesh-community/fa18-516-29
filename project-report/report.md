@@ -607,7 +607,7 @@ The nodemanager process needs to be started in all the slave machines.
        
         | config name | config value | 
         | --- | --- |
-	| hive.execution.engine | spark |
+	|  hive.execution.engine | spark |
         |  spark.master | yarn-cluster |
         |  spark.eventLog.enabled | TRUE |
         |  spark.eventLog.dir | file:///home/ubuntu/hive_home/apache-hive-2.3.3-bin/spark_logs |
