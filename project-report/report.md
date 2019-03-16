@@ -588,9 +588,20 @@ The nodemanager process needs to be started in all the slave machines.
   **Software:**
  	Hive 2.3, Spark 2.3.2
 	
-  **Integration of Hive and Spark:**
+  **Configuration in hive-site.xml(For a 8GB memory node):**
+     
+     ```     
+	  hive.execution.engine              spark 
+          spark.master                       yarn-cluster 
+          spark.eventLog.enabled             TRUE 
+          spark.eventLog.dir                 file:///home/ubuntu/hive_home/apache-hive-2.3.3-bin/spark_logs
+          spark.executor.memory              4g 
+          spark.yarn.executor.memoryOverhead 750 	
+          spark.serializer                   org.apache.spark.serializer.KryoSerializer
+	
+   
   
- 1. Link the following Spark jars to Hive:
+**Link the following Spark jars to Hive:**
   
       ```
       ln -s /home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7/jars/spark-network-common_2.11-2.3.2.jar 
@@ -603,23 +614,14 @@ The nodemanager process needs to be started in all the slave machines.
       /home/ubuntu/hive_home/apache-hive-2.3.3-bin/lib/scala-library-2.11.8.jar
       
     
- 2. Do the following configurations in hive-site.xml(For a 8GB memory node):
-       
-         ```
-          hive.execution.engine              spark 
-          spark.master                       yarn-cluster 
-          spark.eventLog.enabled             TRUE 
-          spark.eventLog.dir                 file:///home/ubuntu/hive_home/apache-hive-2.3.3-bin/spark_logs
-          spark.executor.memory              4g 
-          spark.yarn.executor.memoryOverhead 750 	
-          spark.serializer                   org.apache.spark.serializer.KryoSerializer
-      
+
       
        
-3. Configure yarn-site.xml with the Fair Scheduler:
+**Configure yarn-site.xml with the Fair Scheduler:**
+      
       ```
-        yarn.resourcemanager.scheduler.class=org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler
-       ```
+      yarn.resourcemanager.scheduler.class  org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler
+     
          
         
 
