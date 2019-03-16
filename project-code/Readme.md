@@ -47,7 +47,7 @@
    
  9.Run the jar for the spark secondary sort by the below command:
    
-        ```bash
+       ```bash
         spark-submit --deploy-mode client --class com.spark.secondarysort.SparkSecondarySort  
        /home/ubuntu/projectjars/spark-examples-0.0.1-SNAPSHOT.jar /user/externaltables/secondarysortdata/secondarysorttestfile /user/logs2
       ```
