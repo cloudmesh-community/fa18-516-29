@@ -25,8 +25,9 @@
       mvn package
     
    5.  Go to the folder \fa18-516-29\project-code\spark and run the below command:
-      ```bash 
-      mvn package
+      
+       ```bash 
+       mvn package
     
    This will create a folder named target in both the directories where the jar file is built with names 
    hadoop-spark-examples-0.0.1-SNAPSHOT.jar and spark-examples-0.0.1-SNAPSHOT.jar
