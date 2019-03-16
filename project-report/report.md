@@ -45,7 +45,7 @@ Keywords: Hadoop, Hive, Spark, AWS
 
 :o: Hadoop is at version Release 3.2.0 available available, so your project seems outdated. Also security alerts are reported due to outdated software usage. Certainly it would be useful to use that. I know you have done this last semester, but we have made switches to new hadoop in a matetr of a day for our software, so this is nt that difficult. I will not deduct points for the older version. However, version 2.9.2 was available to you ... and as you should consider writing scipts, why not use the new version ... instead. E.g. your activity does not yet include the automation of the process which we focused on.
 
-:o: Derby: 10.14.2.0
+:o: Derby: 10.14.2.0, released May 2018. WHy is that not used?
 
 :o: 
 
