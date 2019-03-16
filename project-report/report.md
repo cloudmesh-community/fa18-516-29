@@ -164,10 +164,15 @@ cat ~/.ssh/sshkey_rsa.pub >> ~/.ssh/authorized_keys
         
 7. In the /etc/hosts file of all the instances add the following where the first IP is the Private IP and second is the Public DNS (IPv4) in EC2 management console.
         
-   | 172.31.21.154 ec2-52-24-204-101.us-west-2.compute.amazonaws.com |
-   | 172.31.16.132 ec2-52-38-172-19.us-west-2.compute.amazonaws.com  |
-   | 172.31.19.37 ec2-52-42-185-237.us-west-2.compute.amazonaws.com  |
-   | 172.31.30.216 ec2-52-89-22-141.us-west-2.compute.amazonaws.com  |
+   
+     ```              
+     172.31.21.154  ec2-52-24-204-101.us-west-2.compute.amazonaws.com 
+                   
+     172.31.16.132  ec2-52-38-172-19.us-west-2.compute.amazonaws.com  
+                    
+     172.31.19.37   ec2-52-42-185-237.us-west-2.compute.amazonaws.com  
+    
+     172.31.30.216  ec2-52-89-22-141.us-west-2.compute.amazonaws.com  
          
 	
 8. Change the hostname in all the instances to the public DNS name after login because by default they are the private IPs.
