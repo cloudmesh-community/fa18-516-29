@@ -773,10 +773,10 @@ and bringing the entire data in one node.
 
 For example,we have the data:
  
-
- 
+|  key | val|
+|  --- | ---|
 | 2012 | 50 |
-| ---  | ---|
+|      |    |
 | 2012 | 45 |
 |      |    |
 | 2012 | 35 |
