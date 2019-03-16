@@ -47,7 +47,7 @@ Keywords: Hadoop, Hive, Spark, AWS
 
 :o: Derby: 10.14.2.0, released May 2018. WHy is that not used?
 
-:o: 
+:o: Stable release: 3.1.1, August 8, 2018, why is that not used?
 
 :o: due to the trivial markdown errors it is difficult to read the rest of the paper, I am sure you can see that. please correct.
 
