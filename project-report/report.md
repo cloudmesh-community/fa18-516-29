@@ -797,18 +797,28 @@ For example,we have the data:
 
 We want to achieve the following output,where it is sorted by key(1st column) as well as by value(2nd column):
 
-:o: use proper markdown
 
 
-2001    40
-2001    46
-2001    47
-2001    48
-2005    1
-2005    20
-2012    10
-2012    35
-2012    45
+| key  | val |
+| ---  | --- |
+| 2001 | 40  |
+|      |     |
+| 2001 | 46  |
+|      |     |
+| 2001 | 47  |
+|      |     |
+| 2001 | 48  |
+|      |     |
+| 2005 | 1   | 
+|      |     |
+| 2005 | 20  |
+|      |     |
+| 2012 | 10  |
+|      |     |
+| 2012 | 35  |
+|      |     |
+| 2012 | 45  |
+
 2012    50
 
 Then using mapreduce framework we have to do the following:
