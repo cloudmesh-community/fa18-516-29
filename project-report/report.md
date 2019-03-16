@@ -196,7 +196,7 @@ cat ~/.ssh/sshkey_rsa.pub >> ~/.ssh/authorized_keys
    
  1.Before starting the installation,update all the servers as a good practice by the command:
    
-  ```
+  ```bash
   
  sudo apt-get update
   
@@ -204,7 +204,7 @@ cat ~/.ssh/sshkey_rsa.pub >> ~/.ssh/authorized_keys
    
  2. Install Java version8 in all the servers:
         
-   ```
+   ```bash
 
   sudo apt install openjdk-8-jdk
 	
@@ -212,7 +212,7 @@ cat ~/.ssh/sshkey_rsa.pub >> ~/.ssh/authorized_keys
     
  3. Download and install Hadoop 2.9 on all the servers:
    
-   ```
+   ```bash
    
   wget http://apache.mirrors.tds.net/hadoop/common/hadoop-2.9.1/hadoop-2.9.1.tar.gz -P ~/hadoop_installation
       
@@ -220,7 +220,7 @@ cat ~/.ssh/sshkey_rsa.pub >> ~/.ssh/authorized_keys
     
  4. Uncompress the tar file in any directory called hadoop_home:
         
-   ```
+   ```bash
    
   tar zxvf ~/hadoop_installation/hadoop-* -C ~/hadoop_home
 	
@@ -239,7 +239,7 @@ export HADOOP_CONF_DIR=/home/ubuntu/hadoop_home/hadoop-2.9.1/etc/hadoop
    
  6. Load profile in all the instances:
   
-```
+```bash
         
  ~/.profile
 	
@@ -247,7 +247,7 @@ export HADOOP_CONF_DIR=/home/ubuntu/hadoop_home/hadoop-2.9.1/etc/hadoop
      
  7. Change the hadoop-env.sh in $HADOOP_HOME/etc/hadoop in all the instances to add the below line for JAVA_HOME:
 
-```
+```bash
 
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 	  
@@ -273,7 +273,7 @@ yarn-site.xml     yarn.scheduler.minimum-allocation-mb 1024
 **Hadoop Namenode Format:**
 After configuring the config files,format the namenode:
           
-```
+```bash
 hdfs namenode -format  (Format resets the namenode and should only be done once in the lifetime of a cluster)
 	  
 ```
@@ -283,7 +283,7 @@ hdfs namenode -format  (Format resets the namenode and should only be done once 
  
  Namenode:
 	
-```
+```bash
 $HADOOP_HOME/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs start namenode
 $HADOOP_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start resourcemanager
 $HADOOP_HOME/sbin/mr-jobhistory-daemon.sh --config $HADOOP_CONF_DIR start historyserver
@@ -293,7 +293,7 @@ $HADOOP_HOME/sbin/mr-jobhistory-daemon.sh --config $HADOOP_CONF_DIR start histor
          
  DataNode1:
 	
-```
+```bash
 $HADOOP_HOME/sbin/hadoop-daemons.sh --config $HADOOP_CONF_DIR --script hdfs start datanode
 	 
 ```
@@ -302,7 +302,7 @@ datanodes on its own through ssh connection.
          
 DataNode1,DataNode2,DataNode3:
 	
-```
+```bash
 $HADOOP_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start nodemanager
 	 
 ```
