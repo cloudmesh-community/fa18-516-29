@@ -823,42 +823,33 @@ We want to achieve the following output,where it is sorted by key(1st column) as
 
 Then using mapreduce framework we have to do the following:
 
-:o: use proper markdown
-
-1.Tell the framework how to sort the reducer keys.This done by making a composite key which consists of both natural key and the
+1. Tell the framework how to sort the reducer keys.This done by making a composite key which consists of both natural key and the
 actula value and attaching a compartor to it which will compare the 2 composite keys based on natual key and actual value and
 sort the data accordingly for sending it to the reducer.This sorting is done before the reduce phase.
 
-:o: use proper markdown
-
-2.Secondly, we have to introduce a custom partitioner which will partition the data and send it to the reducers based on actual
+2. Secondly, we have to introduce a custom partitioner which will partition the data and send it to the reducers based on actual
 natural keys.Since we have modified the natural key to include the value column as well,we have to specify in custom partitioner
 to only include natural key while partitioning the data.
 
-:o: use proper markdown
-
-3.Lastly,once the data reaches the reducer we have to tell the reduce method to group the data by the actual natural key and
+3. Lastly,once the data reaches the reducer we have to tell the reduce method to group the data by the actual natural key and
   not by the entire composite key.
   
   The above steps will ensure that the data is sorted by the natural key and then by the desired value column for sorting.
   
 ## Conclusion:
 
-:o: use proper markdown
-
-  As part of this project,we were able to set up a fully distributed Hadoop cluster with Spark and Hive and able to do comparison
-  between Mapreduce and Spark job on files of different sizes.Also,we explored a design pattern called "Secondary Sort" to sort a file based on a column specified as a value column.This design pattern can be used to sort large files based on a required column by leveraging the mapreduce framework and does not require all the data needed for sorting to come to one particular node.
+As part of this project,we were able to set up a fully distributed Hadoop cluster with Spark and Hive and able to do 
+comparison between Mapreduce and Spark job on files of different sizes.Also,we explored a design pattern called 
+"Secondary Sort" to sort a file based on a column specified as a value column.This design pattern can be used to sort 
+large files based on a required column by leveraging the mapreduce framework and does not require all the data needed 
+for sorting to come to one particular node.
   
 
 ## Acknowledgement:
 
-:o: use proper markdown
-
-  The author would like to thank Dr. Gregor von Laszewski for his support and suggestions to write this paper.
+The author would like to thank Dr. Gregor von Laszewski for his support and suggestions to write this paper.
    
 ## References:
-
-:o: use proper markdown
 
   Seconadry Sort :https://github.com/mahmoudparsian/data-algorithms-book
   
