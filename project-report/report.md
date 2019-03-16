@@ -17,7 +17,7 @@ Keywords: Hadoop, Hive, Spark, AWS
 
 ---
 
-:o: remove : in headings
+:o: refernces not provided as bibtex
 
 :o: use proper indentation for verbatim
 
