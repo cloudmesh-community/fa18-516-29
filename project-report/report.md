@@ -51,6 +51,9 @@ https://github.com/cloudmesh-community/fa18-516-29/commit/1044cb16d9e875ba3e2ea2
 :o: Hadoop Stable release: 3.1.1, August 8, 2018, why is that not used? according to github the first checkins were made Nov 14, 2018 
 https://github.com/cloudmesh-community/fa18-516-29/commit/1044cb16d9e875ba3e2ea245d981effcf175758a
 
+:o: Spark: Stable release: v2.4.0 / November 2, 2018. Why is this not used? according to github the first checkins were made Nov 14, 2018 
+https://github.com/cloudmesh-community/fa18-516-29/commit/1044cb16d9e875ba3e2ea245d981effcf175758a
+
 :o: due to the trivial markdown errors it is difficult to read the rest of the paper, I am sure you can see that. please correct.
 
 :o: why not create a script for volume adjustment? Your documentation could be made much much simpler if you would use a scripted aproach. Maybe even create commands wioth docopts.
