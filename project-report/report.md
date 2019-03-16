@@ -312,7 +312,7 @@ The nodemanager process needs to be started in all the slave machines.
 	 
 **Creating directories in file system:**
         
- ``` 
+ ```bash 
  hadoop fs -mkdir /user/externaltables/testdata
  hadoop fs -copyFromLocal /home/ubuntu/datafiles/testfile /user/externaltables/testdata/testfile
  
@@ -320,7 +320,7 @@ The nodemanager process needs to be started in all the slave machines.
 
 **Run the map reduce job to test that the containers are getting launched properly in all the nodes:**
          
- ```
+ ```bash
  yarn jar hadoop-mapreduce-examples-2.9.1.jar wordcount /user/externaltables/testdata/testfile /user/logs
  
  ```
@@ -391,21 +391,21 @@ The nodemanager process needs to be started in all the slave machines.
 
   1. Download and Install Hive 2.3 which is compatible with Hadoop 2.9 only in the master machine.
       
-     ```
+     ```bash
      wget https://www-us.apache.org/dist/hive/hive-2.3.3/apache-hive-2.3.3-bin.tar.gz -P ~/hive_installation
       
      ```
    
   2. Uncompress the tar file in a directory $HIVE_HOME
       
-      ```
+      ```bash
       tar zxvf ~/hive_installation/apache-hive-* -C ~/hive_home
       
       ```
       
   3. Set up the env variables in all the .profile and .bashrc of all the servers
       
-       ```
+       ```bash
       export HIVE_HOME=/home/ubuntu/hive_home/apache-hive-2.3.3-bin
       export PATH=$PATH:$HIVE_HOME/bin
       export HIVE_CONF_DIR=/home/ubuntu/hive_home/apache-hive-2.3.3-bin/conf
@@ -415,7 +415,7 @@ The nodemanager process needs to be started in all the slave machines.
       
    4. Download and Install derby database for the metadatastore of hive
       
-      ```
+      ```bash
       wget http://archive.apache.org/dist/db/derby/db-derby-10.4.2.0/db-derby-10.4.2.0-bin.tar.gz
       tar zxvf db-derby-10.4.2.0-bin.tar.gz -C ~/derby_home
       
@@ -423,7 +423,7 @@ The nodemanager process needs to be started in all the slave machines.
       
    5. Set up the env variables for Derby in .bashrc and .profile
       
-      ```
+      ```bash
       export DERBY_HOME=/home/ubuntu/derby_home/db-derby-10.4.2.0-bin
       export PATH=$PATH:$DERBY_HOME/bin
       export CLASSPATH=$CLASSPATH:$DERBY_HOME/lib/derby.jar:$DERBY_HOME/lib/derbytools.jar
@@ -432,7 +432,7 @@ The nodemanager process needs to be started in all the slave machines.
       
    6. Load profile in all the servers
 
-      ```
+      ```bash
       ~/.profile
 	
       ```
@@ -440,7 +440,7 @@ The nodemanager process needs to be started in all the slave machines.
    7. Initialize the schema in derby in $HIVE_HOME folder.This will create a metastore_db directory which is the database
       directory and will be loaded in memory.
          
-        ```
+        ```bash
         cd $HIVE_HOME
         schematool -dbType derby -initSchema
 	 
