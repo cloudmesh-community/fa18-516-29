@@ -45,9 +45,11 @@ Keywords: Hadoop, Hive, Spark, AWS
 
 :o: Hadoop is at version Release 3.2.0 available available, so your project seems outdated. Also security alerts are reported due to outdated software usage. Certainly it would be useful to use that. I know you have done this last semester, but we have made switches to new hadoop in a matetr of a day for our software, so this is nt that difficult. I will not deduct points for the older version. However, version 2.9.2 was available to you ... and as you should consider writing scipts, why not use the new version ... instead. E.g. your activity does not yet include the automation of the process which we focused on.
 
-:o: Derby: 10.14.2.0, released May 2018. WHy is that not used?
+:o: Derby: 10.14.2.0, released May 2018. WHy is that not used? according to github the first checkins were made Nov 14, 2018
+https://github.com/cloudmesh-community/fa18-516-29/commit/1044cb16d9e875ba3e2ea245d981effcf175758a
 
-:o: Stable release: 3.1.1, August 8, 2018, why is that not used?
+:o: Hadoop Stable release: 3.1.1, August 8, 2018, why is that not used? according to github the first checkins were made Nov 14, 2018 
+https://github.com/cloudmesh-community/fa18-516-29/commit/1044cb16d9e875ba3e2ea245d981effcf175758a
 
 :o: due to the trivial markdown errors it is difficult to read the rest of the paper, I am sure you can see that. please correct.
 
