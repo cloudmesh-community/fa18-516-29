@@ -610,12 +610,12 @@ The nodemanager process needs to be started in all the slave machines.
         spark.serializer                      org.apache.spark.serializer.KryoSerializer
       ```
        
-  3. Configure yarn-site.xml with the Fair Scheduler:
+ 3. Configure yarn-site.xml with the Fair Scheduler:
 
        ```
-       yarn.resourcemanager.scheduler.class=org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler
+        yarn.resourcemanager.scheduler.class=org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler
          
-        ```
+        
 
 
  **Running Hive on Spark:**	  
