@@ -855,10 +855,6 @@ large files based on a required column by leveraging the mapreduce framework and
 for sorting to come to one particular node.
   
 
-## Acknowledgement:
-
-The author would like to thank Dr. Gregor von Laszewski for his support and suggestions to write this paper.
-   
 ## References:
 
   Seconadry Sort :https://github.com/mahmoudparsian/data-algorithms-book
