@@ -338,11 +338,11 @@ The nodemanager process needs to be started in all the slave machines.
        This will show the below ext4 filesystem:
          /dev/xvda1
     
-    2. df -h will show the space available in the above file system.If it is nearly full,then take more volume for the EC2
-     instances by following the below steps:
+    2. df -h will show the space available in the above file system.If it is nearly full,then take more volume 
+       for the EC2 instances by following the below steps.
        
-    3. On the left side in Elastic Block Store,go to Volumes.Add the number of volumne required(another 8GB) to all the instances.
-          All this will be mapped to the drive /dev/xvda.
+    3. On the left side in Elastic Block Store,go to Volumes.Add the number of volumne required(another 8GB) 
+       to all the instances.All this will be mapped to the drive /dev/xvda.
           
     4. Login to putty of the machines and run lsblk.This will show something like below:
            xvda    202:0    0   16G  0 disk
@@ -360,7 +360,7 @@ The nodemanager process needs to be started in all the slave machines.
            
     8. Do df -h and confirm that the space allocated to the filesystem /dev/xvda1 is increased by 8GB.
        
-    ![Adding Volumes in EC2 instances ](images/Adding_volumes.png){#fig:Adding volume to EC2 instances}
+   ![Adding Volumes in EC2 instances ](images/Adding_volumes.png){#fig:Adding volume to EC2 instances}
 
 
 
@@ -590,7 +590,7 @@ The nodemanager process needs to be started in all the slave machines.
 	
   **Integration of Hive and Spark:**
   
-   1. Link the following Spark jars to Hive:
+ 1. Link the following Spark jars to Hive:
   
       ```
       ln -s /home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7/jars/spark-network-common_2.11-2.3.2.jar 
@@ -603,7 +603,7 @@ The nodemanager process needs to be started in all the slave machines.
       /home/ubuntu/hive_home/apache-hive-2.3.3-bin/lib/scala-library-2.11.8.jar
       
     
-  2. Do the following configurations in hive-site.xml(For a 8GB memory node):
+ 2. Do the following configurations in hive-site.xml(For a 8GB memory node):
        
          ```
           hive.execution.engine              spark 
@@ -616,7 +616,7 @@ The nodemanager process needs to be started in all the slave machines.
       
       
        
- 3. Configure yarn-site.xml with the Fair Scheduler:
+3. Configure yarn-site.xml with the Fair Scheduler:
       ```
         yarn.resourcemanager.scheduler.class=org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler
        ```
@@ -818,13 +818,13 @@ We want to achieve the following output,where it is sorted by key(1st column) as
 | 2012 | 35  |
 |      |     |
 | 2012 | 45  |
-
-2012    50
+|      |     |
+| 2012 | 50  |
 
 Then using mapreduce framework we have to do the following:
 
 1. Tell the framework how to sort the reducer keys.This done by making a composite key which consists of both natural key and the
-actula value and attaching a compartor to it which will compare the 2 composite keys based on natual key and actual value and
+actual value and attaching a compartor to it which will compare the 2 composite keys based on natual key and actual value and
 sort the data accordingly for sending it to the reducer.This sorting is done before the reduce phase.
 
 2. Secondly, we have to introduce a custom partitioner which will partition the data and send it to the reducers based on actual
