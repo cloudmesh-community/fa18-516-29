@@ -26,7 +26,7 @@
     
    5.  Go to the folder \fa18-516-29\project-code\spark and run the below command:
     
-      ```bash 
+       ```bash 
       mvn package
     
    This will create a folder named target in both the directories where the jar file is built with names 
