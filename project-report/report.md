@@ -228,7 +228,7 @@ cat ~/.ssh/sshkey_rsa.pub >> ~/.ssh/authorized_keys
  
  5. set up the env variables in the .profile and .bashrc of all the servers:
  
-```
+```bash
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export PATH=$PATH:$JAVA_HOME/bin
 export HADOOP_HOME=/home/ubuntu/hadoop_home/hadoop-2.9.1
@@ -451,7 +451,7 @@ The nodemanager process needs to be started in all the slave machines.
 
   1. Create directories in HDFS for hive tables:
      
-     ```
+     ```bash
       hadoop fs -mkdir /user/externaltables/insurancedata
       hadoop fs -copyFromLocal insurance_datafile /user/externaltables/insurancedata/
 	
@@ -459,7 +459,7 @@ The nodemanager process needs to be started in all the slave machines.
         
   2. Start the hive terminal by typing command hive
          
-      ```
+      ```bash
        hive
 	 
       ```
@@ -526,20 +526,20 @@ The nodemanager process needs to be started in all the slave machines.
 
   1. Download and install spark 2.3.2.
  
-     ```
+     ```bash
      wget https://www-eu.apache.org/dist/spark/spark-2.3.2/spark-2.3.2-bin-hadoop2.7.tgz -P ~/spark_installation
 	
      ```
     
   2. Untar the zip file in SPARK_HOME
 
-     ```
+     ```bash
      tar zxvf spark-2.3.2-bin-hadoop2.7.tgz -C ~/spark_home
      ```
      
   3. set the env variables in .profile and .bashrc
 
-     ```
+     ```bash
       export SPARK_HOME=/home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7
       export PATH=$PATH:$SPARK_HOME/bin
       export SPARK_CONF_DIR=/home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7/conf
@@ -567,7 +567,7 @@ The nodemanager process needs to be started in all the slave machines.
     
  Test that spark is getting launched through yarn by running the spark wordcount job in client mode.
    
-   ```
+   ```bash
    spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCount 
    $SPARK_HOME/examples/jars/spark-examples_2.11-2.3.2.jar /user/externaltables/testdata/testfile
    
@@ -602,7 +602,7 @@ The nodemanager process needs to be started in all the slave machines.
   
   **Link the following Spark jars to Hive:**
   
-      ```
+      ```bash
       ln -s /home/ubuntu/spark_home/spark-2.3.2-bin-hadoop2.7/jars/spark-network-common_2.11-2.3.2.jar 
       /home/ubuntu/hive_home/apache-hive-2.3.3-bin/lib/spark-network-common_2.11-2.3.2.jar
       
@@ -629,7 +629,7 @@ The nodemanager process needs to be started in all the slave machines.
 	  
    1. Create directories in HDFS for storing Hive data as an external table
       
-      ```
+      ```bash
       hadoop fs -mkdir /user/externaltables/insurancedata
       hadoop fs -copyFromLocal insurance_datafile /user/externaltables/insurancedata/
       
@@ -637,7 +637,7 @@ The nodemanager process needs to be started in all the slave machines.
         
    2. Start the hive terminal by typing command Hive
       
-       ```
+       ```bash
        hive
        
        ```
@@ -673,7 +673,7 @@ The nodemanager process needs to be started in all the slave machines.
          
    4. Run a query in debug mode to count the number of policies:
        
-       ```
+       ```bash
         hive --hiveconf hive.root.logger=DEBUG,console -e "select count(policyID) from insurance_data_1"
       
 	  
@@ -698,7 +698,7 @@ The nodemanager process needs to be started in all the slave machines.
 
    1. Run the below mapreduce jobs
 
-   ```
+   ```bash
    yarn jar hadoop-mapreduce-examples-2.9.1.jar wordcount /user/externaltables/testdata1/testfile1 /user/logs1
    yarn jar hadoop-mapreduce-examples-2.9.1.jar wordcount /user/externaltables/testdata2/testfile2 /user/logs2
    yarn jar hadoop-mapreduce-examples-2.9.1.jar wordcount /user/externaltables/testdata3/testfile3 /user/logs3
@@ -706,7 +706,7 @@ The nodemanager process needs to be started in all the slave machines.
 
 2. Run the below Spark jobs
 
-  ```
+  ```bash
   spark-submit --deploy-mode client --class org.apache.spark.examples.JavaWordCount 
   $SPARK_HOME/examples/jars/spark-examples_2.11-2.3.2.jar /user/externaltables/testdata1/testfile1
  
