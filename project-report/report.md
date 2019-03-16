@@ -608,12 +608,13 @@ The nodemanager process needs to be started in all the slave machines.
         spark.executor.memory                 4g
         spark.yarn.executor.memoryOverhead    750	
         spark.serializer                      org.apache.spark.serializer.KryoSerializer
+      
       ```
        
  3. Configure yarn-site.xml with the Fair Scheduler:
-
-       ```
+      ```
         yarn.resourcemanager.scheduler.class=org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler
+       ```
          
         
 
@@ -713,15 +714,15 @@ The nodemanager process needs to be started in all the slave machines.
 
  3.Benchmark Data:
  
- Filename          FileSize                        mapreduce completion time                               spark completion time
+  |  Filename    |      FileSize  |   Mapreduce completion time  |  spark completion time |
+  | ------------ | -------------- | ---------------------------- | ---------------------- |
+  |              |                |                              |                        |
+  |  testfile1   |      724 MB    |    20 seconds                |   3 seconds            |                      
+  |              |                |                              |                        |
+  |  testfile2   |     1.58 GB    |    18 seconds                |    4 seconds           |                          
+  |              |                |                              |                        |
+  |  testfile3   |     6.48 GB    |    20 seconds                |    4 seconds           |                         
 
-
-testfile1          724 MB                                          20 seconds                                               3 seconds
-
-testfile2         1.58 GB                                          18 seconds                                               4 seconds
-
-testfile3         6.48 GB                                          20 seconds                                               4 seconds
-```
 
 ### Spark Architecture :
 
