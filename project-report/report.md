@@ -605,16 +605,17 @@ The nodemanager process needs to be started in all the slave machines.
     
   2. Do the following configurations in hive-site.xml(For a 8GB memory node):
        
-       ```
-        hive.execution.engine                 spark
-        spark.master                          yarn-cluster
-        spark.eventLog.enabled                TRUE
-        spark.eventLog.dir                    file:///home/ubuntu/hive_home/apache-hive-2.3.3-bin/spark_logs
-        spark.executor.memory                 4g
-        spark.yarn.executor.memoryOverhead    750	
-        spark.serializer                      org.apache.spark.serializer.KryoSerializer
+        |   config name                      |         config value                                                  | 
+        |  --------------------------------  | ----------------------------------------------------------------------|
+	| hive.execution.engine              |        spark                                                          |
+        | spark.master                       |        yarn-cluster                                                   |
+        | spark.eventLog.enabled             |        TRUE                                                           |
+        | spark.eventLog.dir                 |        file:///home/ubuntu/hive_home/apache-hive-2.3.3-bin/spark_logs |
+        | spark.executor.memory              |        4g                                                             |
+        | spark.yarn.executor.memoryOverhead |        750                                                            |	
+        | spark.serializer                   |        org.apache.spark.serializer.KryoSerializer                     |
       
-      ```
+      
        
  3. Configure yarn-site.xml with the Fair Scheduler:
       ```
