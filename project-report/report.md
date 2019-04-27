@@ -18,6 +18,8 @@ Keywords: Hadoop, Hive, Spark, AWS
 ---
 
 :o: refernces not provided as bibtex
+      
+     My comments:  done the suggested change
 
 :o: use proper indentation for verbatim 
      
@@ -28,6 +30,8 @@ Keywords: Hadoop, Hive, Spark, AWS
     My comments:  done the suggested change
 
 :o: are images drawn by yourslef? if not they are plagarized as citations are missing
+ 
+    My comments:  done the suggested change
 
 :o: lots of spaces missing after comma or dots
    
