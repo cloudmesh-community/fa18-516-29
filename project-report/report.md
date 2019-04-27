@@ -784,7 +784,7 @@ The nodemanager process needs to be started in all the slave machines.
 
 **Spark Architecture :**
 
-![ Spark Architecture](images/spark_architecture.png){#fig:S-Architecture}
+![ Spark Architecture](images/spark_architecture.png){#fig:S-Architecture <cite>Learning Spark : https://learning.oreilly.com/library/view/learning-spark</cite>}
 
 Spark has a Distributed computing model with one driver and multiple executors running on different nodes.
 
