@@ -74,19 +74,30 @@ Keywords: Hadoop, Hive, Spark, AWS
 
 :o: Hadoop is at version Release 3.2.0 available available, so your project seems outdated. Also security alerts are reported due to outdated software usage. Certainly it would be useful to use that. I know you have done this last semester, but we have made switches to new hadoop in a matetr of a day for our software, so this is nt that difficult. I will not deduct points for the older version. However, version 2.9.2 was available to you ... and as you should consider writing scipts, why not use the new version ... instead. E.g. your activity does not yet include the automation of the process which we focused on.
 
-    My comments: I have used Hadoop 2.9.It is one of the commonly used distribution in production servers and has good compatibility with both Hive 2.3 and Spark 2.3. I had to choose a distribution which should have very good proven integration with Hive and Spark,sine
-    I had demonstreated the use of these softwares as well.
+    My comments: I have used Hadoop 2.9.It is one of the commonly used distribution in production servers and has good 
+    compatibility with both Hive 2.3 and Spark 2.3. I had to choose a distribution which should integrate seamlessly with Hive 
+    and Spark, since I had demonstreated the use of these softwares as well.
 
 :o: Derby: 10.14.2.0, released May 2018. WHy is that not used? according to github the first checkins were made Nov 14, 2018
 https://github.com/cloudmesh-community/fa18-516-29/commit/1044cb16d9e875ba3e2ea245d981effcf175758a
 
+    My comments: I have used Derby version which is recommended for Hive 2.3 as per the Hive documentation.
+
 :o: Hadoop Stable release: 3.1.1, August 8, 2018, why is that not used? according to github the first checkins were made Nov 14, 2018 
 https://github.com/cloudmesh-community/fa18-516-29/commit/1044cb16d9e875ba3e2ea245d981effcf175758a
+ 
+    My comments: Hadoop 2.9 is one of the most commonly used distribution in production servers and can integrate seamlessly with 
+    Spark 2.3.
+   
 
 :o: Spark: Stable release: v2.4.0 / November 2, 2018. Why is this not used? according to github the first checkins were made Nov 14, 2018 
 https://github.com/cloudmesh-community/fa18-516-29/commit/1044cb16d9e875ba3e2ea245d981effcf175758a
 
+    My comments: I had started with the project configurations much earlier and at that time Spark 2.3 was the latest.
+
 :o: due to the trivial markdown errors it is difficult to read the rest of the paper, I am sure you can see that. please correct.
+
+    My comments: Done the suggested change.
 
 :o: why not create a script for volume adjustment? Your documentation could be made much much simpler if you would use a scripted aproach. Maybe even create commands wioth docopts.
 
