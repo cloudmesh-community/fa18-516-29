@@ -784,13 +784,15 @@ The nodemanager process needs to be started in all the slave machines.
 
 **Spark Architecture :**
 
-![ Spark Architecture](images/spark_architecture.png){#fig:S-Architecture <cite>Learning Spark : https://learning.oreilly.com/library/view/learning-spark</cite>}
+![ Spark Architecture](images/spark_architecture.png){#fig:S-Architecture 
+ <cite>Learning Spark : https://learning.oreilly.com/library/view/learning-spark</cite>}
 
 Spark has a Distributed computing model with one driver and multiple executors running on different nodes.
 
 **Spark Processing through DataFrames(An abstraction over RDDs):**
 
 ![ Spark Dataframes](images/df.png){#fig:Spark-Dataframes processing}
+<cite>Learning Spark : https://learning.oreilly.com/library/view/learning-spark</cite>}
 
 Spark does the in-memory processing through Dataframes which are schema defined RDDs loaded in memory of each node in the cluster
 over the file present in HDFS.The computation from one stage to another(map to map/reduce) happens by streaming data from one
@@ -821,6 +823,7 @@ data as a composite key {natural key,value to be sorted} and then the framework 
 and bringing the entire data in one node.
 
 ![ Spark Secondary Sort Design pattern](images/secondarysort.png){#fig:Spark-Secondary Implementation Logic}
+<cite>Data Algorithms: Recipes for Scaling up with Hadoop and Spark : https://github.com/mahmoudparsian/data-algorithms-book</cite>}
 
 **Implementation in MapReduce:**
 
