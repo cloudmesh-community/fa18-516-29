@@ -20,48 +20,53 @@ Keywords: Hadoop, Hive, Spark, AWS
 :o: refernces not provided as bibtex
 
 :o: use proper indentation for verbatim 
+     
      My comments:  done the suggested change
 
 :o: use proper indentations for lists
+    
     My comments:  done the suggested change
 
 :o: are images drawn by yourslef? if not they are plagarized as citations are missing
 
 :o: lots of spaces missing after comma or dots
-   My comments:  done the suggested change
+   
+    My comments:  done the suggested change
 
 :o: please do read the epub on how to use markdown
-   My comments:  done the suggested change
+   
+    My comments:  done the suggested change
 
 :o: review grammare when using and the, sometimes they seem missing.
-   My comments:  done the suggested change
+  
+    My comments:  done the suggested change
 
 :o: you should not use putty but gitbash as this makes the project not only runable on windows but also linux via bash. As is the usability of the code is limited to windows which is something we try to avoid.
   
-  My comments:  I am using putty as client to login to AWS EC2 instances.The entire platform is unix based with the code jar files
-  which are platform independent and runs on Hadoop and Spark cluster.
+    My comments:  I am using putty as client to login to AWS EC2 instances.The entire platform is unix based with the code jar files
+    which are platform independent and runs on Hadoop and Spark cluster.
 
 :o: you should use a local key generated with ssh-keygen as discussed in class.
 
- My comments:  I have generated public key for AWS Master instance through ssh-keygen locally and then copied it to the Master node.
- For the slaves nodes, I had to generate it on the Master node and copy to the slaves because there has to be a passwordless ssh
- connection between the Master and Slave nodes in a Hadoop Cluster.
+    My comments:  I have generated public key for AWS Master instance through ssh-keygen locally and then copied it to the Master node.
+    For the slaves nodes, I had to generate it on the Master node and copy to the slaves because there has to be a passwordless ssh
+    connection between the Master and Slave nodes in a Hadoop Cluster.
  
 
 :o: I do think you do not do the key management correctly. E.g. why using pem files and private/public keypair and mixing this while using it inconsistently. Please explain in detail so we learn from you why this is needed. Explain in particular why ... we quite do not yet get this.
 
-My comments: This is as per the Hadoop documentation to set up ssh connection.
+    My comments: This is as per the Hadoop documentation to set up ssh connection.
 
 :o: step vi. should be done with apython program. as well as the creation of the ssh config file, while fetching the vms via a shell script and doing this automatically.
 
-My comments: I have taken static Ips from AWS for all the nodes so that I do not have to redo the configurations after the cluster 
-stops.Automation can be done but it can be bundled and deployed only once the static Ips are allocated which has a cost assosiated
-with it in AWS.
+    My comments: I have taken static Ips from AWS for all the nodes so that I do not have to redo the configurations after the cluster 
+    stops.Automation can be done but it can be bundled and deployed only once the static Ips are allocated which has a cost assosiated
+    with it in AWS.
 
 :o: The creation of the  /etc/hosts shoudl be automatized and also its distribution
 
-My comments: The reason above applies here as well, due to which I have not automated the deployment since we have to pay to get
-static Ips.
+    My comments: The reason above applies here as well, due to which I have not automated the deployment since we have to pay to get
+    static Ips.
 
 
 :o: the entire hadoop instaltion can be done with scripts or python programs.
@@ -69,8 +74,8 @@ static Ips.
 
 :o: Hadoop is at version Release 3.2.0 available available, so your project seems outdated. Also security alerts are reported due to outdated software usage. Certainly it would be useful to use that. I know you have done this last semester, but we have made switches to new hadoop in a matetr of a day for our software, so this is nt that difficult. I will not deduct points for the older version. However, version 2.9.2 was available to you ... and as you should consider writing scipts, why not use the new version ... instead. E.g. your activity does not yet include the automation of the process which we focused on.
 
-Mu comments: I have used Hadoop 2.9.It is one of the commonly used distribution in production servers and has good compatibility with both Hive 2.3 and Spark 2.3. I had to choose a distribution which should have very good proven integration with Hive and Spark,sine
-I had demonstreated the use of these softwares as well.
+    My comments: I have used Hadoop 2.9.It is one of the commonly used distribution in production servers and has good compatibility with both Hive 2.3 and Spark 2.3. I had to choose a distribution which should have very good proven integration with Hive and Spark,sine
+    I had demonstreated the use of these softwares as well.
 
 :o: Derby: 10.14.2.0, released May 2018. WHy is that not used? according to github the first checkins were made Nov 14, 2018
 https://github.com/cloudmesh-community/fa18-516-29/commit/1044cb16d9e875ba3e2ea245d981effcf175758a
