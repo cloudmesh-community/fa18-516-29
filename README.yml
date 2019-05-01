@@ -6,8 +6,8 @@ owner:
   community: e516
   semester: fa18
 project:
-  - title: Installation and Configuration of Hadoop, Spark and Hive on AWS EC2
+  - title: Installation and Configuration of Hadoop, Spark and Hive on AWS EC2 instances
     keyword: Hadoop, Hive,Spark,AWS EC2
     code: https://github.com/cloudmesh-community/fa18-516-29/tree/master/project-code
     url: https://github.com/cloudmesh-community/fa18-516-29/tree/master/project-report/report.md
-	status : 100%
+    status : 100%
