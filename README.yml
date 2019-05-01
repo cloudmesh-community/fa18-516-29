@@ -1,12 +1,13 @@
+---
 owner:
-  firstname: "Shilpa"
-  lastname: "Singh"
-  hid: "fa18-516-29"
-  community: "e516"
-  semester: "fa18"
+  firstname: Shilpa
+  lastname: Singh
+  hid: fa18-516-29
+  community: e516
+  semester: fa18
 project:
-  - title: Installation of Hadoop, Spark and Hive on AWS EC2
+  - title: Installation and Configuration of Hadoop, Spark and Hive on AWS EC2
     keyword: Hadoop, Hive,Spark,AWS EC2
-    url: https://github.com/cloudmesh-community/fa18-516-29/tree/master/project-report/report.md 
     code: https://github.com/cloudmesh-community/fa18-516-29/tree/master/project-code
-    status : 100%
+    url: https://github.com/cloudmesh-community/fa18-516-29/tree/master/project-report/report.md
+	status : 100%
